@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ap_white"
+    tools:context="com.androidplot.demos.metodobiseccionActivity">
+
+    <TextView
+        android:id="@+id/textView"
+
+        android:layout_width="248dp"
+        android:layout_height="50dp"
+        android:text="Metodo de biseccion"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/ap_black"
+        android:textSize="25dp"
+        android:textStyle="italic"
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <EditText
+        android:id="@+id/funcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Ingrese una funcion"
+        android:inputType="textPersonName"
+        android:textColor="@color/ap_black"
+        tools:layout_editor_absoluteX="101dp"
+        tools:layout_editor_absoluteY="72dp" />
+
+    <TextView
+        android:id="@+id/Resultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resultado"
+        android:textColor="@color/ap_black"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="336dp" />
+
+    <Button
+        android:id="@+id/Calculo"
+        android:layout_width="107dp"
+        android:layout_height="37dp"
+        android:onClick="Calcular"
+        android:text="Calcular"
+        tools:layout_editor_absoluteX="139dp"
+        tools:layout_editor_absoluteY="274dp" />
+
+    <EditText
+        android:id="@+id/iteraciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="# Iteraciones"
+        android:inputType="textPersonName"
+        android:textColor="@color/ap_black"
+        tools:layout_editor_absoluteX="101dp"
+        tools:layout_editor_absoluteY="122dp" />
+
+    <EditText
+        android:id="@+id/inferior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="cota inferior"
+        android:inputType="textPersonName"
+        android:textColor="@color/ap_black"
+        tools:layout_editor_absoluteX="101dp"
+        tools:layout_editor_absoluteY="171dp" />
+
+    <EditText
+        android:id="@+id/superior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Cota superior"
+        android:inputType="textPersonName"
+        android:textColor="@color/ap_black"
+        tools:layout_editor_absoluteX="101dp"
+        tools:layout_editor_absoluteY="219dp" />
+
+</android.support.constraint.ConstraintLayout>
