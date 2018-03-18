@@ -19,4 +19,19 @@
     <string name="sxy_title">A Simple XY Plot</string>
     <string name="ts_title">Time Series</string>
     <string name="ts_plot1_title">UFO Sightings</string>
+    <string name="title_activity_graficarfuncion">graficarfuncionActivity</string>
+    <string name="title_activity_ecuacionesunavariable">ecuacionesunavariableActivity</string>
+    <string name="title_activity_tabla_biseccion">TablaBiseccionActivity</string>
+    <string name="title_activity_regla_falsa">ReglaFalsaActivity</string>
+    <string name="title_activity_regla_falsa_table">ReglaFalsaTableActivity</string>
+    <string name="title_activity_puntofijo">PuntofijoActivity</string>
+    <string name="title_activity_busquedas_incrementales">BusquedasIncrementalesActivity</string>
+    <string name="title_activity_metodo_incremental_tabla">MetodoIncrementalTablaActivity</string>
+    <string name="title_activity_punto_fijo_table">PuntoFijoTableActivity</string>
+    <string name="title_activity_newton">NewtonActivity</string>
+    <string name="title_activity_newton_table">NewtonTableActivity</string>
+    <string name="title_activity_secant_method">SecantMethodActivity</string>
+    <string name="title_activity_secant_table">SecantTableActivity</string>
+    <string name="title_activity_multiple_root">MultipleRootActivity</string>
+    <string name="title_activity_multiple_root_table2">MultipleRootTable2Activity</string>
 </resources>

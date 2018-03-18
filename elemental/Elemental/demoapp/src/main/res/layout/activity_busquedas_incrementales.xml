@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/ap_white"
-    tools:context="com.androidplot.demos.metodobiseccionActivity">
+    tools:context="com.androidplot.demos.BusquedasIncrementalesActivity">
 
     <TextView
         android:id="@+id/textView"
 
-        android:layout_width="231dp"
-        android:layout_height="40dp"
+        android:layout_width="290dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Bisection method"
+        android:text="Incremental Searching"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/ap_black"
         android:textSize="25dp"
@@ -29,9 +29,9 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/funcion"
+        android:id="@+id/funcioninc"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="41dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -40,12 +40,10 @@
         android:hint="Write a function"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/Tolerancia"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/Resultado"
@@ -76,11 +74,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/superior"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/iteracionesinc"
+        app:layout_constraintVertical_bias="0.174" />
 
     <EditText
-        android:id="@+id/Tolerancia"
+        android:id="@+id/xinicialinc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -88,18 +86,16 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Tolerance"
+        android:hint="X initial"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/inferior"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/funcion"
-        app:layout_constraintVertical_bias="0.032" />
+        app:layout_constraintTop_toBottomOf="@+id/funcioninc" />
 
     <EditText
-        android:id="@+id/inferior"
+        android:id="@+id/deltainc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -107,18 +103,16 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Lower bound"
+        android:hint="Delta"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/superior"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Tolerancia"
-        app:layout_constraintVertical_bias="0.009" />
+        app:layout_constraintTop_toBottomOf="@+id/xinicialinc" />
 
     <EditText
-        android:id="@+id/superior"
+        android:id="@+id/iteracionesinc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -126,14 +120,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Upper bound"
+        android:hint="Iteractions"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inferior"
+        app:layout_constraintTop_toBottomOf="@+id/deltainc"
         app:layout_constraintVertical_bias="0.023" />
 
     <Button
@@ -150,5 +144,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Resultado"
         app:layout_constraintVertical_bias="0.178" />
-
 </android.support.constraint.ConstraintLayout>

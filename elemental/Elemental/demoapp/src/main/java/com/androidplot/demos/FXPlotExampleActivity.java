@@ -22,7 +22,19 @@ import android.os.*;
 
 import com.androidplot.util.*;
 import com.androidplot.xy.*;
-
+import android.util.*;
+import com.androidplot.demos.com.udojava.evalex.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.MathContext;
+import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
+import java.lang.Math;
 import java.text.*;
 import java.util.*;
 import static java.lang.Math.*;
@@ -32,6 +44,7 @@ import static java.lang.Math.*;
 public class FXPlotExampleActivity extends Activity {
 
     private XYPlot plot;
+    private String var;
 
     /**
      * Custom line label renderer that highlights origin labels
@@ -51,6 +64,7 @@ public class FXPlotExampleActivity extends Activity {
             }
         }
     }
+
 
     /**
      * Draws every other tick label and renders text in gray instead of white.
@@ -75,7 +89,6 @@ public class FXPlotExampleActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fx_plot_example);
-
         // initialize our XYPlot reference:
         plot = (XYPlot) findViewById(R.id.plot);
 
@@ -106,7 +119,10 @@ public class FXPlotExampleActivity extends Activity {
                 new float[] {PixelUtils.dpToPix(3), PixelUtils.dpToPix(3)}, 0);
         plot.getGraph().getDomainGridLinePaint().setPathEffect(dashFx);
         plot.getGraph().getRangeGridLinePaint().setPathEffect(dashFx);
-
+        //String minx = getIntent().getStringExtra("limiteA");
+        //String max = getIntent().getStringExtra("limiteB");
+        //double a=Double.parseDouble(minx);
+        //double b=Double.parseDouble(max);
         // add a new series' to the xyplot:
         plot.addSeries(generateSeries(-5, 5, 100), series1Format);
         PanZoom.attach(plot);
@@ -117,18 +133,20 @@ public class FXPlotExampleActivity extends Activity {
         final double step = range/ resolution;
         List<Number> xVals = new ArrayList<>();
         List<Number> yVals = new ArrayList<>();
-
         double x = minX;
         while (x <= maxX) {
             xVals.add(x);
             yVals.add(fx(x));
             x +=step;
         }
-
-        return new SimpleXYSeries(xVals, yVals, "Aqui va la funcion graficada");
+        //String stringf = getIntent().getStringExtra("funcion");
+       return new SimpleXYSeries(xVals, yVals, "Aqui va la funcion graficada");
     }
 
     protected double fx(double x) {
-        return sin(x);
+
+        com.androidplot.demos.com.udojava.evalex.Expression expression = new com.androidplot.demos.com.udojava.evalex.Expression(var);
+        expression.setVariable("x",x+"");
+        return expression.eval().doubleValue();
     }
 }
