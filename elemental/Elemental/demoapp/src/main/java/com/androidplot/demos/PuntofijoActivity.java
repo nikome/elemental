@@ -120,8 +120,8 @@ public class PuntofijoActivity extends Activity {
         com.androidplot.demos.com.udojava.evalex.Expression fx = new com.androidplot.demos.com.udojava.evalex.Expression(f+"-x");
         fx.setVariable("x",Xo);
         Double yi = gx.eval().doubleValue();
-        fx.setVariable("x",Double.toString(yi));
-        Double zi = fx.eval().doubleValue();
+        gx.setVariable("x",Double.toString(yi));
+        Double zi = gx.eval().doubleValue();
         if(fx.eval().doubleValue() == 0){
             String resu = String.valueOf(Xo+" is a root");
             Resultado.setText(resu);
