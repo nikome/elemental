@@ -132,5 +132,110 @@ public class SecantMethodActivity extends Activity {
 
     }
 
+        public void Muller(){
+    //public void Muller(String q, String w,String f,String niter,String tolerancia) {
+        iteracionesList.clear();
+        xnList.clear();
+        ErrorList.clear();
+        fxList.clear();
+        String f=funcion.getText().toString();
+        String tolerancia=Tolerancia.getText().toString();
+        String niter=Iteraciones.getText().toString();
+        String q=X0.getText().toString();
+        String w=X1.getText().toString();
+
+        Double a = Double.parseDouble(q);
+        Double b = Double.parseDouble(w);
+        double res;
+        Double c = (a+b)/2;
+        Double contador = 0.0;
+        com.androidplot.demos.com.udojava.evalex.Expression tol = new com.androidplot.demos.com.udojava.evalex.Expression(tolerancia);
+        Double tole = tol.eval().doubleValue();
+        com.androidplot.demos.com.udojava.evalex.Expression expression = new com.androidplot.demos.com.udojava.evalex.Expression(f);
+        expression.setVariable("x",Double.toString(a));
+        Double f1 = expression.eval().doubleValue();
+        expression.setVariable("x",Double.toString(b));
+        Double f2 = expression.eval().doubleValue();
+        expression.setVariable("x",Double.toString(c));
+        Double f3 = expression.eval().doubleValue();
+        double d1 = f1 - f3;
+        double d2 = f2 - f3;
+        double h1 = a - c;
+        double h2 = b - c;
+        double a0 = f3;
+        double a1 = (((d2*Math.pow(h1, 2)) - (d1*Math.pow(h2, 2)))
+                / ((h1*h2) * (h1-h2)));
+        double a2 = (((d1*h2) - (d2*h1))/((h1*h2) * (h1-h2)));
+        double x = ((-2*a0)/(a1 + Math.abs(Math.sqrt(a1*a1-4*a0*a2))));
+        double y = ((-2*a0)/(a1-Math.abs(Math.sqrt(a1*a1-4*a0*a2))));
+
+        if (x >= y)
+            res = x + c;
+        else
+            res = y + c;
+        a = b;
+        b = c;
+        c = res;
+            //expression.setVariable("x",Double.toString(res));
+            //Double fx = expression.eval().doubleValue();
+        Double error = tole + 1.0;
+            //iteracionesList.add(String.valueOf(contador));
+            //xnList.add(String.valueOf(res));
+            //fxList.add(String.valueOf(fx));
+            //ErrorList.add( "---");
+        try{
+            while(contador < Integer.parseInt(niter) && error > tole) {
+                expression.setVariable("x", Double.toString(a));
+                f1 = expression.eval().doubleValue();
+                expression.setVariable("x", Double.toString(b));
+                f2 = expression.eval().doubleValue();
+                expression.setVariable("x", Double.toString(c));
+                f3 = expression.eval().doubleValue();
+                d1 = f1 - f3;
+                d2 = f2 - f3;
+                h1 = a - c;
+                h2 = b - c;
+                a0 = f3;
+                a1 = (((d2 * Math.pow(h1, 2)) - (d1 * Math.pow(h2, 2)))
+                        / ((h1 * h2) * (h1 - h2)));
+                a2 = (((d1 * h2) - (d2 * h1)) / ((h1 * h2) * (h1 - h2)));
+                x = ((-2 * a0) / (a1 + Math.abs(Math.sqrt(a1 * a1 - 4 * a0 * a2))));
+                y = ((-2 * a0) / (a1 - Math.abs(Math.sqrt(a1 * a1 - 4 * a0 * a2))));
+
+
+                if (x >= y){
+                    res = x + c;
+
+
+                }else{
+                    res = y + c;
+
+                }
+
+                error = Math.abs(res-c);
+                a = b;
+                b = c;
+                c = res;
+                contador++;
+               // xnList.add(String.valueOf(res));
+                //ErrorList.add(String.valueOf(error));
+                //expression.setVariable("x", Double.toString(res));
+                //Double fxi = expression.eval().doubleValue();
+                //fxList.add(String.valueOf(fxi));
+                //iteracionesList.add(String.valueOf(contador));
+            }
+        }catch(com.androidplot.demos.com.udojava.evalex.Expression.ExpressionException ex){
+            String resu = String.valueOf("Check the inputs");
+            Resultado.setText(resu);
+        }
+        if (error < tole){
+            String resu = String.valueOf(res+" is a root");
+            Resultado.setText(resu);
+        }else{
+            String resu = String.valueOf("No results");
+            Resultado.setText(resu);
+        }
+    }
+
 
 }

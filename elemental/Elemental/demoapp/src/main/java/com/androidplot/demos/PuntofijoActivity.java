@@ -135,6 +135,7 @@ public class PuntofijoActivity extends Activity {
             xaList.add(String.valueOf(xin));
             gxList.add("---");
             ErrorList.add("---");
+            try{
             while(error > tol && contador < Integer.parseInt(niter) &&  fx.eval().doubleValue()!=0){
                 fx.setVariable("x",Double.toString(xin));
                 gx.setVariable("x",Double.toString(xin));
@@ -149,6 +150,10 @@ public class PuntofijoActivity extends Activity {
                 xaList.add(String.valueOf(xin));
                 gxList.add(String.valueOf(aux));
                 ErrorList.add(String.valueOf(error));
+            }
+            }catch(com.androidplot.demos.com.udojava.evalex.Expression.ExpressionException ex){
+                System.out.println("Revisar entradas");
+
             }
             if(fx.eval().doubleValue() == 0){
                 String resu = String.valueOf(Double.toString(xin)+" is a root");
@@ -166,8 +171,5 @@ public class PuntofijoActivity extends Activity {
         return zi - (((zi-yi)*(zi-yi))/(zi-(2*yi)+xi));
     }
 }
-
-
-
 
 

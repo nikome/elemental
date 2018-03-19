@@ -74,9 +74,10 @@
         android:text="Calculate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Tolerancia"
-        app:layout_constraintVertical_bias="0.117" />
+        app:layout_constraintVertical_bias="0.121" />
 
     <EditText
         android:id="@+id/Iteraciones"
@@ -168,4 +169,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/X0"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/muller"
+        android:layout_width="203dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="Muller"
+        android:text="Calculate with Muller"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Tolerancia"
+        app:layout_constraintVertical_bias="0.121" />
 </android.support.constraint.ConstraintLayout>
