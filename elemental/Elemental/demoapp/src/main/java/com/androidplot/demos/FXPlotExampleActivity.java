@@ -44,7 +44,9 @@ import static java.lang.Math.*;
 public class FXPlotExampleActivity extends Activity {
 
     private XYPlot plot;
-    private String var;
+    private String var="";
+    private String limitA="";
+    private String limitB="";
 
     /**
      * Custom line label renderer that highlights origin labels
@@ -89,9 +91,10 @@ public class FXPlotExampleActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fx_plot_example);
-        // initialize our XYPlot reference:
         plot = (XYPlot) findViewById(R.id.plot);
-
+        var = getIntent().getExtras().getString("funcion");
+        limitA=getIntent().getExtras().getString("limitA");
+        limitB=getIntent().getExtras().getString("limitB");
         plot.setDomainStep(StepMode.INCREMENT_BY_VAL, 1);
         plot.setRangeStep(StepMode.INCREMENT_BY_VAL, 1);
 
@@ -119,12 +122,7 @@ public class FXPlotExampleActivity extends Activity {
                 new float[] {PixelUtils.dpToPix(3), PixelUtils.dpToPix(3)}, 0);
         plot.getGraph().getDomainGridLinePaint().setPathEffect(dashFx);
         plot.getGraph().getRangeGridLinePaint().setPathEffect(dashFx);
-        //String minx = getIntent().getStringExtra("limiteA");
-        //String max = getIntent().getStringExtra("limiteB");
-        //double a=Double.parseDouble(minx);
-        //double b=Double.parseDouble(max);
-        // add a new series' to the xyplot:
-        plot.addSeries(generateSeries(-5, 5, 100), series1Format);
+        plot.addSeries(generateSeries(Double.parseDouble(limitA),Double.parseDouble(limitB), 100), series1Format);
         PanZoom.attach(plot);
     }
 
@@ -139,8 +137,7 @@ public class FXPlotExampleActivity extends Activity {
             yVals.add(fx(x));
             x +=step;
         }
-        //String stringf = getIntent().getStringExtra("funcion");
-       return new SimpleXYSeries(xVals, yVals, "Aqui va la funcion graficada");
+       return new SimpleXYSeries(xVals, yVals, var);
     }
 
     protected double fx(double x) {

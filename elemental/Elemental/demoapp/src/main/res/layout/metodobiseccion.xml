@@ -58,10 +58,9 @@
         android:textColor="@color/ap_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Calculo"
-        app:layout_constraintVertical_bias="0.085" />
+        app:layout_constraintVertical_bias="0.486" />
 
     <Button
         android:id="@+id/Calculo"
@@ -75,10 +74,9 @@
         android:text="Calculate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.033"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/superior"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.029" />
 
     <EditText
         android:id="@+id/Tolerancia"
@@ -150,12 +148,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Resultado"
-        app:layout_constraintVertical_bias="0.178" />
+        app:layout_constraintVertical_bias="0.069" />
 
     <Button
         android:id="@+id/Aitken"
-        android:layout_width="192dp"
-        android:layout_height="38dp"
+        android:layout_width="221dp"
+        android:layout_height="46dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -164,9 +162,9 @@
         android:text="Calculate with Aitken"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/superior"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.31" />
 
 </android.support.constraint.ConstraintLayout>

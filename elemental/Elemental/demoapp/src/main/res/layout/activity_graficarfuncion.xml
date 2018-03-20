@@ -14,12 +14,11 @@
         android:layout_marginStart="76dp"
         android:layout_marginTop="124dp"
         android:ems="10"
-        android:hint="Limite"
+        android:hint="Limit"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="76dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/LimitB"
@@ -29,15 +28,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="124dp"
         android:ems="10"
-        android:hint="Limite"
+        android:hint="Limit"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.727"
         app:layout_constraintStart_toEndOf="@+id/LimitA"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="52dp"
-        android:layout_marginLeft="8dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/Funcion"
@@ -47,7 +44,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="232dp"
         android:ems="10"
-        android:hint="Funcion a graficar"
+        android:hint="Function to graph"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,25 +56,26 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="92dp"
-        android:text="Limite -x"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="8dp"
+        android:text="Limit -x"
         android:textColor="@color/ap_black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="92dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
-        android:layout_marginTop="92dp"
-        android:text="Limite x"
+        android:layout_marginEnd="84dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Limit  x"
         android:textColor="@color/ap_black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="56dp" />
+        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView5"
@@ -86,7 +84,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Funcion"
+        android:text="Function"
         android:textColor="@color/ap_black"
         app:layout_constraintBottom_toTopOf="@+id/Funcion"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,7 +112,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="44dp"
-        android:text="Graficar"
+        android:text="Graph"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"

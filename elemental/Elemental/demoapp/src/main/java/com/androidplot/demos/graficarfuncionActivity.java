@@ -10,28 +10,30 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class graficarfuncionActivity extends Activity {
-    private Button fxPlot;
-    public EditText funcion;
+    public EditText Funcion;
+    public EditText LimitA;
+    public  EditText LimitB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graficarfuncion);
 
-        //LimitA=(EditText)findViewById(R.id.LimitA);
-        //LimitB=(EditText)findViewById(R.id.LimitB);
 
-        //final String n = LimitA.getText().toString();
-        //final String xi = LimitB.getText().toString();
-
-        fxPlot = (Button) findViewById(R.id.Graficar);
+        Button fxPlot = (Button) findViewById(R.id.Graficar);
         fxPlot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
              //   startActivity(new Intent(graficarfuncionActivity.this, FXPlotExampleActivity.class));
                 Intent intent = new Intent(graficarfuncionActivity.this, FXPlotExampleActivity.class);
-                funcion=(EditText)findViewById(R.id.funcion);
-                String f = funcion.getText().toString();
-                intent.putExtra("EXTRA_SESSION_ID", "x");
+                Funcion=(EditText)findViewById(R.id.Funcion);
+                LimitA=(EditText)findViewById(R.id.LimitA);
+                LimitB=(EditText)findViewById(R.id.LimitB);
+                String A=LimitA.getText().toString();
+                String B=LimitB.getText().toString();
+                String f = Funcion.getText().toString();
+                intent.putExtra("limitA",A);
+                intent.putExtra("limitB",B);
+                intent.putExtra("funcion", f);
                 startActivity(intent);
             }
         });
