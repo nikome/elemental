@@ -132,7 +132,7 @@ public class SecantMethodActivity extends Activity {
 
     }
 
-        public void Muller(){
+        public void Muller(View view){
     //public void Muller(String q, String w,String f,String niter,String tolerancia) {
         iteracionesList.clear();
         xnList.clear();
@@ -146,7 +146,7 @@ public class SecantMethodActivity extends Activity {
 
         Double a = Double.parseDouble(q);
         Double b = Double.parseDouble(w);
-        double res;
+        double res = 0.0;
         Double c = (a+b)/2;
         Double contador = 0.0;
         com.androidplot.demos.com.udojava.evalex.Expression tol = new com.androidplot.demos.com.udojava.evalex.Expression(tolerancia);
@@ -163,11 +163,20 @@ public class SecantMethodActivity extends Activity {
         double h1 = a - c;
         double h2 = b - c;
         double a0 = f3;
-        double a1 = (((d2*Math.pow(h1, 2)) - (d1*Math.pow(h2, 2)))
-                / ((h1*h2) * (h1-h2)));
-        double a2 = (((d1*h2) - (d2*h1))/((h1*h2) * (h1-h2)));
-        double x = ((-2*a0)/(a1 + Math.abs(Math.sqrt(a1*a1-4*a0*a2))));
-        double y = ((-2*a0)/(a1-Math.abs(Math.sqrt(a1*a1-4*a0*a2))));
+        double x = 0.0;
+        double y = 0.0;
+        double a1 = 0.0;
+        double a2 = 0.0;
+        try {
+             a1 = (((d2 * Math.pow(h1, 2)) - (d1 * Math.pow(h2, 2)))
+                    / ((h1 * h2) * (h1 - h2)));
+             a2 = (((d1 * h2) - (d2 * h1)) / ((h1 * h2) * (h1 - h2)));
+             x = ((-2 * a0) / (a1 + Math.abs(Math.sqrt(a1 * a1 - 4 * a0 * a2))));
+             y = ((-2 * a0) / (a1 - Math.abs(Math.sqrt(a1 * a1 - 4 * a0 * a2))));
+        }catch(com.androidplot.demos.com.udojava.evalex.Expression.ExpressionException ex){
+            String resu = String.valueOf("Check the inputs");
+            Resultado.setText(resu);
+        }
 
         if (x >= y)
             res = x + c;
