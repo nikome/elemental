@@ -57,7 +57,7 @@ public class metodobiseccionActivity extends Activity {
         fxmList.clear();
         AlertDialog alertDialog = new AlertDialog.Builder(metodobiseccionActivity.this).create();
         alertDialog.setTitle("Alert");
-        alertDialog.setMessage("Error ingresando variables, intente de nuevo por favor");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -147,10 +147,10 @@ public class metodobiseccionActivity extends Activity {
                     String resu = String.valueOf(Xm);
                     Resultado.setText(resu);
                 } else {
-                    Resultado.setText("Fracaso el numero de iteraciones ");
+                    Resultado.setText("Limit of iterations reached");
                 }
             } else {
-                Resultado.setText("El intervalo es inadecuado");
+                Resultado.setText("No results");
             }
 
     }catch(Exception e){
@@ -195,6 +195,16 @@ public class metodobiseccionActivity extends Activity {
         xmList.clear();
         ErrorList.clear();
         fxmList.clear();
+        AlertDialog alertDialog = new AlertDialog.Builder(metodobiseccionActivity.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("Error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        try {
         String f = funcion.getText().toString();
         String tole = Tolerancia.getText().toString();
         String xi = inferior.getText().toString();
@@ -244,6 +254,9 @@ public class metodobiseccionActivity extends Activity {
         }else{
             String resu = String.valueOf("No results");
             Resultado.setText(resu);
+        }
+        }catch(Exception e){
+            alertDialog.show();
         }
     }
     private  Double Ax(Double X1,Double X2, Double X3) {

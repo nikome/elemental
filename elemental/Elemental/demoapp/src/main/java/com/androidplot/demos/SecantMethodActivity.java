@@ -54,84 +54,97 @@ public class SecantMethodActivity extends Activity {
         });
     }
     //public static String SecanteMetodo(String f,String tol,String xo, String x1,String niters){
-    public void Calcular(View view){
-            iteracionesList.clear();
-            xnList.clear();
-            ErrorList.clear();
-            fxList.clear();
-            String f=funcion.getText().toString();
-            String tol=Tolerancia.getText().toString();
-            String niters=Iteraciones.getText().toString();
-            String xo=X0.getText().toString();
-            String x1=X1.getText().toString();
+    public void Calcular(View view) {
+        iteracionesList.clear();
+        xnList.clear();
+        ErrorList.clear();
+        fxList.clear();
+        AlertDialog alertDialog = new AlertDialog.Builder(SecantMethodActivity.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        try {
+            String f = funcion.getText().toString();
+            String tol = Tolerancia.getText().toString();
+            String niters = Iteraciones.getText().toString();
+            String xo = X0.getText().toString();
+            String x1 = X1.getText().toString();
 
-        com.androidplot.demos.com.udojava.evalex.Expression expression = new com.androidplot.demos.com.udojava.evalex.Expression(f);
-        expression.setPrecision(16);
-        com.androidplot.demos.com.udojava.evalex.Expression tole = new com.androidplot.demos.com.udojava.evalex.Expression(tol);
-        int niter = Integer.parseInt(niters);
-        expression.setPrecision(15);
-        Double tolerancia = tole.eval().doubleValue();
-        Double fx = 0.0;
-        BigDecimal d;
-        Double fx1 = 0.0;
-        Double error = 0.0;
-        int cont = 0;
-        Double x2=0.0;
-        Double x1a = 0.0;
-        Double xoa = 0.0;
-        Double den = -1.0;
-        expression.setVariable("x", xo);
-        d = expression.eval();
-        fx = d.doubleValue();
-        if (fx == 0){
-            String resu = String.valueOf(xo+" is a root");
-            Resultado.setText(resu);
-        }else{
-            expression.setVariable("x",x1);
+            com.androidplot.demos.com.udojava.evalex.Expression expression = new com.androidplot.demos.com.udojava.evalex.Expression(f);
+            expression.setPrecision(16);
+            com.androidplot.demos.com.udojava.evalex.Expression tole = new com.androidplot.demos.com.udojava.evalex.Expression(tol);
+            int niter = Integer.parseInt(niters);
+            expression.setPrecision(15);
+            Double tolerancia = tole.eval().doubleValue();
+            Double fx = 0.0;
+            BigDecimal d;
+            Double fx1 = 0.0;
+            Double error = 0.0;
+            int cont = 0;
+            Double x2 = 0.0;
+            Double x1a = 0.0;
+            Double xoa = 0.0;
+            Double den = -1.0;
+            expression.setVariable("x", xo);
             d = expression.eval();
-            fx1 = d.doubleValue();
-            error = tolerancia + 1;
-            den = fx1-fx;
-            iteracionesList.add(String.valueOf(cont));
-            xnList.add(String.valueOf(xo));
-            fxList.add(String.valueOf(fx1));
-            ErrorList.add( "---");
-            while((error > tolerancia) && (fx1 != 0)&& (den !=0) && cont < niter){
-                x1a = Double.parseDouble(x1);
-                xoa = Double.parseDouble(xo);
-                x2 = x1a - fx1*(x1a-xoa)/den;
-                error = Math.abs(x2-x1a);
-                xo = x1;
-                fx = fx1;
-                x1 = Double.toString(x2);
-                expression.setVariable("x",x1);
+            fx = d.doubleValue();
+            if (fx == 0) {
+                String resu = String.valueOf(xo + " is a root");
+                Resultado.setText(resu);
+            } else {
+                expression.setVariable("x", x1);
                 d = expression.eval();
                 fx1 = d.doubleValue();
+                error = tolerancia + 1;
                 den = fx1 - fx;
-                cont++;
                 iteracionesList.add(String.valueOf(cont));
-                xnList.add(String.valueOf(x1));
+                xnList.add(String.valueOf(xo));
                 fxList.add(String.valueOf(fx1));
-                ErrorList.add(String.valueOf(error));
-            }
-            if(fx1 == 0){
-                String resu = String.valueOf(x1+" is a root");
-                Resultado.setText(resu);
-            }else if(error < tolerancia){
-                String resu = String.valueOf(x1+" is an aproximation");
-                Resultado.setText(resu);
-            }else if( den == 0){
-                String resu = String.valueOf("A possible multiple root");
-                Resultado.setText(resu);
-            }else{
-                String resu = String.valueOf("No results");
-                Resultado.setText(resu);
+                ErrorList.add("---");
+                while ((error > tolerancia) && (fx1 != 0) && (den != 0) && cont < niter) {
+                    x1a = Double.parseDouble(x1);
+                    xoa = Double.parseDouble(xo);
+                    x2 = x1a - fx1 * (x1a - xoa) / den;
+                    error = Math.abs(x2 - x1a);
+                    xo = x1;
+                    fx = fx1;
+                    x1 = Double.toString(x2);
+                    expression.setVariable("x", x1);
+                    d = expression.eval();
+                    fx1 = d.doubleValue();
+                    den = fx1 - fx;
+                    cont++;
+                    iteracionesList.add(String.valueOf(cont));
+                    xnList.add(String.valueOf(x1));
+                    fxList.add(String.valueOf(fx1));
+                    ErrorList.add(String.valueOf(error));
+                }
+                if (fx1 == 0) {
+                    String resu = String.valueOf(x1 + " is a root");
+                    Resultado.setText(resu);
+                } else if (error < tolerancia) {
+                    String resu = String.valueOf(x1 + " is an aproximation");
+                    Resultado.setText(resu);
+                } else if (den == 0) {
+                    String resu = String.valueOf("A possible multiple root");
+                    Resultado.setText(resu);
+                } else {
+                    String resu = String.valueOf("No results");
+                    Resultado.setText(resu);
+                }
+
             }
 
+
+        } catch (Exception e) {
+            alertDialog.show();
         }
-
     }
-
         public void Muller(View view){
     //public void Muller(String q, String w,String f,String niter,String tolerancia) {
         iteracionesList.clear();

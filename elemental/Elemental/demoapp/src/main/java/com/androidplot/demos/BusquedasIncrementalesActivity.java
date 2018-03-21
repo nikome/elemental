@@ -27,11 +27,11 @@ public class BusquedasIncrementalesActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busquedas_incrementales);
-        funcion=(EditText)findViewById(R.id.funcioninc);
-        iterationes=(EditText)findViewById(R.id.iteracionesinc);
-        xinicial=(EditText)findViewById(R.id.xinicialinc);
-        delta=(EditText)findViewById(R.id.deltainc);
-        Resultado=(TextView)findViewById(R.id.Resultado);
+        funcion = (EditText) findViewById(R.id.funcioninc);
+        iterationes = (EditText) findViewById(R.id.iteracionesinc);
+        xinicial = (EditText) findViewById(R.id.xinicialinc);
+        delta = (EditText) findViewById(R.id.deltainc);
+        Resultado = (TextView) findViewById(R.id.Resultado);
 
         Button metodoP = (Button) findViewById(R.id.showTable);
         metodoP.setOnClickListener(new View.OnClickListener() {
@@ -47,62 +47,73 @@ public class BusquedasIncrementalesActivity extends Activity {
             }
         });
     }
+
     public void Calcular(View view) {
         String f = funcion.getText().toString();
-        String xini=xinicial.getText().toString();
+        String xini = xinicial.getText().toString();
         String delt = delta.getText().toString();
-        String iter=iterationes.getText().toString();
-
-        int iterations = Integer.parseInt(iter);
+        String iter = iterationes.getText().toString();
+        AlertDialog alertDialog = new AlertDialog.Builder(BusquedasIncrementalesActivity.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        try {
+            int iterations = Integer.parseInt(iter);
             double Delta = Double.parseDouble(delt);
-            double x0Double= Double.parseDouble(xini);
+            double x0Double = Double.parseDouble(xini);
             double x1;
             int counter;
-            BigDecimal evaluatedFunction,evaluatedFunctionAux=null;
-        com.androidplot.demos.com.udojava.evalex.Expression functionToEval = new com.androidplot.demos.com.udojava.evalex.Expression(f);
+            BigDecimal evaluatedFunction, evaluatedFunctionAux = null;
+            com.androidplot.demos.com.udojava.evalex.Expression functionToEval = new com.androidplot.demos.com.udojava.evalex.Expression(f);
 
-            functionToEval.setVariable("x",xini);
-            evaluatedFunction=functionToEval.eval();
-            double tol = Math.pow(10,-9);
-            double AbsFuction=Math.abs(evaluatedFunction.doubleValue());
-            if(AbsFuction<tol){
+            functionToEval.setVariable("x", xini);
+            evaluatedFunction = functionToEval.eval();
+            double tol = Math.pow(10, -9);
+            double AbsFuction = Math.abs(evaluatedFunction.doubleValue());
+            if (AbsFuction < tol) {
                 String resu = String.valueOf(xini + "is a root");
                 Resultado.setText(resu);
-            }
-            else{
-                x1=x0Double+Delta;
-                counter=1;
-                functionToEval.setVariable("x",String.valueOf(x1));
-                evaluatedFunctionAux= functionToEval.eval();
+            } else {
+                x1 = x0Double + Delta;
+                counter = 1;
+                functionToEval.setVariable("x", String.valueOf(x1));
+                evaluatedFunctionAux = functionToEval.eval();
                 iteracionesList.add(String.valueOf(counter));
                 xnList.add(String.valueOf(x1));
                 fxList.add(String.valueOf(evaluatedFunction));
-                while (((evaluatedFunction.doubleValue()*evaluatedFunctionAux.doubleValue())>0) && (counter<iterations)){
-                    x0Double=x1;
-                    evaluatedFunction=evaluatedFunctionAux;
-                    x1=x0Double+Delta;
-                    functionToEval.setVariable("x",String.valueOf(x1));
-                    evaluatedFunctionAux= functionToEval.eval();
+                while (((evaluatedFunction.doubleValue() * evaluatedFunctionAux.doubleValue()) > 0) && (counter < iterations)) {
+                    x0Double = x1;
+                    evaluatedFunction = evaluatedFunctionAux;
+                    x1 = x0Double + Delta;
+                    functionToEval.setVariable("x", String.valueOf(x1));
+                    evaluatedFunctionAux = functionToEval.eval();
                     counter++;
                     iteracionesList.add(String.valueOf(counter));
                     xnList.add(String.valueOf(x1));
                     fxList.add(String.valueOf(evaluatedFunction));
                 }
 
-                if((Math.abs(evaluatedFunctionAux.doubleValue())<tol)){
+                if ((Math.abs(evaluatedFunctionAux.doubleValue()) < tol)) {
                     String resu = String.valueOf(x1 + "is a root");
                     Resultado.setText(resu);
-                }
-                else if((evaluatedFunction.doubleValue()*evaluatedFunctionAux.doubleValue())<tol){
-                    String resu = String.valueOf("there is a root between of "+x0Double+" and "+x1);
+                } else if ((evaluatedFunction.doubleValue() * evaluatedFunctionAux.doubleValue()) < tol) {
+                    String resu = String.valueOf("there is a root between of " + x0Double + " and " + x1);
                     Resultado.setText(resu);
-                }
-                else{
+                } else {
                     String resu = String.valueOf("Fail");
                     Resultado.setText(resu);
                 }
             }
+        } catch (Exception e) {
+            alertDialog.show();
         }
     }
+}
+
 
 

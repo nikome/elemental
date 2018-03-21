@@ -55,6 +55,16 @@ public class PuntofijoActivity extends Activity {
                 xaList.clear();
                 ErrorList.clear();
                 gxList.clear();
+                AlertDialog alertDialog = new AlertDialog.Builder(PuntofijoActivity.this).create();
+                alertDialog.setTitle("Alert");
+                alertDialog.setMessage("There is an error in the written variables, Try again please");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                try {
                 String funciong=funcion.getText().toString();
                 String tolerancia=Tolerancia.getText().toString();
                 String numIteraciones=Iteraciones.getText().toString();
@@ -98,7 +108,9 @@ public class PuntofijoActivity extends Activity {
             }else{
                 String resu = String.valueOf("No results");
                 Resultado.setText(resu);
-            }
+            } } catch (Exception e) {
+                    alertDialog.show();
+                }
         }
 
 
@@ -152,7 +164,6 @@ public class PuntofijoActivity extends Activity {
                 ErrorList.add(String.valueOf(error));
             }
             }catch(com.androidplot.demos.com.udojava.evalex.Expression.ExpressionException ex){
-                System.out.println("Revisar entradas");
 
             }
             if(fx.eval().doubleValue() == 0){
@@ -166,6 +177,7 @@ public class PuntofijoActivity extends Activity {
                 Resultado.setText(resu);
             }
         }
+
     }
     public static Double next(Double xi, Double yi, Double zi){
         return zi - (((zi-yi)*(zi-yi))/(zi-(2*yi)+xi));

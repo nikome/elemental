@@ -70,7 +70,7 @@ public class ReglaFalsaActivity extends Activity {
         String iter=Iteraciones.getText().toString();
         AlertDialog alertDialog = new AlertDialog.Builder(ReglaFalsaActivity.this).create();
         alertDialog.setTitle("Alert");
-        alertDialog.setMessage("Error ingresando variables, intente de nuevo por favor");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
