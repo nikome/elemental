@@ -82,7 +82,7 @@ def siteUrl = 'http://androidplot.com'
 def gitUrl = 'https://github.com/halfhp/androidplot.git'
 
 dependencies {
-
+    compile 'com.jjoe64:graphview:4.2.1'
     compile 'com.halfhp.fig:figlib:1.0.7'
     compile 'com.android.support:support-annotations:27.0.2'
     testCompile "org.mockito:mockito-core:1.10.19"

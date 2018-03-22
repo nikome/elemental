@@ -146,4 +146,6 @@ public class FXPlotExampleActivity extends Activity {
         expression.setVariable("x",x+"");
         return expression.eval().doubleValue();
     }
+
+
 }

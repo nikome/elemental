@@ -44,7 +44,7 @@ android {
     defaultConfig {
         versionCode theVersionCode
         versionName theVersionName
-        minSdkVersion 14
+        minSdkVersion 22
         targetSdkVersion theTargetSdkVersion
         applicationId "com.androidplot.demos"
     }

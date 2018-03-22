@@ -53,7 +53,6 @@ public class SecantMethodActivity extends Activity {
             }
         });
     }
-    //public static String SecanteMetodo(String f,String tol,String xo, String x1,String niters){
     public void Calcular(View view) {
         iteracionesList.clear();
         xnList.clear();
@@ -146,7 +145,6 @@ public class SecantMethodActivity extends Activity {
         }
     }
         public void Muller(View view){
-    //public void Muller(String q, String w,String f,String niter,String tolerancia) {
         iteracionesList.clear();
         xnList.clear();
         ErrorList.clear();
@@ -239,12 +237,7 @@ public class SecantMethodActivity extends Activity {
                 b = c;
                 c = res;
                 contador++;
-               // xnList.add(String.valueOf(res));
-                //ErrorList.add(String.valueOf(error));
-                //expression.setVariable("x", Double.toString(res));
-                //Double fxi = expression.eval().doubleValue();
-                //fxList.add(String.valueOf(fxi));
-                //iteracionesList.add(String.valueOf(contador));
+
             }
         }catch(com.androidplot.demos.com.udojava.evalex.Expression.ExpressionException ex){
             String resu = String.valueOf("Check the inputs");

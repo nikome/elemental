@@ -74,6 +74,9 @@ public class PuntofijoActivity extends Activity {
             com.androidplot.demos.com.udojava.evalex.Expression gx = new com.androidplot.demos.com.udojava.evalex.Expression(funciong);
             com.androidplot.demos.com.udojava.evalex.Expression fx = new com.androidplot.demos.com.udojava.evalex.Expression(funciong+"-x");
             com.androidplot.demos.com.udojava.evalex.Expression t = new com.androidplot.demos.com.udojava.evalex.Expression(tolerancia);
+            t.setPrecision(9);
+            gx.setPrecision(9);
+            fx.setPrecision(9);
             double tol = t.eval().doubleValue();
             double error = tol + 1;
             BigDecimal fxe, gxe;
@@ -129,7 +132,9 @@ public class PuntofijoActivity extends Activity {
         Double xi = Double.parseDouble(Xo);
         com.androidplot.demos.com.udojava.evalex.Expression gx = new com.androidplot.demos.com.udojava.evalex.Expression(f);
         gx.setVariable("x",Xo);
+        gx.setPrecision(10);
         com.androidplot.demos.com.udojava.evalex.Expression fx = new com.androidplot.demos.com.udojava.evalex.Expression(f+"-x");
+        fx.setPrecision(10);
         fx.setVariable("x",Xo);
         Double yi = gx.eval().doubleValue();
         gx.setVariable("x",Double.toString(yi));
@@ -139,6 +144,7 @@ public class PuntofijoActivity extends Activity {
             Resultado.setText(resu);
         }else{
             com.androidplot.demos.com.udojava.evalex.Expression t = new com.androidplot.demos.com.udojava.evalex.Expression(tolerancia);
+            t.setPrecision(10);
             Double tol = t.eval().doubleValue();
             Double error = tol + 1;
             Double xin = next(xi,yi,zi);
