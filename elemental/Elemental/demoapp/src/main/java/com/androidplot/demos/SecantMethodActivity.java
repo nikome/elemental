@@ -78,7 +78,7 @@ public class SecantMethodActivity extends Activity {
             expression.setPrecision(16);
             com.androidplot.demos.com.udojava.evalex.Expression tole = new com.androidplot.demos.com.udojava.evalex.Expression(tol);
             int niter = Integer.parseInt(niters);
-            expression.setPrecision(15);
+            expression.setPrecision(16);
             Double tolerancia = tole.eval().doubleValue();
             Double fx = 0.0;
             BigDecimal d;

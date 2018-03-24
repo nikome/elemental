@@ -21,6 +21,7 @@ public class metodobiseccionActivity extends Activity {
     private EditText inferior;
     private EditText superior;
     private TextView Resultado;
+    private TextView aitkenresu;
     private ArrayList<String> iteraciones = new ArrayList();
     private ArrayList<String> xmList = new ArrayList();
     private ArrayList<String> ErrorList = new ArrayList();
@@ -35,6 +36,7 @@ public class metodobiseccionActivity extends Activity {
         inferior=(EditText)findViewById(R.id.inferior);
         superior=(EditText)findViewById(R.id.superior);
         Resultado=(TextView)findViewById(R.id.Resultado);
+        aitkenresu=(TextView) findViewById(R.id.AitkenResult);
 
         Button metodoP = (Button) findViewById(R.id.showTable);
         metodoP.setOnClickListener(new View.OnClickListener() {
@@ -168,6 +170,7 @@ public class metodobiseccionActivity extends Activity {
     public Double Biseccion(String f, double tol){
         Double Xm = 0.0;
         com.androidplot.demos.com.udojava.evalex.Expression expresion = new com.androidplot.demos.com.udojava.evalex.Expression(f);
+        expresion.setPrecision(16);
         expresion.setVariable("x", Xs+"");
         Double fxs = expresion.eval().doubleValue();
         expresion.setVariable("x", this.Xi+"");
@@ -228,6 +231,7 @@ public class metodobiseccionActivity extends Activity {
         double x2 = Double.parseDouble(xs);
         double r = x2 - x1;
         com.androidplot.demos.com.udojava.evalex.Expression expression2= new com.androidplot.demos.com.udojava.evalex.Expression("(log("+r+")-log("+ Double.parseDouble(tole)+"))/log(2)");
+        expression2.setPrecision(16);
         r = expression2.eval().doubleValue();
         res = (int)r;
         if(r == (int)r){
@@ -247,7 +251,7 @@ public class metodobiseccionActivity extends Activity {
         Double error = tol + 1;
         int i = 0;
         iteraciones.add(String.valueOf(i));
-        xmList.add(String.valueOf(Ax1));
+        xmList.add(String.valueOf(X3));
         error = tol + 1;
         ErrorList.add(String.valueOf("---"));
         while(error > tol && error2 > tol && i < res){
@@ -259,23 +263,20 @@ public class metodobiseccionActivity extends Activity {
             Ax1 = Ax2;
             i++;
             iteraciones.add(String.valueOf(i));
-            xmList.add(String.valueOf(Ax1));
+            xmList.add(String.valueOf(X3));
             ErrorList.add(String.valueOf(error));
         }
         if(error < tol){
             i++;
-            String resu = String.valueOf(Ax2+" is an aproximation");
-            Resultado.setText(resu);
+            String resu = String.valueOf(X3+" is an aproximation");
+            aitkenresu.setText(resu);
         }else if (error2 < tol){
             i++;
-            iteraciones.add(String.valueOf(i));
-            xmList.add(String.valueOf(X3));
-            ErrorList.add(String.valueOf(error));
             String resu = String.valueOf(X3+" is an aproximation");
-            Resultado.setText(resu);
+            aitkenresu.setText(resu);
         }else{
             String resu = String.valueOf("No results");
-            Resultado.setText(resu);
+            aitkenresu.setText(resu);
         }
         }catch(Exception e){
             alertDialog.show();

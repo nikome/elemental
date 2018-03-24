@@ -79,6 +79,7 @@ public class NewtonActivity extends Activity {
             double fdx;
             BigDecimal d;
             com.androidplot.demos.com.udojava.evalex.Expression tole = new com.androidplot.demos.com.udojava.evalex.Expression(tol);
+            tole.setPrecision(16);
             Double tolerancia = tole.eval().doubleValue();
             String x;
             //Empieza el metodo

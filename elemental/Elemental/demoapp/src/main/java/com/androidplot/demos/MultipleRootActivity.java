@@ -132,7 +132,7 @@ public class MultipleRootActivity extends Activity {
                 fxList.add(String.valueOf(fx));
                 fxpList.add(String.valueOf(fdx));
                 fxppList.add(String.valueOf(fddx));
-                ErrorList.add(String.valueOf("---"));
+                ErrorList.add(String.valueOf(error));
             }
             if (error < tolerancia) {
                 String resu = String.valueOf(Double.toString(Xa) + " is an aproximation");

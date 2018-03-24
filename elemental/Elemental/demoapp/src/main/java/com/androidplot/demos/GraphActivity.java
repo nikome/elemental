@@ -26,16 +26,17 @@ public class GraphActivity extends Activity {
         for (int i=0;i<10000 ;i++){
             x=x+0.1;
             com.androidplot.demos.com.udojava.evalex.Expression expression = new com.androidplot.demos.com.udojava.evalex.Expression(var);
+            expression.setPrecision(16);
             expression.setVariable("x",x+"");
             y=expression.eval().doubleValue();
-            series.appendData(new DataPoint(x,y),true,10000);
+            series.appendData(new DataPoint(x,y),true,100000);
         }
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().setMinY(-150);
         graph.getViewport().setMaxY(150);
 
         graph.getViewport().setXAxisBoundsManual(true);
-        graph.getViewport().setMinX(4);
+        graph.getViewport().setMinX(40);
         graph.getViewport().setMaxX(80);
 
         // enable scaling and scrolling

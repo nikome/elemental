@@ -21,10 +21,12 @@ public class PuntofijoActivity extends Activity {
     private EditText xini;
     private EditText Iteraciones;
     private TextView Resultado;
+    private TextView stefensenresu;
     private ArrayList<String> iteraciones = new ArrayList();
     private ArrayList<String> xaList = new ArrayList();
     private ArrayList<String> ErrorList = new ArrayList();
     private ArrayList<String> gxList = new ArrayList();
+    private  ArrayList<String> fxList = new ArrayList();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,7 @@ public class PuntofijoActivity extends Activity {
         xini=(EditText)findViewById(R.id.xini);
         Iteraciones=(EditText)findViewById(R.id.Iteraciones);
         Resultado=(TextView)findViewById(R.id.Resultado);
+        stefensenresu=(TextView) findViewById(R.id.StefensenResult);
 
         Button metodoP = (Button) findViewById(R.id.showTable);
         metodoP.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +47,7 @@ public class PuntofijoActivity extends Activity {
                 intent.putExtra("xaList", xaList);
                 intent.putExtra("ErrorList", ErrorList);
                 intent.putExtra("gxList", gxList);
+                intent.putExtra("fxList",fxList);
                 startActivity(intent);
 
             }
@@ -55,6 +59,7 @@ public class PuntofijoActivity extends Activity {
                 xaList.clear();
                 ErrorList.clear();
                 gxList.clear();
+                fxList.clear();
                 AlertDialog alertDialog = new AlertDialog.Builder(PuntofijoActivity.this).create();
                 alertDialog.setTitle("Alert");
                 alertDialog.setMessage("There is an error in the written variables, Try again please");
@@ -72,11 +77,11 @@ public class PuntofijoActivity extends Activity {
 
             double puntoInicial = Double.parseDouble(x0);
             com.androidplot.demos.com.udojava.evalex.Expression gx = new com.androidplot.demos.com.udojava.evalex.Expression(funciong);
-            com.androidplot.demos.com.udojava.evalex.Expression fx = new com.androidplot.demos.com.udojava.evalex.Expression(funciong+"-x");
+            com.androidplot.demos.com.udojava.evalex.Expression fx = new com.androidplot.demos.com.udojava.evalex.Expression("("+funciong+")"+"-x");
             com.androidplot.demos.com.udojava.evalex.Expression t = new com.androidplot.demos.com.udojava.evalex.Expression(tolerancia);
-            t.setPrecision(9);
-            gx.setPrecision(9);
-            fx.setPrecision(9);
+            t.setPrecision(16);
+            gx.setPrecision(16);
+            fx.setPrecision(16);
             double tol = t.eval().doubleValue();
             double error = tol + 1;
             BigDecimal fxe, gxe;
@@ -88,17 +93,20 @@ public class PuntofijoActivity extends Activity {
             iteraciones.add(String.valueOf(i));
             xaList.add(x0);
             gxList.add(String.valueOf(gxe));
+            fxList.add(String.valueOf(fxe.doubleValue()));
             ErrorList.add("---");
             while((i < Integer.parseInt(numIteraciones)) && (error > tol) && (fxe.doubleValue() != 0)){
                 gx.setVariable("x",puntoInicial+"");
                 gxe = gx.eval();
                 fx.setVariable("x",gxe.doubleValue() + "");
+                fxe=fx.eval();
                 error = Math.abs((gxe.doubleValue() - puntoInicial)/gxe.doubleValue());
                 puntoInicial = gxe.doubleValue();
                 i++;
                 iteraciones.add(String.valueOf(i));
                 xaList.add(String.valueOf(puntoInicial));
                 gxList.add(String.valueOf(gxe));
+                fxList.add(String.valueOf(fxe));
                 ErrorList.add(String.valueOf(error));
             }
             if(fxe.doubleValue() == 0){
@@ -124,6 +132,7 @@ public class PuntofijoActivity extends Activity {
         xaList.clear();
         ErrorList.clear();
         gxList.clear();
+        fxList.clear();
         String f=funcion.getText().toString();
         String tolerancia=Tolerancia.getText().toString();
         String niter=Iteraciones.getText().toString();
@@ -132,30 +141,33 @@ public class PuntofijoActivity extends Activity {
         Double xi = Double.parseDouble(Xo);
         com.androidplot.demos.com.udojava.evalex.Expression gx = new com.androidplot.demos.com.udojava.evalex.Expression(f);
         gx.setVariable("x",Xo);
-        gx.setPrecision(10);
+        gx.setPrecision(16);
         com.androidplot.demos.com.udojava.evalex.Expression fx = new com.androidplot.demos.com.udojava.evalex.Expression(f+"-x");
-        fx.setPrecision(10);
+        fx.setPrecision(16);
         fx.setVariable("x",Xo);
         Double yi = gx.eval().doubleValue();
         gx.setVariable("x",Double.toString(yi));
         Double zi = gx.eval().doubleValue();
+        double tempfx=fx.eval().doubleValue();
         if(fx.eval().doubleValue() == 0){
             String resu = String.valueOf(Xo+" is a root");
             Resultado.setText(resu);
         }else{
             com.androidplot.demos.com.udojava.evalex.Expression t = new com.androidplot.demos.com.udojava.evalex.Expression(tolerancia);
-            t.setPrecision(10);
+            t.setPrecision(16);
             Double tol = t.eval().doubleValue();
             Double error = tol + 1;
             Double xin = next(xi,yi,zi);
             int contador = 0;
             iteraciones.add(String.valueOf(contador));
             xaList.add(String.valueOf(xin));
-            gxList.add("---");
+            gxList.add(String.valueOf(zi));
+            fxList.add(String.valueOf(tempfx));
             ErrorList.add("---");
             try{
             while(error > tol && contador < Integer.parseInt(niter) &&  fx.eval().doubleValue()!=0){
                 fx.setVariable("x",Double.toString(xin));
+                tempfx=fx.eval().doubleValue();
                 gx.setVariable("x",Double.toString(xin));
                 yi = gx.eval().doubleValue();
                 gx.setVariable("x",Double.toString(yi));
@@ -167,6 +179,7 @@ public class PuntofijoActivity extends Activity {
                 iteraciones.add(String.valueOf(contador));
                 xaList.add(String.valueOf(xin));
                 gxList.add(String.valueOf(aux));
+                fxList.add(String.valueOf(tempfx));
                 ErrorList.add(String.valueOf(error));
             }
             }catch(com.androidplot.demos.com.udojava.evalex.Expression.ExpressionException ex){
@@ -174,13 +187,13 @@ public class PuntofijoActivity extends Activity {
             }
             if(fx.eval().doubleValue() == 0){
                 String resu = String.valueOf(Double.toString(xin)+" is a root");
-                Resultado.setText(resu);
+                stefensenresu.setText(resu);
             }else if( error < tol){
                 String resu = String.valueOf(Double.toString(xin)+"is an aproximation");
-                Resultado.setText(resu);
+                stefensenresu.setText(resu);
                 }else{
                 String resu = String.valueOf("No results");
-                Resultado.setText(resu);
+                stefensenresu.setText(resu);
             }
         }
 
