@@ -136,9 +136,10 @@ public class ReglaFalsaActivity extends Activity {
                         fxm = d.doubleValue();
                         error = Math.abs(Xm-Xaux);
                         contador++;
+                        float errorf = Float.parseFloat(String.valueOf(error));
                         iteraciones.add(String.valueOf(contador));
                         xmList.add(String.valueOf(Xm));
-                        ErrorList.add(String.valueOf(error));
+                        ErrorList.add(String.valueOf(errorf));
                         fxmList.add(String.valueOf(fxm));
                     }
                     if(fxm == 0){

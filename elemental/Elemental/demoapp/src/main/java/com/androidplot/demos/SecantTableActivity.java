@@ -39,7 +39,7 @@ public class SecantTableActivity extends Activity {
                     view1.setText("Iterations");
                     view2.setText("    "+"Xa");
                     view3.setText("    "+"Error");
-                    view4.setText("    "+"xn");
+                    view4.setText("    "+"f(x)");
                     view1.setTextColor(Color.BLACK);
                     view2.setTextColor(Color.BLACK);
                     view3.setTextColor(Color.BLACK);

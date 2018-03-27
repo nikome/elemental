@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
@@ -22,6 +23,7 @@ public class NewtonActivity extends Activity {
     private EditText Iteraciones;
     private EditText Derivada;
     private TextView Resultado;
+    private Switch relativeAbsolute;
     private ArrayList<String> iteracionesList = new ArrayList();
     private ArrayList<String> xnList = new ArrayList();
     private ArrayList<String> fxList = new ArrayList();
@@ -38,7 +40,7 @@ public class NewtonActivity extends Activity {
         Iteraciones = (EditText) findViewById(R.id.Iteraciones);
         Derivada = (EditText) findViewById(R.id.derivada);
         Resultado = (TextView) findViewById(R.id.Resultado);
-
+        relativeAbsolute=(Switch) findViewById(R.id.switchARN);
         Button metodoP = (Button) findViewById(R.id.showTable);
         metodoP.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,8 +112,12 @@ public class NewtonActivity extends Activity {
                 fx = d.doubleValue();
                 d = expressiond.eval();
                 fdx = d.doubleValue();
+                if(relativeAbsolute.isChecked()) {
+                    error = Math.abs(X1 - Double.parseDouble(Xo));
+                }else{
+                    error = Math.abs(X1 - Double.parseDouble(Xo)/X1);
+                }
 
-                error = Math.abs(X1 - Double.parseDouble(Xo));
                 Xo = Double.toString(X1);
                 contador++;
                 iteracionesList.add(String.valueOf(contador));

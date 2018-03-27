@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
@@ -22,6 +23,7 @@ public class PuntofijoActivity extends Activity {
     private EditText Iteraciones;
     private TextView Resultado;
     private TextView stefensenresu;
+    private Switch relativeAbsolute;
     private ArrayList<String> iteraciones = new ArrayList();
     private ArrayList<String> xaList = new ArrayList();
     private ArrayList<String> ErrorList = new ArrayList();
@@ -37,7 +39,7 @@ public class PuntofijoActivity extends Activity {
         Iteraciones=(EditText)findViewById(R.id.Iteraciones);
         Resultado=(TextView)findViewById(R.id.Resultado);
         stefensenresu=(TextView) findViewById(R.id.StefensenResult);
-
+        relativeAbsolute=(Switch) findViewById(R.id.switchRA);
         Button metodoP = (Button) findViewById(R.id.showTable);
         metodoP.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +55,6 @@ public class PuntofijoActivity extends Activity {
             }
         });
     }
-
             public void Calcular(View view) {
                 iteraciones.clear();
                 xaList.clear();
@@ -100,7 +101,12 @@ public class PuntofijoActivity extends Activity {
                 gxe = gx.eval();
                 fx.setVariable("x",gxe.doubleValue() + "");
                 fxe=fx.eval();
-                error = Math.abs((gxe.doubleValue() - puntoInicial)/gxe.doubleValue());
+
+                if(relativeAbsolute.isChecked()) {
+                    error = Math.abs(gxe.doubleValue() - puntoInicial);
+                }else{
+                    error = Math.abs((gxe.doubleValue() - puntoInicial)/gxe.doubleValue());
+                }
                 puntoInicial = gxe.doubleValue();
                 i++;
                 iteraciones.add(String.valueOf(i));
@@ -175,6 +181,11 @@ public class PuntofijoActivity extends Activity {
                 Double aux = xin;
                 xin = next(aux,yi,zi);
                 error = Math.abs(xin-aux);
+                if(relativeAbsolute.isChecked()) {
+                    error = Math.abs(xin - aux);
+                }else{
+                    error = Math.abs((xin - aux)/xin);
+                }
                 contador++;
                 iteraciones.add(String.valueOf(contador));
                 xaList.add(String.valueOf(xin));

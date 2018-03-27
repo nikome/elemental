@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
@@ -25,6 +26,8 @@ public class SecantMethodActivity extends Activity {
     private EditText X1;
     private EditText Iteraciones;
     private TextView Resultado;
+    private TextView ResultadoMuller;
+    private Switch relativeAbsolute;
     ArrayList<String> iteracionesList = new ArrayList();
     ArrayList<String> xnList = new ArrayList();
     ArrayList<String> fxList = new ArrayList();
@@ -39,7 +42,9 @@ public class SecantMethodActivity extends Activity {
         X1=(EditText)findViewById(R.id.X1);
         Iteraciones=(EditText)findViewById(R.id.Iteraciones);
         Resultado=(TextView)findViewById(R.id.Resultado);
+        ResultadoMuller=(TextView) findViewById(R.id.ResultMuller);
         Button metodoP = (Button) findViewById(R.id.showTable);
+        relativeAbsolute=(Switch) findViewById(R.id.switchARS);
         metodoP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,7 +114,11 @@ public class SecantMethodActivity extends Activity {
                     x1a = Double.parseDouble(x1);
                     xoa = Double.parseDouble(xo);
                     x2 = x1a - fx1 * (x1a - xoa) / den;
-                    error = Math.abs(x2 - x1a);
+                    if(relativeAbsolute.isChecked()) {
+                        error = Math.abs(x2 - x1a);
+                    }else{
+                        error = Math.abs((x2 - x1a)/x2);
+                    }
                     xo = x1;
                     fx = fx1;
                     x1 = Double.toString(x2);
@@ -186,7 +195,7 @@ public class SecantMethodActivity extends Activity {
              y = ((-2 * a0) / (a1 - Math.abs(Math.sqrt(a1 * a1 - 4 * a0 * a2))));
         }catch(com.androidplot.demos.com.udojava.evalex.Expression.ExpressionException ex){
             String resu = String.valueOf("Check the inputs");
-            Resultado.setText(resu);
+            ResultadoMuller.setText(resu);
         }
 
         if (x >= y)
@@ -232,7 +241,11 @@ public class SecantMethodActivity extends Activity {
 
                 }
 
-                error = Math.abs(res-c);
+                if(relativeAbsolute.isChecked()) {
+                    error = Math.abs(res - c);
+                }else{
+                    error = Math.abs((res - c)/res);
+                }
                 a = b;
                 b = c;
                 c = res;
@@ -241,14 +254,14 @@ public class SecantMethodActivity extends Activity {
             }
         }catch(com.androidplot.demos.com.udojava.evalex.Expression.ExpressionException ex){
             String resu = String.valueOf("Check the inputs");
-            Resultado.setText(resu);
+            ResultadoMuller.setText(resu);
         }
         if (error < tole){
             String resu = String.valueOf(res+" is a root");
-            Resultado.setText(resu);
+            ResultadoMuller.setText(resu);
         }else{
             String resu = String.valueOf("No results");
-            Resultado.setText(resu);
+            ResultadoMuller.setText(resu);
         }
     }
 

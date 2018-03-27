@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
@@ -22,6 +23,7 @@ public class metodobiseccionActivity extends Activity {
     private EditText superior;
     private TextView Resultado;
     private TextView aitkenresu;
+
     private ArrayList<String> iteraciones = new ArrayList();
     private ArrayList<String> xmList = new ArrayList();
     private ArrayList<String> ErrorList = new ArrayList();
@@ -135,7 +137,8 @@ public class metodobiseccionActivity extends Activity {
                     expression.setVariable("x", Xms);
                     d = expression.eval();
                     fxm = d.doubleValue();
-                    error = Math.abs(Xm - Xaux);
+                        error = Math.abs(Xm - Xaux);
+
                     contador++;
                     iteraciones.add(String.valueOf(contador));
                     xmList.add(String.valueOf(Xm));

@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import java.math.BigDecimal;
 import java.lang.Math;
@@ -23,6 +24,7 @@ public class MultipleRootActivity extends Activity {
     private EditText PDerivada;
     private EditText SDerivada;
     private TextView Resultado;
+    private Switch relativeAbsolute;
     ArrayList<String> iteracionesList = new ArrayList();
     ArrayList<String> xnList = new ArrayList();
     ArrayList<String> fxList = new ArrayList();
@@ -35,6 +37,7 @@ public class MultipleRootActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiple_root);
+        relativeAbsolute=(Switch) findViewById(R.id.switchARM);
         funciong = (EditText) findViewById(R.id.funcion);
         Tolerancia = (EditText) findViewById(R.id.Tolerancia);
         xini = (EditText) findViewById(R.id.xini);
@@ -114,7 +117,11 @@ public class MultipleRootActivity extends Activity {
             ErrorList.add(String.valueOf("---"));
             while ((error > tolerancia) && (fx != 0) && (denominador != 0) && (contador < niter)) {
                 Xb = Xa - ((fx * fdx) / denominador);
-                error = Math.abs(Xb - Xa);
+                if(relativeAbsolute.isChecked()) {
+                    error = Math.abs(Xb - Xa);
+                }else{
+                    error = Math.abs((Xb - Xa)/Xb);
+                }
                 expression.setVariable("x", Double.toString(Xb));
                 expressiond.setVariable("x", Double.toString(Xb));
                 expressiondd.setVariable("x", Double.toString(Xb));
