@@ -24,6 +24,7 @@ public class PuntofijoActivity extends Activity {
     private TextView Resultado;
     private TextView stefensenresu;
     private Switch relativeAbsolute;
+    private EditText functionfx;
     private ArrayList<String> iteraciones = new ArrayList();
     private ArrayList<String> xaList = new ArrayList();
     private ArrayList<String> ErrorList = new ArrayList();
@@ -34,6 +35,7 @@ public class PuntofijoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_puntofijo);
         funcion=(EditText)findViewById(R.id.funcion);
+        functionfx=(EditText) findViewById(R.id.funcionfx);
         Tolerancia=(EditText)findViewById(R.id.Tolerancia);
         xini=(EditText)findViewById(R.id.xini);
         Iteraciones=(EditText)findViewById(R.id.Iteraciones);
@@ -75,10 +77,16 @@ public class PuntofijoActivity extends Activity {
                 String tolerancia=Tolerancia.getText().toString();
                 String numIteraciones=Iteraciones.getText().toString();
                 String x0=xini.getText().toString();
+                String fxop = functionfx.getText().toString();
 
             double puntoInicial = Double.parseDouble(x0);
+            com.androidplot.demos.com.udojava.evalex.Expression fx;
+            if (fxop.equals("")){
+                fx = new com.androidplot.demos.com.udojava.evalex.Expression("("+funciong+")"+"-x");
+            }else{
+                fx = new com.androidplot.demos.com.udojava.evalex.Expression(fxop);
+            }
             com.androidplot.demos.com.udojava.evalex.Expression gx = new com.androidplot.demos.com.udojava.evalex.Expression(funciong);
-            com.androidplot.demos.com.udojava.evalex.Expression fx = new com.androidplot.demos.com.udojava.evalex.Expression("("+funciong+")"+"-x");
             com.androidplot.demos.com.udojava.evalex.Expression t = new com.androidplot.demos.com.udojava.evalex.Expression(tolerancia);
             t.setPrecision(16);
             gx.setPrecision(16);
@@ -94,7 +102,11 @@ public class PuntofijoActivity extends Activity {
             iteraciones.add(String.valueOf(i));
             xaList.add(x0);
             gxList.add(String.valueOf(gxe));
-            fxList.add(String.valueOf(fxe.doubleValue()));
+            if(fxop.equals("")){
+                fxList.add("---");
+            }else{
+                fxList.add(String.valueOf(fxe.doubleValue()));
+            }
             ErrorList.add("---");
             while((i < Integer.parseInt(numIteraciones)) && (error > tol) && (fxe.doubleValue() != 0)){
                 gx.setVariable("x",puntoInicial+"");
@@ -112,7 +124,11 @@ public class PuntofijoActivity extends Activity {
                 iteraciones.add(String.valueOf(i));
                 xaList.add(String.valueOf(puntoInicial));
                 gxList.add(String.valueOf(gxe));
-                fxList.add(String.valueOf(fxe));
+                if(fxop.equals("")){
+                    fxList.add(String.valueOf("---"));
+                }else{
+                    fxList.add(String.valueOf(fxe));
+                }
                 ErrorList.add(String.valueOf(error));
             }
             if(fxe.doubleValue() == 0){

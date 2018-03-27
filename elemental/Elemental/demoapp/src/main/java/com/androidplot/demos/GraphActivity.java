@@ -1,10 +1,8 @@
 package com.androidplot.demos;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,11 +17,15 @@ import android.widget.EditText;
 public class GraphActivity extends Activity {
     private LineGraphSeries<DataPoint> series;
     private GraphView graph;
+    private EditText limitA;
+    private EditText limitB;
     private EditText funcion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
+        limitA=(EditText) findViewById(R.id.LimitGA);
+        limitB=(EditText) findViewById(R.id.LimitGB);
         funcion=(EditText)findViewById(R.id.funcion);
         Button fxPlot = (Button) findViewById(R.id.Graficar);
         fxPlot.setOnClickListener(new View.OnClickListener() {
@@ -39,18 +41,19 @@ public class GraphActivity extends Activity {
                             }
                         });
                 try {
-
+                String lima = limitA.getText().toString();
+                String limb = limitB.getText().toString();
                 String f = funcion.getText().toString();
                 double x=0,y=0;
-                x=-50.0;
+                x=Integer.parseInt(lima);
                 graph=(GraphView) findViewById(R.id.Grafica);
                 series = new LineGraphSeries<DataPoint>();
-                for (int i=0;i<1000 ;i++){
-                    x=x+0.1;
+                while(x<Integer.parseInt(limb)){
+                    x=x+0.01;
                     com.androidplot.demos.com.udojava.evalex.Expression expression = new com.androidplot.demos.com.udojava.evalex.Expression(f);
                     expression.setVariable("x",x+"");
                     y=expression.eval().doubleValue();
-                    series.appendData(new DataPoint(x,y),true,1000);
+                    series.appendData(new DataPoint(x,y),true,10000);
                 }
                 graph.getViewport().setYAxisBoundsManual(true);
                 //graph.getViewport().setMinY(-150);
@@ -82,4 +85,3 @@ public class GraphActivity extends Activity {
 
 }
 }
-

@@ -37,7 +37,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Write a function"
+        android:hint="Write a g(x) function"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -208,4 +208,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/funcion"
         app:layout_constraintVertical_bias="0.419" />
+
+    <EditText
+        android:id="@+id/funcionfx"
+        android:layout_width="196dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/ap_black"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Write an optional f(x)"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/Tolerancia"
+        app:layout_constraintEnd_toStartOf="@+id/view12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/funcion" />
 </android.support.constraint.ConstraintLayout>
