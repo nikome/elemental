@@ -56,6 +56,15 @@ public class PuntofijoActivity extends Activity {
 
             }
         });
+        Button graficar = (Button) findViewById(R.id.Graficador);
+        graficar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PuntofijoActivity.this, GraphActivity.class);
+                intent.putExtra("funcion",functionfx.getText().toString());
+                startActivity(intent);
+            }
+        });
     }
             public void Calcular(View view) {
                 iteraciones.clear();
@@ -88,9 +97,9 @@ public class PuntofijoActivity extends Activity {
             }
             com.androidplot.demos.com.udojava.evalex.Expression gx = new com.androidplot.demos.com.udojava.evalex.Expression(funciong);
             com.androidplot.demos.com.udojava.evalex.Expression t = new com.androidplot.demos.com.udojava.evalex.Expression(tolerancia);
-            t.setPrecision(16);
-            gx.setPrecision(16);
-            fx.setPrecision(16);
+            t.setPrecision(20);
+            gx.setPrecision(20);
+            fx.setPrecision(20);
             double tol = t.eval().doubleValue();
             double error = tol + 1;
             BigDecimal fxe, gxe;
@@ -163,9 +172,9 @@ public class PuntofijoActivity extends Activity {
         Double xi = Double.parseDouble(Xo);
         com.androidplot.demos.com.udojava.evalex.Expression gx = new com.androidplot.demos.com.udojava.evalex.Expression(f);
         gx.setVariable("x",Xo);
-        gx.setPrecision(16);
+        gx.setPrecision(20);
         com.androidplot.demos.com.udojava.evalex.Expression fx = new com.androidplot.demos.com.udojava.evalex.Expression(f+"-x");
-        fx.setPrecision(16);
+        fx.setPrecision(20);
         fx.setVariable("x",Xo);
         Double yi = gx.eval().doubleValue();
         gx.setVariable("x",Double.toString(yi));
@@ -173,10 +182,10 @@ public class PuntofijoActivity extends Activity {
         double tempfx=fx.eval().doubleValue();
         if(fx.eval().doubleValue() == 0){
             String resu = String.valueOf(Xo+" is a root");
-            Resultado.setText(resu);
+            stefensenresu.setText(resu);
         }else{
             com.androidplot.demos.com.udojava.evalex.Expression t = new com.androidplot.demos.com.udojava.evalex.Expression(tolerancia);
-            t.setPrecision(16);
+            t.setPrecision(17);
             Double tol = t.eval().doubleValue();
             Double error = tol + 1;
             Double xin = next(xi,yi,zi);

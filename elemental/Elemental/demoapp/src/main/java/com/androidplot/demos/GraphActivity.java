@@ -14,6 +14,8 @@ import android.app.Activity;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 public class GraphActivity extends Activity {
     private LineGraphSeries<DataPoint> series;
     private GraphView graph;
@@ -27,6 +29,7 @@ public class GraphActivity extends Activity {
         limitA=(EditText) findViewById(R.id.LimitGA);
         limitB=(EditText) findViewById(R.id.LimitGB);
         funcion=(EditText)findViewById(R.id.funcion);
+        funcion.setText(getIntent().getExtras().getString("funcion"));
         Button fxPlot = (Button) findViewById(R.id.Graficar);
         fxPlot.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,13 +58,13 @@ public class GraphActivity extends Activity {
                     y=expression.eval().doubleValue();
                     series.appendData(new DataPoint(x,y),true,10000);
                 }
-                graph.getViewport().setYAxisBoundsManual(true);
-                //graph.getViewport().setMinY(-150);
-                //graph.getViewport().setMaxY(150);
+               graph.getViewport().setYAxisBoundsManual(true);
+                graph.getViewport().setMinY(Integer.parseInt(lima));
+                graph.getViewport().setMaxY(Integer.parseInt(lima));
 
-                //graph.getViewport().setXAxisBoundsManual(true);
-                //graph.getViewport().setMinX(-300);
-                //graph.getViewport().setMaxX(300);
+                graph.getViewport().setXAxisBoundsManual(true);
+                graph.getViewport().setMinX(Integer.parseInt(lima));
+                graph.getViewport().setMaxX(Integer.parseInt(lima));
 
                 // enable scaling and scrolling
                 graph.getViewport().setScalable(true);

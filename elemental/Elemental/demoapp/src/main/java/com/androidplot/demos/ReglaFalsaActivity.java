@@ -51,6 +51,16 @@ public class ReglaFalsaActivity extends Activity {
 
             }
         });
+
+        Button graficar = (Button) findViewById(R.id.Graficador);
+        graficar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ReglaFalsaActivity.this, GraphActivity.class);
+                intent.putExtra("funcion",funcion.getText().toString());
+                startActivity(intent);
+            }
+        });
     }
 
 

@@ -52,9 +52,6 @@
 
         <activity android:name=".metodobiseccionActivity" />
         <activity
-            android:name=".graficarfuncionActivity"
-            android:label="@string/title_activity_graficarfuncion" />
-        <activity
             android:name=".ecuacionesunavariableActivity"
             android:label="@string/title_activity_ecuacionesunavariable" />
         <activity

@@ -54,6 +54,15 @@ public class NewtonActivity extends Activity {
                 startActivity(intent);
             }
         });
+        Button graficar = (Button) findViewById(R.id.Graficador);
+        graficar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewtonActivity.this, GraphActivity.class);
+                intent.putExtra("funcion",funciong.getText().toString());
+                startActivity(intent);
+            }
+        });
     }
 
     public void Calcular(View view) {
