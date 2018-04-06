@@ -21,19 +21,19 @@
               android:layout_width="match_parent">
 
     <com.androidplot.xy.XYPlot
-        style="@style/APDefacto.Light"
         android:id="@+id/plot"
+        style="@style/APDefacto.Light"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        ap:lineLabels="left|bottom"
+        android:layout_height="531dp"
+        ap:domainOriginLineThickness="0dp"
+        ap:gridInsetBottom="20dp"
         ap:gridInsetRight="0dp"
         ap:gridInsetTop="-10dp"
-        ap:gridInsetBottom="20dp"
+        ap:lineLabelAlignTop="center"
         ap:lineLabelInsetRight="25dp"
         ap:lineLabelInsetTop="25dp"
         ap:lineLabelRotationBottom="-45"
         ap:lineLabelRotationTop="0"
-        ap:lineLabelAlignTop="center"
-        ap:domainOriginLineThickness="0dp"
-        ap:rangeOriginLineThickness="0dp"/>
+        ap:lineLabels="left|bottom"
+        ap:rangeOriginLineThickness="0dp" />
 </LinearLayout>

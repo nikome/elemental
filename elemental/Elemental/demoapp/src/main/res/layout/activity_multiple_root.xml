@@ -5,26 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/ap_white"
-    android:minHeight="250dp"
-    tools:context="com.androidplot.demos.metodobiseccionActivity">
+    tools:context="com.androidplot.demos.MultipleRootActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/Newton"
 
-        android:layout_width="203dp"
-        android:layout_height="38dp"
+        android:layout_width="236dp"
+        android:layout_height="30dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Bisection method"
+        android:text="Multiple Root Method"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/ap_black"
         android:textSize="25dp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -43,15 +42,15 @@
         android:textColor="@color/ap_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.02" />
+        app:layout_constraintTop_toBottomOf="@+id/Newton"
+        app:layout_constraintVertical_bias="0.042" />
 
     <TextView
         android:id="@+id/Resultado"
-        android:layout_width="301dp"
-        android:layout_height="48dp"
+        android:layout_width="306dp"
+        android:layout_height="42dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -59,10 +58,9 @@
         android:textColor="@color/ap_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Calculo"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.012" />
 
     <Button
         android:id="@+id/Calculo"
@@ -77,29 +75,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/superior"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.73" />
 
     <EditText
-        android:id="@+id/Tolerancia"
-        android:layout_width="140dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Tolerance"
-        android:inputType="textPersonName"
-        android:textColor="@color/ap_black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/funcion"
-        app:layout_constraintVertical_bias="0.007" />
-
-    <EditText
-        android:id="@+id/inferior"
+        android:id="@+id/Iteraciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -107,18 +87,16 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Lower bound"
+        android:hint="Iterations"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/inferior"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Tolerancia"
-        app:layout_constraintVertical_bias="0.009" />
+        app:layout_constraintTop_toBottomOf="@+id/funcion" />
 
     <EditText
-        android:id="@+id/superior"
+        android:id="@+id/xini"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -126,15 +104,15 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Upper bound"
+        android:hint="X initial"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inferior"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintTop_toBottomOf="@+id/Iteraciones"
+        app:layout_constraintVertical_bias="0.003" />
 
     <Button
         android:id="@+id/showTable"
@@ -149,45 +127,86 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Resultado"
-        app:layout_constraintVertical_bias="0.937" />
+        app:layout_constraintVertical_bias="0.236" />
 
-    <Button
-        android:id="@+id/Aitken"
-        android:layout_width="221dp"
-        android:layout_height="46dp"
+    <EditText
+        android:id="@+id/Tolerancia"
+        android:layout_width="153dp"
+        android:layout_height="39dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:onClick="AitkenMethod"
-        android:text="Calculate with Aitken"
+        android:ems="10"
+        android:hint="Tolerance"
+        android:inputType="textPersonName"
+        android:textColor="@color/ap_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.037"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/superior"
-        app:layout_constraintVertical_bias="0.456" />
+        app:layout_constraintTop_toBottomOf="@+id/xini"
+        app:layout_constraintVertical_bias="0.041" />
 
-    <TextView
-        android:id="@+id/AitkenResult"
-        android:layout_width="318dp"
-        android:layout_height="40dp"
+    <EditText
+        android:id="@+id/derivada"
+        android:layout_width="234dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text=""
+        android:ems="10"
+        android:hint="The derivative of the f(x)"
+        android:inputType="textPersonName"
         android:textColor="@color/ap_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Aitken"
-        app:layout_constraintVertical_bias="0.102" />
+        app:layout_constraintTop_toBottomOf="@+id/Tolerancia"
+        app:layout_constraintVertical_bias="0.021" />
+
+    <EditText
+        android:id="@+id/SegundaDer"
+        android:layout_width="283dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="The second derivative of f(x)"
+        android:inputType="textPersonName"
+        android:textColor="@color/ap_black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/derivada"
+        app:layout_constraintVertical_bias="0.068" />
+
+    <Switch
+        android:id="@+id/switchARM"
+        android:layout_width="168dp"
+        android:layout_height="29dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Switch"
+        android:textOff="Relative"
+        android:textOn="Absolute"
+        app:layout_constraintBottom_toTopOf="@+id/derivada"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintStart_toEndOf="@+id/Tolerancia"
+        app:layout_constraintTop_toBottomOf="@+id/xini"
+        app:layout_constraintVertical_bias="0.8" />
 
     <Button
         android:id="@+id/Graficador"
-        android:layout_width="95dp"
-        android:layout_height="53dp"
+        android:layout_width="96dp"
+        android:layout_height="49dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -195,9 +214,8 @@
         android:text="Plotter"
         app:layout_constraintBottom_toTopOf="@+id/funcion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toEndOf="@+id/Newton"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
+        app:layout_constraintVertical_bias="0.727" />
 </android.support.constraint.ConstraintLayout>

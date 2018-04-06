@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
         fxPlotExampleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, FXPlotExampleActivity.class));
+                startActivity(new Intent(MainActivity.this, GraphActivity.class));
             }
         });
 
@@ -55,7 +55,7 @@ public class MainActivity extends Activity {
         metodoP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, metodobiseccionActivity.class));
+                startActivity(new Intent(MainActivity.this, ecuacionesunavariableActivity.class));
             }
         });
     }

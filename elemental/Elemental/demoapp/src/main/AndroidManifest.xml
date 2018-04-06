@@ -50,8 +50,49 @@
                 android:resource="@xml/demo_app_widget_provider_info" />
         </receiver>
 
-        <activity android:name=".metodobiseccionActivity">
-        </activity>
+        <activity android:name=".metodobiseccionActivity" />
+        <activity
+            android:name=".ecuacionesunavariableActivity"
+            android:label="@string/title_activity_ecuacionesunavariable" />
+        <activity
+            android:name=".TablaBiseccionActivity"
+            android:label="@string/title_activity_tabla_biseccion" />
+        <activity
+            android:name=".ReglaFalsaActivity"
+            android:label="@string/title_activity_regla_falsa" />
+        <activity
+            android:name=".PuntofijoActivity"
+            android:label="@string/title_activity_puntofijo" />
+        <activity
+            android:name=".BusquedasIncrementalesActivity"
+            android:label="@string/title_activity_busquedas_incrementales" />
+        <activity
+            android:name=".MetodoIncrementalTablaActivity"
+            android:label="@string/title_activity_metodo_incremental_tabla" />
+        <activity
+            android:name=".PuntoFijoTableActivity"
+            android:label="@string/title_activity_punto_fijo_table" />
+        <activity
+            android:name=".NewtonActivity"
+            android:label="@string/title_activity_newton" />
+        <activity
+            android:name=".NewtonTableActivity"
+            android:label="@string/title_activity_newton_table" />
+        <activity
+            android:name=".SecantMethodActivity"
+            android:label="@string/title_activity_secant_method" />
+        <activity
+            android:name=".SecantTableActivity"
+            android:label="@string/title_activity_secant_table" />
+        <activity
+            android:name=".MultipleRootActivity"
+            android:label="@string/title_activity_multiple_root" />
+        <activity
+            android:name=".MultipleRootTable2Activity"
+            android:label="@string/title_activity_multiple_root_table2" />
+        <activity
+            android:name=".GraphActivity"
+            android:label="@string/title_activity_graph"></activity>
     </application>
 
 </manifest>
