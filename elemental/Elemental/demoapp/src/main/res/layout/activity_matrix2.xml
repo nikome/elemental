@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ap_white"
+    tools:context="com.androidplot.demos.matrix2">
+
+    <TextView
+        android:id="@+id/matrixbS"
+        android:layout_width="24dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="b"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/ap_black"
+        android:textSize="25dp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.866"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.492" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="Gauus"
+        android:text="CALCULAR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.202" />
+
+    <TextView
+        android:id="@+id/matrixX"
+        android:layout_width="24dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="X"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/ap_black"
+        android:textSize="25dp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.593"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.492" />
+
+    <TableLayout
+        android:id="@+id/VectorB"
+        android:layout_width="44dp"
+        android:layout_height="141dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="#8DD2C6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.885"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.756">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:text="1"
+                android:textColor="@color/ap_black"
+                android:textSize="25dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:text="1"
+                android:textColor="@color/ap_black"
+                android:textSize="25dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:text="1"
+                android:textColor="@color/ap_black"
+                android:textSize="25dp" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/matrixAEqual"
+        android:layout_width="24dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="="
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/ap_black"
+        android:textSize="25dp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.735"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.692" />
+
+    <TextView
+        android:id="@+id/MatrixA"
+        android:layout_width="24dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="A"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/ap_black"
+        android:textSize="25dp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.492" />
+
+    <TableLayout
+        android:id="@+id/VectorX"
+        android:layout_width="44dp"
+        android:layout_height="141dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/ap_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.598"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.756">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/Sol_fila1_columna1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:background="@color/ap_transparent"
+                android:text=""
+                android:textColor="@color/ap_black" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/Sol_fila2_columna1"
+                android:layout_column="1"
+                android:background="@color/ap_transparent"
+                android:text=""
+                android:textColor="@color/ap_black"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/Sol_fila3_columna1"
+                android:layout_column="1"
+                android:background="@color/ap_transparent"
+                android:text=""
+                android:textColor="@color/ap_black"/>
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/tableLayout3"
+        android:layout_width="@dimen/A_Size_width"
+        android:layout_height="@dimen/A_Size_height"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.754">
+
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/AñadirRow"
+                android:layout_width="@dimen/Button_Size"
+                android:layout_height="@dimen/Button_Size"
+                android:layout_column="1"
+                android:background="@color/ap_transparent"
+                android:text="+"
+                android:textAlignment="4"
+                android:textColor="@color/ap_black" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <TableLayout
+                android:id="@+id/MatrixAC"
+                android:layout_width="@dimen/Matrix_Size"
+                android:layout_height="@dimen/Matrix_Size"
+                android:layout_column="2"
+                android:background="#8DD2C6">
+
+                <TableRow>
+
+                    <EditText
+                        android:id="@+id/Fila1_Columna1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:inputType="numberDecimal"
+                        android:text="1"
+                        android:textColor="@color/ap_black"
+                        android:textSize="10dp" />
+
+                    <EditText
+                        android:id="@+id/Fila1_Columna2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:inputType="numberDecimal"
+                        android:text="0"
+                        android:textColor="@color/ap_black"
+                        android:textSize="10dp" />
+
+                    <EditText
+                        android:id="@+id/Fila1_Columna3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="3"
+                        android:inputType="numberDecimal"
+                        android:text="0"
+                        android:textColor="@color/ap_black"
+                        android:textSize="10dp" />
+                </TableRow>
+
+                <TableRow>
+
+                    <EditText
+                        android:id="@+id/Fila2_Columna1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:inputType="numberDecimal"
+                        android:text="0"
+                        android:textColor="@color/ap_black"
+                        android:textSize="10dp" />
+
+                    <EditText
+                        android:id="@+id/Fila2_Columna2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:inputType="numberDecimal"
+                        android:text="1"
+                        android:textColor="@color/ap_black"
+                        android:textSize="10dp" />
+
+                    <EditText
+                        android:id="@+id/Fila2_Columna3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="3"
+                        android:inputType="numberDecimal"
+                        android:text="0"
+                        android:textColor="@color/ap_black"
+                        android:textSize="10dp" />
+                </TableRow>
+
+                <TableRow>
+
+                    <EditText
+                        android:id="@+id/Fila3_Columna1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:inputType="numberDecimal"
+                        android:text="0"
+                        android:textColor="@color/ap_black"
+                        android:textSize="10dp" />
+
+                    <EditText
+                        android:id="@+id/Fila3_Columna2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:inputType="numberDecimal"
+                        android:text="0"
+                        android:textColor="@color/ap_black"
+                        android:textSize="10dp" />
+
+                    <EditText
+                        android:id="@+id/Fila3_Columna3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="3"
+                        android:inputType="numberDecimal"
+                        android:text="1"
+                        android:textColor="@color/ap_black"
+                        android:textSize="10dp" />
+                </TableRow>
+
+            </TableLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_column="3"
+                android:text="."
+                android:textAlignment="center"
+                android:textColor="@color/ap_black"
+                android:textSize="60sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/QuitRow"
+                android:layout_width="@dimen/Button_Size"
+                android:layout_height="@dimen/Button_Size"
+                android:layout_column="3"
+                android:background="@color/ap_transparent"
+                android:text="x"
+                android:textAlignment="4"
+                android:textColor="@color/ap_black" />
+
+        </TableRow>
+
+    </TableLayout>
+
+
+</android.support.constraint.ConstraintLayout>

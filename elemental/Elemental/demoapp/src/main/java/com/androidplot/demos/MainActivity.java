@@ -58,5 +58,13 @@ public class MainActivity extends Activity {
                 startActivity(new Intent(MainActivity.this, ecuacionesunavariableActivity.class));
             }
         });
+        Button metodoL = (Button) findViewById(R.id.button2);
+        metodoL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, matrix2.class));
+            }
+        });
+
     }
 }
