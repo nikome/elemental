@@ -1,5 +1,6 @@
 package com.androidplot.demos;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
@@ -12,19 +13,10 @@ import android.widget.TextView;
 import java.io.Console;
 
 public class matrix2 extends Activity {
-    private EditText Fila1_Columna1;
-    private EditText Fila1_Columna2;
-    private EditText Fila1_Columna3;
-    private EditText Fila2_Columna1;
-    private EditText Fila2_Columna2;
-    private EditText Fila2_Columna3;
-    private EditText Fila3_Columna1;
-    private EditText Fila3_Columna2;
-    private EditText Fila3_Columna3;
-    private TextView Sol_fila1_columna1;
     private TableLayout MatrixA;
     private TableLayout VectorB;
     private TableLayout VectorX;
+    public int n;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,30 +24,40 @@ public class matrix2 extends Activity {
     }
 
     public void Gauus(View view){
-        String respuesta="";
-        MatrixA = (TableLayout) findViewById(R.id.MatrixAC);
-        VectorB = (TableLayout) findViewById(R.id.VectorB);
-        int n = MatrixA.getChildCount();
+        MatrixA =  findViewById(R.id.MatrixAC);
+        VectorB =  findViewById(R.id.VectorB);
+        n = MatrixA.getChildCount();
         double [][] A = new double [n][n];
-        double [] B= new double [n];
-        for(int i=0;i<MatrixA.getChildCount();i++){
+        double [] b = new double [n];
+        double [] resx = new double[n];
+        Log.d("TAMAÑO: ",String.valueOf(n));
+        for(int i=0;i<MatrixA.getChildCount();++i){
             TableRow row = (TableRow) MatrixA.getChildAt(i);
-            TableRow rowb = (TableRow) VectorB.getChildAt(i);
-            for(int x = 0;x<row.getChildCount();x++){
+            for(int x = 0;x<row.getChildCount();++x){
                 EditText f = (EditText) row.getChildAt(x);
                 A[i][x] = Double.valueOf(f.getText().toString());
             }
-            EditText s = (EditText) rowb.getChildAt(i);
-            B[i] = Double.valueOf(s.getText().toString());
         }
-        double [] x = new double[n];
-        x = sustitucionRegresiva(A,B,n);
-        VectorX = (TableLayout) findViewById(R.id.VectorX);
+        for(int i=0;i<n;i++) {
+            TableRow row = (TableRow) VectorB.getChildAt(i);
+            EditText f = (EditText) row.getChildAt(0);
+            b[i] = Double.valueOf(f.getText().toString());
+            Log.d("PRUEBA: "+i+"  ", f.getText().toString());
+        }
+        resx = sustitucionRegresiva(A,b);
+        VectorX = findViewById(R.id.VectorX);
+        for(int i=0;i<n;i++) {
+            TableRow row = (TableRow) VectorX.getChildAt(i);
+            TextView f = (TextView) row.getChildAt(0);
+            f.setText(String.valueOf(resx[i]));
+        }
+        
+
 
     }
 
-    private double [] sustitucionRegresiva(double [][] A, double [] b, int n){
-        double [][] Ab = escalonar(A,b,n);
+    private double [] sustitucionRegresiva(double [][] A, double [] b){
+        double [][] Ab = escalonar(A,b);
         double [] x = new double [n];
 
         for(int j = 0; j < n-1; ++j){
@@ -72,13 +74,13 @@ public class matrix2 extends Activity {
         return x;
     }
 
-    private double [][]escalonar(double [][] A, double [] b, int n){
+    private double [][]escalonar(double [][] A, double [] b){
         double [][] Ab = new double [n][n];
         double multi = 0;
-        Ab = aumentar(A,b,n);
+        Ab = aumentar(A,b);
         for(int i = 0; i < n-1; ++i){
             if(Ab[i][i] == 0){
-                Ab = intercambio(Ab,i,n);
+                Ab = intercambio(Ab,i);
             }
         }
         for(int k = 0; k < n-1; ++k){
@@ -92,16 +94,16 @@ public class matrix2 extends Activity {
         return Ab;
     }
 
-    private double [][] intercambio(double[][] Ab, int j,int n){
+    private double [][] intercambio(double[][] Ab, int j){
         for(int i = j+1; i < n; ++i){
             if(Ab[i][j] != 0){
-                return cambio(Ab,i,j,n);
+                return cambio(Ab,i,j);
             }
         }
         return Ab;
     }
 
-    private double [][] cambio(double[][] Ab, int i, int j,int n){
+    private double [][] cambio(double[][] Ab, int i, int j){
         double acum [] = new double [n+1];
         for(int k = 0; k < n+1; ++k){
             acum[k] = Ab[j][k];
@@ -110,8 +112,7 @@ public class matrix2 extends Activity {
         }
         return Ab;
     }
-
-    private double [][] aumentar(double [][] A, double [] b, int n){
+    private double [][] aumentar(double [][] A, double [] b){
         double [][] Ab = new double [n][n+1];
         for(int i = 0; i < n; ++i){
             Ab[i][n] = b[i];
