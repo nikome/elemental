@@ -1,6 +1,5 @@
 package com.androidplot.demos;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
@@ -10,7 +9,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import java.io.Console;
 
 public class matrix2 extends Activity {
     private TableLayout MatrixA;
@@ -22,6 +20,8 @@ public class matrix2 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matrix2);
     }
+
+
 
     public void Gauus(View view){
         MatrixA =  findViewById(R.id.MatrixAC);
@@ -51,7 +51,7 @@ public class matrix2 extends Activity {
             TextView f = (TextView) row.getChildAt(0);
             f.setText(String.valueOf(resx[i]));
         }
-        
+
 
 
     }
