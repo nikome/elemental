@@ -1,9 +1,12 @@
 package com.androidplot.demos;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
-import android.util.Log;
+import android.text.InputType;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -19,18 +22,303 @@ public class matrix2 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matrix2);
+        a();
+
+    }
+    public void a(){
+
+        MatrixA =  findViewById(R.id.MatrixAC);
+        TableRow row= new TableRow(this);
+        EditText edit= new EditText(this);
+        for(int i = 0;i<3;i++){
+            for(int j=0;j<3;j++) {
+                edit.setTextColor(Color.BLACK);
+                edit.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
+                edit.setText("0");
+                edit.setTextSize(10);
+                row.addView(edit);
+                edit= new EditText(this);
+            }
+            MatrixA.addView(row);
+            row= new TableRow(this);
+        }
+        MatrixA = findViewById(R.id.VectorB);
+        edit= new EditText(this);
+        for(int i = 0;i<3;i++){
+            edit.setTextColor(Color.BLACK);
+            edit.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
+            edit.setText("0");
+            edit.setTextSize(10);
+            MatrixA.addView(edit);
+            edit= new EditText(this);
+        }
+        MatrixA=findViewById(R.id.VectorX);
+        TextView view = new TextView(this);
+        for(int i = 0;i<3;i++){
+            view.setTextColor(Color.WHITE);
+            view.setTextSize(10);
+            MatrixA.addView(view);
+            view= new TextView(this);
+        }
+    }
+    public void addRow(View view){
+        MatrixA = findViewById(R.id.VectorB);
+        ViewGroup.LayoutParams params = MatrixA.getLayoutParams();
+        params.height=MatrixA.getHeight()+130;
+        MatrixA.setLayoutParams(params);
+        MatrixA =findViewById(R.id.VectorX);
+        params = MatrixA.getLayoutParams();
+        params.height=MatrixA.getHeight()+130;
+        MatrixA.setLayoutParams(params);
+        MatrixA =  findViewById(R.id.Container);
+        params = MatrixA.getLayoutParams();
+        params.width=MatrixA.getWidth()+105;
+        params.height=MatrixA.getHeight()+130;
+        MatrixA.setLayoutParams(params);
+        MatrixA =  findViewById(R.id.MatrixAC);
+        params = MatrixA.getLayoutParams();
+        params.width=MatrixA.getWidth()+105;
+        params.height=MatrixA.getHeight()+130;
+        MatrixA.setLayoutParams(params);
+        n = MatrixA.getChildCount();
+        MatrixA =  findViewById(R.id.MatrixAC);
+        TableRow row= new TableRow(this);
+        EditText edit= new EditText(this);
+        for(int i = 0;i<n+1;i++){
+                edit.setTextColor(Color.BLACK);
+                edit.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
+                edit.setText("0");
+                edit.setTextSize(10);
+                row.addView(edit);
+                edit= new EditText(this);
+        }
+        MatrixA.addView(row);
+        for(int x=0;x<n;x++){
+            row = (TableRow) MatrixA.getChildAt(x);
+            edit= new EditText(this);
+            edit.setTextColor(Color.BLACK);
+            edit.setText("0");
+            edit.setTextSize(10);
+            row.addView(edit);
+        }
+        MatrixA = findViewById(R.id.VectorB);
+        edit= new EditText(this);
+        edit.setTextColor(Color.BLACK);
+        edit.setText("0");
+        edit.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
+        edit.setTextSize(10);
+        MatrixA.addView(edit);
+        MatrixA=findViewById(R.id.VectorX);
+        TextView f =new TextView(this);
+        f.setTextColor(Color.WHITE);
+        f.setTextSize(10);
+        MatrixA.addView(f);
+
+    }
+
+    public void quitRow(View view){
+        MatrixA = findViewById(R.id.VectorB);
+        ViewGroup.LayoutParams params = MatrixA.getLayoutParams();
+        params.height=MatrixA.getHeight()-130;
+        MatrixA =findViewById(R.id.VectorX);
+        params = MatrixA.getLayoutParams();
+        params.height=MatrixA.getHeight()-130;
+        MatrixA.setLayoutParams(params);
+        MatrixA =  findViewById(R.id.Container);
+        params = MatrixA.getLayoutParams();
+        params.width=MatrixA.getWidth()-105;
+        params.height=MatrixA.getHeight()-130;
+        MatrixA.setLayoutParams(params);
+        MatrixA =  findViewById(R.id.MatrixAC);
+        params = MatrixA.getLayoutParams();
+        params.width=MatrixA.getWidth()-105;
+        params.height=MatrixA.getHeight()-130;
+        MatrixA.setLayoutParams(params);
+        n=MatrixA.getChildCount();
+        for(int i=0;i<n;i++){
+            TableRow row = (TableRow) MatrixA.getChildAt(i);
+            row.removeViewAt(n-1);
+        }
+        MatrixA.removeViewAt(n-1);
+        MatrixA = findViewById(R.id.VectorB);
+        MatrixA.removeViewAt(n-1);
+        MatrixA=findViewById(R.id.VectorX);
+        MatrixA.removeViewAt(n-1);
+    }
+    public void GaussSimple(View view){
+        double A[][] = new double[n][n];
+        double b[] = new double[n];
+        double [] resx = new double[n];
+        A = getMatrixA();
+        b=getVectorB();
+        resx = sustitucionRegresiva(A,b);
+        VectorX = findViewById(R.id.VectorX);
+        n = VectorX.getChildCount();
+        for(int i=0;i<n;i++) {
+            TextView f = (TextView) VectorX.getChildAt(i);
+            f.setText(String.valueOf(resx[i]));
+        }
+        VectorX.setBackgroundColor(Color.rgb(44,132,30));
+    }
+    public void PivoteoParcial(View view){
+        double A[][] = new double[n][n];
+        double b[] = new double[n];
+        double [] resx = new double[n];
+        A = getMatrixA();
+        b=getVectorB();
+        resx = sustitucionRegresiva2(A,b);
+        VectorX = findViewById(R.id.VectorX);
+        for(int i=0;i<n;i++) {
+            TextView f = (TextView) VectorX.getChildAt(i);
+            f.setText(String.valueOf(resx[i]));
+        }
+        VectorX.setBackgroundColor(Color.rgb(44,132,30));
+    }
+
+    public void Crout(View view){
+        double A[][] = new double[n][n];
+        double b[] = new double[n];
+        double [] resx = new double[n];
+        A = getMatrixA();
+        b=getVectorB();
+        resx = crout(A,b);
+        VectorX = findViewById(R.id.VectorX);
+        for(int i=0;i<n;i++) {
+            TextView f = (TextView) VectorX.getChildAt(i);
+            f.setText(String.valueOf(resx[i]));
+        }
+        VectorX.setBackgroundColor(Color.rgb(44,132,30));
+    }
+
+    public void Cholesky(View view){
+        double A[][] = new double[n][n];
+        double b[] = new double[n];
+        double [] resx = new double[n];
+        A = getMatrixA();
+        b=getVectorB();
+        resx = cholesky(A,b);
+        VectorX = findViewById(R.id.VectorX);
+        for(int i=0;i<n;i++) {
+            TextView f = (TextView) VectorX.getChildAt(i);
+            f.setText(String.valueOf(resx[i]));
+        }
+        VectorX.setBackgroundColor(Color.rgb(44,132,30));
+    }
+
+    public void Doolittle(View view){
+        double A[][] = new double[n][n];
+        double b[] = new double[n];
+        double [] resx = new double[n];
+        A = getMatrixA();
+        b=getVectorB();
+        resx = doolitle(A,b);
+        VectorX = findViewById(R.id.VectorX);
+        for(int i=0;i<n;i++) {
+            TextView f = (TextView) VectorX.getChildAt(i);
+            f.setText(String.valueOf(resx[i]));
+        }
+        VectorX.setBackgroundColor(Color.rgb(44,132,30));
+    }
+
+    private double[] crout(double[][] A,double[]b){
+        double[][] L=new double[n][n];
+        double[][] U=new double[n][n];
+        L=matrizDiagonal(0);
+        U=matrizDiagonal(1);
+        for(int k=0;k<n;++k){
+            double suma=0;
+            for(int p=0;p<k;++p){
+                suma+=L[k][p]*U[p][k];
+            }
+            L[k][k]=A[k][k]-suma;
+            for(int i=k+1;i<n;++i){
+                double suma2=0;
+                for(int p=0;p<k;++p){
+                    suma2+=L[i][p]*U[p][k];
+                }
+                L[i][k]=(A[i][k]-suma2)/U[k][k];
+            }
+            for(int j=k+1;j<n;++j){
+                double suma3=0;
+                for(int p=0;p<k;++p){
+                    suma3+=L[k][p]*U[p][j];
+                }
+                U[k][j]=(A[k][j]-suma3)/L[k][k];
+            }
+        }
+        double[] z= sustitucionProgresiva(L, b);
+        double[] x= sustitucionRegresiva(U, z);
+        return x;
+    }
+
+    private double[] doolitle(double[][] A,double[] b){
+        double[][] L=new double[n][n];
+        double[][] U=new double[n][n];
+        L=matrizDiagonal(1);
+        U=matrizDiagonal(0);
+        for(int k=0;k<n;++k){
+            double suma=0;
+            for(int p=0;p<k;++p){
+                suma+=L[k][p]*U[p][k];
+            }
+            U[k][k]=A[k][k]-suma;
+            for(int i=k+1;i<n;++i){
+                double suma2=0;
+                for(int p=0;p<k;++p){
+                    suma2+=L[i][p]*U[p][k];
+                }
+                L[i][k]=(A[i][k]-suma2)/U[k][k];
+            }
+            for(int j=k+1;j<n;++j){
+                double suma3=0;
+                for(int p=0;p<k;++p){
+                    suma3+=L[k][p]*U[p][j];
+                }
+                U[k][j]=(A[k][j]-suma3)/L[k][k];
+            }
+        }
+        double[] z= sustitucionProgresiva(L, b);
+        double[] x= sustitucionRegresiva(U, z);
+        return x;
+    }
+
+    private double[] cholesky(double[][] A,double[]b){
+        double[][] L=new double[n][n];
+        double[][] U=new double[n][n];
+        L=matrizDiagonal(1);
+        U=matrizDiagonal(1);
+        for(int k=0;k<n;++k){
+            double suma=0;
+            for(int p=0;p<k;++p){
+                suma+=L[k][p]*U[p][k];
+            }
+            L[k][k]=Math.sqrt(A[k][k]-suma);
+            U[k][k]=L[k][k];
+            for(int i=k+1;i<n;++i){
+                double suma2=0;
+                for(int p=0;p<k;++p){
+                    suma2+=L[i][p]*U[p][k];
+                }
+                L[i][k]=(A[i][k]-suma2)/U[k][k];
+            }
+            for(int j=k+1;j<n;++j){
+                double suma3=0;
+                for(int p=0;p<k;++p){
+                    suma3+=L[k][p]*U[p][j];
+                }
+                U[k][j]=(A[k][j]-suma3)/L[k][k];
+            }
+        }
+        double[] z= sustitucionProgresiva(L, b);
+        double[] x= sustitucionRegresiva(U, z);
+        return x;
     }
 
 
-
-    public void Gauus(View view){
+    public double[][] getMatrixA(){
         MatrixA =  findViewById(R.id.MatrixAC);
-        VectorB =  findViewById(R.id.VectorB);
         n = MatrixA.getChildCount();
         double [][] A = new double [n][n];
-        double [] b = new double [n];
-        double [] resx = new double[n];
-        Log.d("TAMAÑO: ",String.valueOf(n));
         for(int i=0;i<MatrixA.getChildCount();++i){
             TableRow row = (TableRow) MatrixA.getChildAt(i);
             for(int x = 0;x<row.getChildCount();++x){
@@ -38,22 +326,19 @@ public class matrix2 extends Activity {
                 A[i][x] = Double.valueOf(f.getText().toString());
             }
         }
+
+        return A;
+    }
+
+    public double[] getVectorB(){
+        VectorB =  findViewById(R.id.VectorB);
+        n = VectorB.getChildCount();
+        double [] b = new double [n];
         for(int i=0;i<n;i++) {
-            TableRow row = (TableRow) VectorB.getChildAt(i);
-            EditText f = (EditText) row.getChildAt(0);
+            EditText f = (EditText) VectorB.getChildAt(0);
             b[i] = Double.valueOf(f.getText().toString());
-            Log.d("PRUEBA: "+i+"  ", f.getText().toString());
         }
-        resx = sustitucionRegresiva(A,b);
-        VectorX = findViewById(R.id.VectorX);
-        for(int i=0;i<n;i++) {
-            TableRow row = (TableRow) VectorX.getChildAt(i);
-            TextView f = (TextView) row.getChildAt(0);
-            f.setText(String.valueOf(resx[i]));
-        }
-
-
-
+        return b;
     }
 
     private double [] sustitucionRegresiva(double [][] A, double [] b){
@@ -72,6 +357,37 @@ public class matrix2 extends Activity {
             x[i] = (Ab[i][n] - sumatoria) / Ab[i][i];
         }
         return x;
+    }
+
+    private double[] sustitucionProgresiva(double[][] L , double[] b){
+        double [][] Lb=aumentar(L,b);
+        double [] x = new double[n];
+        x[0]=Lb[0][n]/Lb[0][0];
+        for(int j=1; j<n;++j){
+            x[j]=1;
+        }
+        for(int i=1; i<n ; ++i){
+            double sumatoria =0;
+            for(int p=0;p<i;++p){
+                sumatoria+=Lb[i][p]*x[p];
+            }
+            x[i]=(Lb[i][n]-sumatoria)/Lb[i][i];
+        }
+        return x;
+    }
+
+    private double[][] matrizDiagonal(int dig){
+        double[][] A = new double[n][n];
+        for(int i=0;i<n;++i){
+            for(int j=0;j<n;++j){
+                if(i==j){
+                    A[i][j]=1;
+                }else{
+                    A[i][j]=0;
+                }
+            }
+        }
+        return A;
     }
 
     private double [][]escalonar(double [][] A, double [] b){
@@ -118,6 +434,56 @@ public class matrix2 extends Activity {
             Ab[i][n] = b[i];
             for(int j = 0; j < n; ++j){
                 Ab[i][j] = A[i][j];
+            }
+        }
+        return Ab;
+    }
+    private double [] sustitucionRegresiva2(double [][] A, double [] b){
+        double [][] Ab = escalonar2(A,b);
+        double [] x = new double [n];
+
+        for(int j = 0; j < n-1; ++j){
+            x[j] = 1;
+        }
+        x[n-1] = Ab[n-1][n] / Ab[n-1][n-1];
+        for(int i = n-1; i >= 0; --i){
+            double sumatoria = 0;
+            for(int p = i+1; p < n; ++p){
+                sumatoria += Ab[i][p] * x[p];
+            }
+            x[i] = (Ab[i][n] - sumatoria) / Ab[i][i];
+        }
+        return x;
+    }
+    private double [][] escalonar2(double [][] A, double [] b){
+        double [][] Ab = new double [n][n];
+        double multi = 0;
+        double mayor=0;
+        int filaMayor=0;
+        Ab = aumentar(A,b);
+        for(int i = 0; i < n-1; ++i){
+            mayor=Math.abs(Ab[i][i]);
+            filaMayor=i;
+            for(int j=i+1;j<n;++j){
+                if((Math.abs(Ab[j][i]))>mayor){
+                    mayor=Math.abs(Ab[j][i]);
+                    filaMayor=j;
+                }
+            }
+            if(mayor==0){
+                System.out.println("Error");
+                System.exit(0);
+            }
+            else if(filaMayor!=i){
+                Ab=cambio(Ab,filaMayor,i);
+            }
+            for(int k = 0; k < n-1; ++k){
+                for(int l = k+1; l < n; ++l){
+                    multi = Ab[l][k] / Ab[k][k];
+                    for(int m = k; m < n+1; ++m){
+                        Ab[l][m] -= multi * Ab[k][m];
+                    }
+                }
             }
         }
         return Ab;
