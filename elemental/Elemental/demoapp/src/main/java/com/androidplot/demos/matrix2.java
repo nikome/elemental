@@ -1,5 +1,6 @@
 package com.androidplot.demos;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
@@ -22,6 +23,13 @@ public class matrix2 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matrix2);
+        Button metodobiseccion = (Button) findViewById(R.id.Iterativos);
+        metodobiseccion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(matrix2.this, Iterativos.class));
+            }
+        });
         a();
 
     }
@@ -220,6 +228,21 @@ public class matrix2 extends Activity {
         VectorX.setBackgroundColor(Color.rgb(44,132,30));
     }
 
+    public void PivoteoTotal(View view){
+        double A[][] = new double[n][n];
+        double b[] = new double[n];
+        double [] resx = new double[n];
+        A = getMatrixA();
+        b=getVectorB();
+        resx = sustitucionRegresiva3(A,b);
+        VectorX = findViewById(R.id.VectorX);
+        for(int i=0;i<n;i++) {
+            TextView f = (TextView) VectorX.getChildAt(i);
+            f.setText(String.valueOf(resx[i]));
+        }
+        VectorX.setBackgroundColor(Color.rgb(44,132,30));
+    }
+
     private double[] crout(double[][] A,double[]b){
         double[][] L=new double[n][n];
         double[][] U=new double[n][n];
@@ -359,6 +382,24 @@ public class matrix2 extends Activity {
         return x;
     }
 
+    private double [] sustitucionRegresiva3(double [][] A, double [] b){
+        double [][] Ab = escalonar4(A,b);
+        double [] x = new double [n];
+
+        for(int j = 0; j < n-1; ++j){
+            x[j] = 1;
+        }
+        x[n-1] = Ab[n-1][n] / Ab[n-1][n-1];
+        for(int i = n-1; i >= 0; --i){
+            double sumatoria = 0;
+            for(int p = i+1; p < n; ++p){
+                sumatoria += Ab[i][p] * x[p];
+            }
+            x[i] = (Ab[i][n] - sumatoria) / Ab[i][i];
+        }
+        return x;
+    }
+
     private double[] sustitucionProgresiva(double[][] L , double[] b){
         double [][] Lb=aumentar(L,b);
         double [] x = new double[n];
@@ -406,6 +447,121 @@ public class matrix2 extends Activity {
                     Ab[i][j] -= multi * Ab[k][j];
                 }
             }
+        }
+        return Ab;
+    }
+
+    private double [][] escalonar4(double [][] A, double [] b){
+        int marcas [] = new int [n];
+        double var = determinante(A);
+        if(var != 0){
+            double [][] Ab;
+            for(int initLista = 0; initLista < n; ++initLista){
+                marcas[initLista] = initLista+1;
+            }
+            double mayor = 0;
+            int filaMayor = 0;
+            double multi = 0;
+            int colMayor = 0;
+            Ab = aumentar(A,b);
+            for(int bb = 0; bb < n-1; ++bb){
+                mayor = 0;
+                filaMayor = bb;
+                colMayor = bb;
+                for(int r = bb; r < n; ++r){
+                    for(int s = bb; s < n; ++s){
+                        if (Math.abs(Ab[r][s]) > mayor){
+                            mayor = Math.abs(Ab[r][s]);
+                            filaMayor = r;
+                            colMayor = s;
+                        }
+                    }
+                }
+                if(mayor == 0){
+                    System.out.print("Error");
+                    break;
+                }else if(filaMayor != bb){
+                    Ab = intercambioFilas(Ab,filaMayor,bb);
+                }if(colMayor != bb){
+                    Ab = intercambioCol(Ab,colMayor,bb,n);
+                    marcas = intercambioMarcas(marcas, colMayor, bb);
+                }
+                for(int i = bb+1; i < n; ++i){
+                    multi = Ab[i][bb] / Ab[bb][bb];
+                    for(int j = bb; j < n+1; ++j){
+                        Ab[i][j] = Ab[i][j] - multi*Ab[bb][j];
+                    }
+                }
+            }
+            return Ab;
+        }
+        return null; //Error no hay respuesta
+    }
+
+    public static double determinante (double [][] matriz){
+        assert matriz != null;
+        assert matriz.length>0;
+        assert matriz.length == matriz[0].length;
+
+        double determinante = 0.0;
+
+        int filas = matriz.length;
+        int columnas = matriz[0].length;
+
+        // Si la matriz es 1x1, el determinante es el elemento de la matriz
+        if ((filas==1) && (columnas==1))
+            return matriz[0][0];
+
+
+        int signo=1;
+
+        for (int columna=0;columna<columnas;columna++)
+        {
+            // Obtiene el adjunto de fila=0, columna=columna, pero sin el signo.
+            double[][] submatriz = getSubmatriz(matriz, filas, columnas,
+                    columna);
+            determinante = determinante + signo*matriz[0][columna]*determinante(submatriz);
+            signo*=-1;
+        }
+
+        return determinante;
+    }
+    public static double[][] getSubmatriz(double[][] matriz,int filas,int columnas,int columna) {
+        double [][] submatriz = new double[filas-1][columnas-1];
+        int contador=0;
+        for (int j=0;j<columnas;j++)
+        {
+            if (j==columna) continue;
+            for (int i=1;i<filas;i++)
+                submatriz[i-1][contador]=matriz[i][j];
+            contador++;
+        }
+        return submatriz;
+    }
+
+    private double [][] intercambioFilas(double[][] Ab, int i, int j){
+        double acum [] = new double [n+1];
+        for(int k = 0; k < n+1; ++k){
+            acum[k] = Ab[j][k];
+            Ab[j][k] = Ab[i][k];
+            Ab[i][k] = acum[k];
+        }
+        return Ab;
+    }
+
+    private int [] intercambioMarcas(int [] marcas, int i, int j){
+        int temp = marcas[i];
+        marcas[i] = marcas[j];
+        marcas[j] = temp;
+        return marcas;
+    }
+
+    private static double [][] intercambioCol(double [][] Ab, int i, int j,int n){
+        double acum [] = new double [n];
+        for(int k = 0; k < n; ++k){
+            acum[k] = Ab[k][j];
+            Ab[k][j] = Ab[k][i];
+            Ab[k][i] = acum[k];
         }
         return Ab;
     }

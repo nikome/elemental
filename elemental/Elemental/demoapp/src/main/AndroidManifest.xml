@@ -96,6 +96,7 @@
         <activity
             android:name=".matrix2"
             android:label="@string/title_activity_matrix2" />
+        <activity android:name=".Iterativos"></activity>
     </application>
 
 </manifest>
