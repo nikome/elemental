@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.constraint.ConstraintLayout;
 import android.text.InputType;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -18,6 +21,7 @@ public class matrix2 extends Activity {
     private TableLayout MatrixA;
     private TableLayout VectorB;
     private TableLayout VectorX;
+    private ConstraintLayout principla;
     public int n;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +77,11 @@ public class matrix2 extends Activity {
         MatrixA = findViewById(R.id.VectorB);
         ViewGroup.LayoutParams params = MatrixA.getLayoutParams();
         params.height=MatrixA.getHeight()+130;
+        MatrixA.setX(MatrixA.getX()+10);
         MatrixA.setLayoutParams(params);
         MatrixA =findViewById(R.id.VectorX);
         params = MatrixA.getLayoutParams();
+        MatrixA.setX(MatrixA.getX()+10);
         params.height=MatrixA.getHeight()+130;
         MatrixA.setLayoutParams(params);
         MatrixA =  findViewById(R.id.Container);
@@ -128,9 +134,11 @@ public class matrix2 extends Activity {
         MatrixA = findViewById(R.id.VectorB);
         ViewGroup.LayoutParams params = MatrixA.getLayoutParams();
         params.height=MatrixA.getHeight()-130;
+        MatrixA.setX(MatrixA.getX()-10);
         MatrixA =findViewById(R.id.VectorX);
         params = MatrixA.getLayoutParams();
         params.height=MatrixA.getHeight()-130;
+        MatrixA.setX(MatrixA.getX()-10);
         MatrixA.setLayoutParams(params);
         MatrixA =  findViewById(R.id.Container);
         params = MatrixA.getLayoutParams();

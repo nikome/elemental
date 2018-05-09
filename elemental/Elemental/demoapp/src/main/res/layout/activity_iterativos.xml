@@ -1,277 +1,271 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/ap_white"
-    tools:context="com.androidplot.demos.Iterativos">
-
-    <EditText
-        android:id="@+id/iteraciones"
-        android:layout_width="172dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Iterations"
-        android:inputType="textPersonName"
-        android:textColor="@color/ap_black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/funcion"
-        app:layout_constraintVertical_bias="0.007" />
-
-    <EditText
-        android:id="@+id/tolerancia"
-        android:layout_width="140dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="28dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Tolerance"
-        android:inputType="textPersonName"
-        android:textColor="@color/ap_black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/funcion"
-        app:layout_constraintVertical_bias="0.007" />
-
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="Jacobbi"
-        android:text="JACOBBI"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029" />
-
-    <TextView
-        android:id="@+id/matrixX2"
-        android:layout_width="30dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="X0"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/ap_black"
-        android:textSize="25dp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.492" />
-
-    <TableLayout
-        android:id="@+id/VectorXo"
-        android:layout_width="35dp"
-        android:layout_height="91dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:background="#8DD2C6"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.725"></TableLayout>
-
-    <TextView
-        android:id="@+id/matrixbS"
-        android:layout_width="24dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="b"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/ap_black"
-        android:textSize="25dp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.492" />
-
-    <TextView
-        android:id="@+id/matrixX"
-        android:layout_width="24dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="X"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/ap_black"
-        android:textSize="25dp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.662"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.492" />
-
-    <TableLayout
-        android:id="@+id/VectorB"
-        android:layout_width="35dp"
-        android:layout_height="91dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:background="#8DD2C6"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.966"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.725"></TableLayout>
-
-    <TextView
-        android:id="@+id/matrixAEqual"
-        android:layout_width="24dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="="
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/ap_black"
-        android:textSize="25dp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.825"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.692" />
-
-    <TextView
-        android:id="@+id/MatrixA"
-        android:layout_width="24dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="A"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/ap_black"
-        android:textSize="25dp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.492" />
-
-    <TableLayout
-        android:id="@+id/VectorX"
-        android:layout_width="35dp"
-        android:layout_height="91dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/ap_gray"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.684"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.725"></TableLayout>
-
-    <TableLayout
-        android:id="@+id/Container"
-        android:layout_width="@dimen/A_Size_width"
-        android:layout_height="@dimen/A_Size_height"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.035"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754">
+    xmlns:tools="http://schemas.android.com/tools">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:scrollbars="vertical">
+        <HorizontalScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/ap_white"
+            android:scrollbars="vertical"
+            tools:context="com.androidplot.demos.Iterativos">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
 
-        <TableRow>
-
-            <Button
-                android:id="@+id/AñadirRow"
-                android:layout_width="@dimen/Button_Size"
-                android:layout_height="@dimen/Button_Size"
-                android:layout_column="1"
-                android:background="@color/ap_transparent"
-                android:onClick="addRow"
-                android:text="+"
-                android:textAlignment="4"
-                android:textColor="@color/ap_black" />
+                <TableLayout
+                    android:id="@+id/Container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="16dp">
 
 
-        </TableRow>
+                    <TableRow>
 
-        <TableRow>
+                        <Button
+                            android:id="@+id/AñadirRow"
+                            android:layout_width="@dimen/Button_Size"
+                            android:layout_height="@dimen/Button_Size"
+                            android:layout_column="1"
+                            android:background="@color/ap_transparent"
+                            android:onClick="addRow"
+                            android:text="+"
+                            android:textAlignment="4"
+                            android:textColor="@color/ap_black" />
 
-            <TableLayout
-                android:id="@+id/MatrixAC"
-                android:layout_width="@dimen/Matrix_Size"
-                android:layout_height="@dimen/Matrix_Size"
-                android:layout_column="2"
-                android:background="#8DD2C6">
+
+                    </TableRow>
+
+                    <TableRow>
+
+                        <HorizontalScrollView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="2">
+
+                            <TableLayout
+                                android:id="@+id/MatrixAC"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_column="2"
+                                android:background="#8DD2C6"></TableLayout>
+                        </HorizontalScrollView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_column="3"
+                            android:text="."
+                            android:textAlignment="center"
+                            android:textColor="@color/ap_black"
+                            android:textSize="60sp" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <Button
+                            android:id="@+id/QuitRow"
+                            android:layout_width="@dimen/Button_Size"
+                            android:layout_height="@dimen/Button_Size"
+                            android:layout_column="3"
+                            android:background="@color/ap_transparent"
+                            android:onClick="quitRow"
+                            android:text="x"
+                            android:textAlignment="4"
+                            android:textColor="@color/ap_black" />
+
+                    </TableRow>
+                </TableLayout>
+
+                <TableLayout
+                    android:id="@+id/VectorXo"
+                    android:layout_width="35dp"
+                    android:layout_height="91dp"
+                    android:layout_marginEnd="100dp"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="31dp"
+                    android:background="#8DD2C6"></TableLayout>
+
+                <TableLayout
+                    android:id="@+id/VectorB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="31dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginStart="-50dp"
+                    android:background="#8DD2C6"></TableLayout>
+
+                <TextView
+                    android:id="@+id/matrixAEqual"
+                    android:layout_width="24dp"
+                    android:layout_height="38dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="50dp"
+                    android:text="="
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/ap_black"
+                    android:textSize="25dp"
+                    android:textStyle="italic"/>
+
+                <TableLayout
+                    android:id="@+id/VectorX"
+                    android:layout_width="35dp"
+                    android:layout_height="91dp"
+                    android:layout_marginEnd="70dp"
+                    android:layout_marginStart="-5dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="31dp"
+                    android:background="@color/ap_gray"></TableLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
+    </ScrollView>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="237dp"
+        android:layout_gravity="bottom">
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="GaussSeidelSor"
+            android:text="GAUSSEIDELSOR"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.87"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.396" />
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="JacobbiSor"
+            android:text="JACOBBISOR"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.062"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.396" />
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="GaussSeidel"
+            android:text="GAUSSEIDEL"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.857"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.029" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="Jacobbi"
+            android:text="JACOBBI"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.029" />
 
 
-            </TableLayout>
+        <EditText
+            android:id="@+id/labelw"
+            android:layout_width="97dp"
+            android:layout_height="38dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="W"
+            android:inputType="textPersonName"
+            android:textColor="@color/ap_black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/funcion"
+            app:layout_constraintVertical_bias="0.007" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_column="3"
-                android:text="."
-                android:textAlignment="center"
-                android:textColor="@color/ap_black"
-                android:textSize="60sp" />
-        </TableRow>
 
-        <TableRow>
+        <EditText
+            android:id="@+id/iteraciones"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="Iterations"
+            android:inputType="textPersonName"
+            android:textColor="@color/ap_black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.555"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/funcion"
+            app:layout_constraintVertical_bias="0.007" />
 
-            <Button
-                android:id="@+id/QuitRow"
-                android:layout_width="@dimen/Button_Size"
-                android:layout_height="@dimen/Button_Size"
-                android:layout_column="3"
-                android:background="@color/ap_transparent"
-                android:onClick="quitRow"
-                android:text="x"
-                android:textAlignment="4"
-                android:textColor="@color/ap_black" />
+        <EditText
+            android:id="@+id/tolerancia"
+            android:layout_width="117dp"
+            android:layout_height="38dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="Tolerance"
+            android:inputType="textPersonName"
+            android:textColor="@color/ap_black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.03"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/funcion"
+            app:layout_constraintVertical_bias="0.007" />
+    </android.support.constraint.ConstraintLayout>
 
-        </TableRow>
-    </TableLayout>
-</android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/matrixAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TABLAS"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.461"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.777" />
+
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>

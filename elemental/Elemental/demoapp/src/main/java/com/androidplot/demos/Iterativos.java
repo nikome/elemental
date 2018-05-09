@@ -20,6 +20,7 @@ public class Iterativos extends Activity {
     private TableLayout VectorX;
     private EditText tolerancia;
     private EditText iteraciones;
+    private EditText valorw;
     public int n;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,6 +177,133 @@ public class Iterativos extends Activity {
         MatrixA.removeViewAt(n-1);
     }
 
+    public void JacobbiSor(View view){
+        tolerancia = findViewById(R.id.tolerancia);
+        iteraciones = findViewById(R.id.iteraciones);
+        valorw = findViewById(R.id.labelw);
+        double A[][] = new double[n][n];
+        double b[] = new double[n];
+        double X_o[] = new double[n];
+        double [] resx = new double[n];
+        A = getMatrixA();
+        b = getVectorB();
+        X_o = getVectorXo();
+        double tol = Double.valueOf(tolerancia.getText().toString());
+        int niter = Integer.valueOf(iteraciones.getText().toString());
+        double w=Double.valueOf(valorw.getText().toString());
+        resx = jacobiRelajado(tol,niter,X_o,A,b,w);
+        VectorX = findViewById(R.id.VectorX);
+        n = VectorX.getChildCount();
+        for(int i=0;i<n;i++) {
+            TextView f = (TextView) VectorX.getChildAt(i);
+            f.setText(String.valueOf(resx[i]));
+        }
+        VectorX.setBackgroundColor(Color.rgb(44,132,30));
+    }
+
+    public void GaussSeidelSor(View view){
+        tolerancia = findViewById(R.id.tolerancia);
+        iteraciones = findViewById(R.id.iteraciones);
+        valorw = findViewById(R.id.labelw);
+        double A[][] = new double[n][n];
+        double b[] = new double[n];
+        double X_o[] = new double[n];
+        double [] resx = new double[n];
+        A = getMatrixA();
+        b = getVectorB();
+        X_o = getVectorXo();
+        double tol = Double.valueOf(tolerancia.getText().toString());
+        int niter = Integer.valueOf(iteraciones.getText().toString());
+        double w=Double.valueOf(valorw.getText().toString());
+        resx = gaussSeidelRelajado(tol,niter,X_o,A,b,w);
+        VectorX = findViewById(R.id.VectorX);
+        n = VectorX.getChildCount();
+        for(int i=0;i<n;i++) {
+            TextView f = (TextView) VectorX.getChildAt(i);
+            f.setText(String.valueOf(resx[i]));
+        }
+        VectorX.setBackgroundColor(Color.rgb(44,132,30));
+    }
+
+    private double[] gaussSeidelRelajado(double tol,int nitter,double [] x0,double[][] A, double [] b,double w){
+        int contador = 0;
+        double dispercion=tol+1;
+        double[] nodio = new double[n];
+        double[] x1 = new double[x0.length];
+        imprimir(contador,x0,dispercion);
+        while(dispercion > tol && contador < nitter){
+            x1=calcularNuevoSeidel2(x0,A,b,w);
+            dispercion=norma2(x0,x1);
+            x0 = x1;
+            contador+=1;
+        }
+        if(dispercion<tol){
+            return x1;
+        }else{
+            return nodio;
+        }
+
+    }
+
+    private double[] calcularNuevoSeidel2(double[] x0,double[][] A,double[] b,double w){
+        double[] x1 =new double[x0.length];
+        for(int i=0;i<x0.length;++i){
+            x1[i]=x0[i];
+        }
+        for(int i=0; i < x0.length;++i){
+            double suma=0;
+            for(int j=0;j<x0.length;++j){
+                if(j != i){
+                    suma += A[i][j]*x1[j];
+                }
+            }
+            x1[i]=(b[i]-suma)/A[i][i];
+            x1[i] = w*(x1[i])+(1-w)*(x0[i]);
+        }
+        return x1;
+    }
+
+    private double[] jacobiRelajado(double tol,int nitter,double [] x0,double[][] A, double [] b,double w){
+        int contador = 0;
+        double[] nodio= new double[n];
+        double dispercion=tol+1;
+        double[] x1 = new double[x0.length];
+        imprimir(contador,x0,dispercion);
+        while(dispercion > tol && contador < nitter){
+            x1=calcularNuevoJacobi2(x0,A,b,w);
+            dispercion=norma2(x0,x1);
+            x0=x1;
+            contador+=1;
+        }
+        if(dispercion<tol){
+            return x0;
+        }else{
+            return nodio;
+        }
+
+    }
+    private double norma2(double[] x0,double[] x1){
+        double suma=0;
+        for(int i=0;i<x0.length;++i){
+            suma += Math.pow((x1[i]-x0[i]),2);
+        }
+        return Math.pow(suma,0.5);
+    }
+    private double[] calcularNuevoJacobi2(double[] x0,double[][] A,double[] b,double w){
+        double[] x1 = new double[x0.length];
+        for(int i=0; i < x0.length;++i){
+            double suma=0;
+            for(int j=0;j<x0.length;++j){
+                if(j != i){
+                    suma += A[i][j]*x0[j];
+                }
+            }
+            x1[i]=(b[i]-suma)/A[i][i];
+            x1[i] = (w*(x1[i])+(1-w)*(x0[i]));
+        }
+        return x1;
+    }
+
     public void Jacobbi(View view){
         tolerancia = findViewById(R.id.tolerancia);
         iteraciones = findViewById(R.id.iteraciones);
@@ -198,6 +326,64 @@ public class Iterativos extends Activity {
         VectorX.setBackgroundColor(Color.rgb(44,132,30));
     }
 
+    public void GaussSeidel(View view){
+        tolerancia = findViewById(R.id.tolerancia);
+        iteraciones = findViewById(R.id.iteraciones);
+        double A[][] = new double[n][n];
+        double b[] = new double[n];
+        double X_o[] = new double[n];
+        double [] resx = new double[n];
+        A = getMatrixA();
+        b = getVectorB();
+        X_o = getVectorXo();
+        double tol = Double.valueOf(tolerancia.getText().toString());
+        int niter = Integer.valueOf(iteraciones.getText().toString());
+        resx = gaussSeidel(tol,niter,X_o,A,b);
+        VectorX = findViewById(R.id.VectorX);
+        n = VectorX.getChildCount();
+        for(int i=0;i<n;i++) {
+            TextView f = (TextView) VectorX.getChildAt(i);
+            f.setText(String.valueOf(resx[i]));
+        }
+        VectorX.setBackgroundColor(Color.rgb(44,132,30));
+    }
+
+    private double[] gaussSeidel(double tol,int nitter,double [] x0,double[][] A, double [] b){
+        int contador = 0;
+        double[] nodio = new double[n];
+        double dispercion=tol+1;
+        double[] x1 = new double[x0.length];
+        imprimir(contador,x0,dispercion);
+        while(dispercion > tol && contador < nitter){
+            x1=calcularNuevoSeidel(x0,A,b);
+            dispercion=norma(x0,x1);
+            x0=x1;
+            contador+=1;
+        }
+        if(dispercion<tol){
+            return x1;
+        }else{
+            return nodio;
+        }
+
+    }
+
+    private double[] calcularNuevoSeidel(double[] x0,double[][] A,double[] b){
+        double[] x1 =new double[x0.length];
+        for(int i=0;i<x0.length;++i){
+            x1[i]=x0[i];
+        }
+        for(int i=0; i < x0.length;++i){
+            double suma=0;
+            for(int j=0;j<x0.length;++j){
+                if(j != i){
+                    suma += A[i][j]*x1[j];
+                }
+            }
+            x1[i]=(b[i]-suma)/A[i][i];
+        }
+        return x1;
+    }
     private double[] jacobi(double tol,int nitter,double [] x0,double[][] A, double [] b){
         int contador = 0;
         double[] nodio = new double[n];
