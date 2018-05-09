@@ -243,7 +243,6 @@
             android:id="@+id/MatrixAB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="Cholesky"
             android:text="VER A|B"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

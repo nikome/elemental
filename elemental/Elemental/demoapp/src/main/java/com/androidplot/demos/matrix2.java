@@ -21,6 +21,7 @@ public class matrix2 extends Activity {
     private TableLayout MatrixA;
     private TableLayout VectorB;
     private TableLayout VectorX;
+    private double[][] Ab;
     private ConstraintLayout principla;
     public int n;
     @Override
@@ -32,6 +33,13 @@ public class matrix2 extends Activity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(matrix2.this, Iterativos.class));
+            }
+        });
+        Button resultadoAB = (Button) findViewById(R.id.MatrixAB);
+        resultadoAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(matrix2.this, resultado_matrices.class));
             }
         });
         a();
@@ -373,7 +381,7 @@ public class matrix2 extends Activity {
     }
 
     private double [] sustitucionRegresiva(double [][] A, double [] b){
-        double [][] Ab = escalonar(A,b);
+        Ab = escalonar(A,b);
         double [] x = new double [n];
 
         for(int j = 0; j < n-1; ++j){
@@ -391,7 +399,7 @@ public class matrix2 extends Activity {
     }
 
     private double [] sustitucionRegresiva3(double [][] A, double [] b){
-        double [][] Ab = escalonar4(A,b);
+        Ab = escalonar4(A,b);
         double [] x = new double [n];
 
         for(int j = 0; j < n-1; ++j){
@@ -440,7 +448,6 @@ public class matrix2 extends Activity {
     }
 
     private double [][]escalonar(double [][] A, double [] b){
-        double [][] Ab = new double [n][n];
         double multi = 0;
         Ab = aumentar(A,b);
         for(int i = 0; i < n-1; ++i){
@@ -463,7 +470,6 @@ public class matrix2 extends Activity {
         int marcas [] = new int [n];
         double var = determinante(A);
         if(var != 0){
-            double [][] Ab;
             for(int initLista = 0; initLista < n; ++initLista){
                 marcas[initLista] = initLista+1;
             }
