@@ -26,12 +26,7 @@ public class TablaBiseccionActivity extends Activity {
         ArrayList<String> fxm= getIntent().getExtras().getStringArrayList("fxmList");
 
             init(iteraciones, xm, Error, fxm);
-
-
-
     }
-
-
 
     public void init(ArrayList<String> iter,ArrayList<String> xm,ArrayList<String> Error,ArrayList<String> fxm){
         TableLayout table = (TableLayout)findViewById(R.id.TablelayoutBisection);

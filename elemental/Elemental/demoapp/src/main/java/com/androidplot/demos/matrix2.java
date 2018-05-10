@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.support.constraint.ConstraintLayout;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -23,6 +24,8 @@ public class matrix2 extends Activity {
     private TableLayout VectorX;
     private double[][] Ab;
     private ConstraintLayout principla;
+    private double[][] L;
+    private double[][] U;
     public int n;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +42,28 @@ public class matrix2 extends Activity {
         resultadoAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(matrix2.this, resultado_matrices.class));
+                Intent intent =new Intent(matrix2.this, resultado_matrices.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putSerializable("ResultadoAB",Ab);
+                intent.putExtra("ResultadoAB",Ab);
+                startActivity(intent);
             }
         });
+
+        Button resultadoLU = (Button) findViewById(R.id.matrix_LU);
+        resultadoLU.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(matrix2.this, resultado_matrices_LU.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putSerializable("ResultadoL",L);
+                intent.putExtra("ResultadoL",L);
+                mBundle.putSerializable("U",U);
+                intent.putExtra("U",U);
+                startActivity(intent);
+            }
+        });
+
         a();
 
     }
@@ -260,8 +282,6 @@ public class matrix2 extends Activity {
     }
 
     private double[] crout(double[][] A,double[]b){
-        double[][] L=new double[n][n];
-        double[][] U=new double[n][n];
         L=matrizDiagonal(0);
         U=matrizDiagonal(1);
         for(int k=0;k<n;++k){
@@ -291,8 +311,6 @@ public class matrix2 extends Activity {
     }
 
     private double[] doolitle(double[][] A,double[] b){
-        double[][] L=new double[n][n];
-        double[][] U=new double[n][n];
         L=matrizDiagonal(1);
         U=matrizDiagonal(0);
         for(int k=0;k<n;++k){
@@ -322,8 +340,6 @@ public class matrix2 extends Activity {
     }
 
     private double[] cholesky(double[][] A,double[]b){
-        double[][] L=new double[n][n];
-        double[][] U=new double[n][n];
         L=matrizDiagonal(1);
         U=matrizDiagonal(1);
         for(int k=0;k<n;++k){
@@ -438,7 +454,7 @@ public class matrix2 extends Activity {
         for(int i=0;i<n;++i){
             for(int j=0;j<n;++j){
                 if(i==j){
-                    A[i][j]=1;
+                    A[i][j]=dig;
                 }else{
                     A[i][j]=0;
                 }

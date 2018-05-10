@@ -1,16 +1,20 @@
 package com.androidplot.demos;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class Iterativos extends Activity {
 
@@ -21,11 +25,27 @@ public class Iterativos extends Activity {
     private EditText tolerancia;
     private EditText iteraciones;
     private EditText valorw;
+    private ArrayList<String> iteracioneslist = new ArrayList();
+    private ArrayList<String> ErrorList = new ArrayList();
+    private String[][] matrizXsolucion;
     public int n;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iterativos);
+        Button metodobiseccion = (Button) findViewById(R.id.Tablas);
+        metodobiseccion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(Iterativos.this, TablaIterativos.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putSerializable("MatrizX",matrizXsolucion);
+                intent.putExtra("MatrizX",matrizXsolucion);
+                intent.putExtra("iteraciones",iteracioneslist);
+                intent.putExtra("Error",ErrorList);
+                startActivity(intent);
+            }
+        });
         a();
     }
 
@@ -231,11 +251,15 @@ public class Iterativos extends Activity {
         double[] nodio = new double[n];
         double[] x1 = new double[x0.length];
         imprimir(contador,x0,dispercion);
+        iteracioneslist.add(String.valueOf(contador));
+        ErrorList.add(String.valueOf(dispercion));
         while(dispercion > tol && contador < nitter){
             x1=calcularNuevoSeidel2(x0,A,b,w);
             dispercion=norma2(x0,x1);
             x0 = x1;
             contador+=1;
+            iteracioneslist.add(String.valueOf(contador));
+            ErrorList.add(String.valueOf(dispercion));
         }
         if(dispercion<tol){
             return x1;
@@ -269,11 +293,19 @@ public class Iterativos extends Activity {
         double dispercion=tol+1;
         double[] x1 = new double[x0.length];
         imprimir(contador,x0,dispercion);
+        matrizXsolucion = new String[nitter][x0.length];
+        iteracioneslist.add(String.valueOf(contador));
+        ErrorList.add(String.valueOf(dispercion));
         while(dispercion > tol && contador < nitter){
             x1=calcularNuevoJacobi2(x0,A,b,w);
+            for(int i=0;i<x1.length;i++){
+                matrizXsolucion[contador][i]=String.valueOf(x1[i]);
+            }
             dispercion=norma2(x0,x1);
             x0=x1;
             contador+=1;
+            iteracioneslist.add(String.valueOf(contador));
+            ErrorList.add(String.valueOf(dispercion));
         }
         if(dispercion<tol){
             return x0;
@@ -354,11 +386,15 @@ public class Iterativos extends Activity {
         double dispercion=tol+1;
         double[] x1 = new double[x0.length];
         imprimir(contador,x0,dispercion);
+        iteracioneslist.add(String.valueOf(contador));
+        ErrorList.add(String.valueOf(dispercion));
         while(dispercion > tol && contador < nitter){
             x1=calcularNuevoSeidel(x0,A,b);
             dispercion=norma(x0,x1);
             x0=x1;
             contador+=1;
+            iteracioneslist.add(String.valueOf(contador));
+            ErrorList.add(String.valueOf(dispercion));
         }
         if(dispercion<tol){
             return x1;
@@ -390,11 +426,15 @@ public class Iterativos extends Activity {
         double dispercion=tol+1;
         double[] x1 = new double[x0.length];
         imprimir(contador,x0,dispercion);
+        iteracioneslist.add(String.valueOf(contador));
+        ErrorList.add(String.valueOf(dispercion));
         while(dispercion > tol && contador < nitter){
             x1=calcularNuevoJacobi(x0,A,b);
             dispercion=norma(x0,x1);
             x0=x1;
             contador+=1;
+            iteracioneslist.add(String.valueOf(contador));
+            ErrorList.add(String.valueOf(dispercion));
         }
         if(dispercion<tol){
             return x0;

@@ -99,7 +99,10 @@
         <activity android:name=".Iterativos" />
         <activity
             android:name=".resultado_matrices"
-            android:label="@string/title_activity_resultado_matrices"></activity>
+            android:label="@string/title_activity_resultado_matrices" />
+        <activity
+            android:name=".resultado_matrices_LU"
+            android:label="@string/title_activity_resultado_matrices__lu"></activity>
     </application>
 
 </manifest>
