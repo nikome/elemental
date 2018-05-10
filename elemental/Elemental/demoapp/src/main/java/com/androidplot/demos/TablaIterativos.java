@@ -2,6 +2,13 @@ package com.androidplot.demos;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.app.Activity;
+import android.util.Log;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -18,9 +25,9 @@ public class TablaIterativos extends Activity{
         iteracioneslist = getIntent().getExtras().getStringArrayList("iteraciones");
         ErrorList = getIntent().getExtras().getStringArrayList("Error");
         int n = matrizXsolucion[0].length;
-        init();
+        //init();
     }
-    public void init(String [] iteraciones, String [] error, String [][] ValoresX,int n){
+   /* public void init(String [] iteraciones, String [] error, String [][] ValoresX,int n){
         TableLayout table = (TableLayout)findViewById(R.id.Table1);
         String nameTittle ="";
         int numIterations= iteraciones.length;
@@ -60,4 +67,5 @@ public class TablaIterativos extends Activity{
             table.addView(row,i);
         }
     }
+    */
 }

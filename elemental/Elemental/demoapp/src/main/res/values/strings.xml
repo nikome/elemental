@@ -123,4 +123,9 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_resultado_matrices">resultado_matrices</string>
     <string name="title_activity_resultado_matrices__lu">resultado_matrices_LU</string>
+    <string name="title_activity_newton_dividido2">NewtonDividido2Activity</string>
+    <string name="title_activity_bewton_dividido_table">BewtonDivididoTableActivity</string>
+    <string name="title_activity_lagrange">LagrangeActivity</string>
+    <string name="title_activity_lagrange_table">LagrangeTableActivity</string>
+    <string name="title_activity_interpolacion_metodos">InterpolacionMetodosActivity</string>
 </resources>
