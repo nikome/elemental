@@ -1,17 +1,19 @@
 package com.androidplot.demos;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 
 import java.util.ArrayList;
 
 public class LagrangeActivity extends Activity {
-    private EditText x;
-    private EditText y;
+    private EditText points;
     private EditText valor;
     private double result;
     private String val;
@@ -22,21 +24,44 @@ public class LagrangeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lagrange);
-        x = (EditText) findViewById(R.id.Xinput);
-        y = (EditText) findViewById(R.id.Yinput);
+        points = (EditText) findViewById(R.id.points);
         valor = (EditText) findViewById(R.id.ValueX);
     }
 
     public void ingresoPointLagrange(View view) {
-        String xpunto = x.getText().toString();
-        String ypunto = y.getText().toString();
-        puntosListx.add(Double.parseDouble(xpunto));
-        puntosListy.add(Double.parseDouble(ypunto));
-        x.setText("");
-        y.setText("");
-        Log.d("rg", "entra");
+        TableLayout table = (TableLayout) findViewById(R.id.TablelayoutLagrangePoints);
+        String n = points.getText().toString();
+
+        if (table.getChildCount() > 0) {
+            table.removeAllViews();
+        } else {
+            for (int i = 0; i < Integer.parseInt(n); i++) {
+                TableRow row = new TableRow(this);
+                EditText view1 = new EditText(this);
+                EditText view2 = new EditText(this);
+                view1.setHint("write a number");
+                view1.setTextColor(Color.BLACK);
+                view2.setHint("write a number");
+                view2.setTextColor(Color.BLACK);
+                row.addView(view1);
+                row.addView(view2);
+                table.addView(row);
+            }
+        }
+
+
     }
     public void CalculateLagrange(View view) {
+        TableLayout table = (TableLayout) findViewById(R.id.TablelayoutLagrangePoints);
+        for (int i = 0; i < table.getChildCount(); i++) {
+            TableRow row1= (TableRow)table.getChildAt(i);
+            EditText xpoint=(EditText ) row1.getChildAt(0);
+            EditText ypoint=(EditText ) row1.getChildAt(1);
+            String numberx=xpoint.getText().toString();
+            String numbery=ypoint.getText().toString();
+            puntosListx.add(Double.parseDouble(numberx));
+            puntosListy.add(Double.parseDouble(numbery));
+        }
         double[] x = new double[puntosListx.size()];
         double[] y = new double[puntosListy.size()];
         for (int i = 0; i < puntosListy.size(); ++i) {
