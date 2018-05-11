@@ -3,6 +3,7 @@ package com.androidplot.demos;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
+import android.text.Layout;
 import android.util.Log;
 import android.widget.TableLayout;
 import android.widget.TableRow;

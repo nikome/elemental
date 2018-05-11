@@ -141,6 +141,7 @@ public class matrix2 extends Activity {
             row = (TableRow) MatrixA.getChildAt(x);
             edit= new EditText(this);
             edit.setTextColor(Color.BLACK);
+            edit.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
             edit.setText("0");
             edit.setTextSize(10);
             row.addView(edit);
@@ -390,7 +391,7 @@ public class matrix2 extends Activity {
         n = VectorB.getChildCount();
         double [] b = new double [n];
         for(int i=0;i<n;i++) {
-            EditText f = (EditText) VectorB.getChildAt(0);
+            EditText f = (EditText) VectorB.getChildAt(i);
             b[i] = Double.valueOf(f.getText().toString());
         }
         return b;
@@ -625,7 +626,7 @@ public class matrix2 extends Activity {
         return Ab;
     }
     private double [] sustitucionRegresiva2(double [][] A, double [] b){
-        double [][] Ab = escalonar2(A,b);
+        Ab = escalonar2(A,b);
         double [] x = new double [n];
 
         for(int j = 0; j < n-1; ++j){

@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -44,57 +45,59 @@ public class Iterativos extends Activity {
                 intent.putExtra("iteraciones",iteracioneslist);
                 intent.putExtra("Error",ErrorList);
                 startActivity(intent);
+                iteracioneslist.clear();
+                ErrorList.clear();
             }
         });
         a();
     }
 
-    public void a(){
+        public void a(){
 
-        MatrixA =  findViewById(R.id.MatrixAC);
-        TableRow row= new TableRow(this);
-        EditText edit= new EditText(this);
-        for(int i = 0;i<3;i++){
-            for(int j=0;j<3;j++) {
+            MatrixA =  findViewById(R.id.MatrixAC);
+            TableRow row= new TableRow(this);
+            EditText edit= new EditText(this);
+            for(int i = 0;i<3;i++){
+                for(int j=0;j<3;j++) {
+                    edit.setTextColor(Color.BLACK);
+                    edit.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
+                    edit.setText("0");
+                    edit.setTextSize(10);
+                    row.addView(edit);
+                    edit= new EditText(this);
+                }
+                MatrixA.addView(row);
+                row= new TableRow(this);
+            }
+            MatrixA = findViewById(R.id.VectorB);
+            edit= new EditText(this);
+            for(int i = 0;i<3;i++){
                 edit.setTextColor(Color.BLACK);
                 edit.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
                 edit.setText("0");
                 edit.setTextSize(10);
-                row.addView(edit);
+                MatrixA.addView(edit);
                 edit= new EditText(this);
             }
-            MatrixA.addView(row);
-            row= new TableRow(this);
-        }
-        MatrixA = findViewById(R.id.VectorB);
-        edit= new EditText(this);
-        for(int i = 0;i<3;i++){
-            edit.setTextColor(Color.BLACK);
-            edit.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
-            edit.setText("0");
-            edit.setTextSize(10);
-            MatrixA.addView(edit);
+            MatrixA = findViewById(R.id.VectorXo);
             edit= new EditText(this);
+            for(int i = 0;i<3;i++){
+                edit.setTextColor(Color.BLACK);
+                edit.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
+                edit.setText("0");
+                edit.setTextSize(10);
+                MatrixA.addView(edit);
+                edit= new EditText(this);
+            }
+            MatrixA=findViewById(R.id.VectorX);
+            TextView view = new TextView(this);
+            for(int i = 0;i<3;i++){
+                view.setTextColor(Color.WHITE);
+                view.setTextSize(10);
+                MatrixA.addView(view);
+                view= new TextView(this);
+            }
         }
-        MatrixA = findViewById(R.id.VectorXo);
-        edit= new EditText(this);
-        for(int i = 0;i<3;i++){
-            edit.setTextColor(Color.BLACK);
-            edit.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
-            edit.setText("0");
-            edit.setTextSize(10);
-            MatrixA.addView(edit);
-            edit= new EditText(this);
-        }
-        MatrixA=findViewById(R.id.VectorX);
-        TextView view = new TextView(this);
-        for(int i = 0;i<3;i++){
-            view.setTextColor(Color.WHITE);
-            view.setTextSize(10);
-            MatrixA.addView(view);
-            view= new TextView(this);
-        }
-    }
     public void addRow(View view){
         MatrixA = findViewById(R.id.VectorB);
         ViewGroup.LayoutParams params = MatrixA.getLayoutParams();
@@ -135,6 +138,7 @@ public class Iterativos extends Activity {
             row = (TableRow) MatrixA.getChildAt(x);
             edit= new EditText(this);
             edit.setTextColor(Color.BLACK);
+            edit.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
             edit.setText("0");
             edit.setTextSize(10);
             row.addView(edit);
@@ -252,9 +256,15 @@ public class Iterativos extends Activity {
         double[] x1 = new double[x0.length];
         imprimir(contador,x0,dispercion);
         iteracioneslist.add(String.valueOf(contador));
-        ErrorList.add(String.valueOf(dispercion));
+        ErrorList.add("----");
+        matrizXsolucion=new String[nitter][x0.length];
         while(dispercion > tol && contador < nitter){
             x1=calcularNuevoSeidel2(x0,A,b,w);
+            for(int i=0;i<x1.length;i++){
+                if(String.valueOf(x1[i])!="null") {
+                    matrizXsolucion[contador][i] = String.valueOf(x1[i]);
+                }
+            }
             dispercion=norma2(x0,x1);
             x0 = x1;
             contador+=1;
@@ -289,17 +299,19 @@ public class Iterativos extends Activity {
 
     private double[] jacobiRelajado(double tol,int nitter,double [] x0,double[][] A, double [] b,double w){
         int contador = 0;
-        double[] nodio= new double[n];
+        double[] nodio= {1,1,1,1,1,1,1,1,1,1};
         double dispercion=tol+1;
         double[] x1 = new double[x0.length];
         imprimir(contador,x0,dispercion);
         matrizXsolucion = new String[nitter][x0.length];
         iteracioneslist.add(String.valueOf(contador));
-        ErrorList.add(String.valueOf(dispercion));
+        ErrorList.add("-----");
         while(dispercion > tol && contador < nitter){
             x1=calcularNuevoJacobi2(x0,A,b,w);
             for(int i=0;i<x1.length;i++){
-                matrizXsolucion[contador][i]=String.valueOf(x1[i]);
+                if(String.valueOf(x1[i])!="null") {
+                    matrizXsolucion[contador][i] = String.valueOf(x1[i]);
+                }
             }
             dispercion=norma2(x0,x1);
             x0=x1;
@@ -307,6 +319,7 @@ public class Iterativos extends Activity {
             iteracioneslist.add(String.valueOf(contador));
             ErrorList.add(String.valueOf(dispercion));
         }
+        Log.d("DISPERSION ",String.valueOf(dispercion));
         if(dispercion<tol){
             return x0;
         }else{
@@ -385,17 +398,24 @@ public class Iterativos extends Activity {
         double[] nodio = new double[n];
         double dispercion=tol+1;
         double[] x1 = new double[x0.length];
-        imprimir(contador,x0,dispercion);
+        //imprimir(contador,x0,dispercion);
+        matrizXsolucion = new String[nitter][x0.length];
         iteracioneslist.add(String.valueOf(contador));
-        ErrorList.add(String.valueOf(dispercion));
+        ErrorList.add("-----");
         while(dispercion > tol && contador < nitter){
             x1=calcularNuevoSeidel(x0,A,b);
+            for(int i=0;i<x1.length;i++){
+                if(String.valueOf(x1[i])!="null") {
+                    matrizXsolucion[contador][i] = String.valueOf(x1[i]);
+                }
+            }
             dispercion=norma(x0,x1);
             x0=x1;
             contador+=1;
             iteracioneslist.add(String.valueOf(contador));
             ErrorList.add(String.valueOf(dispercion));
         }
+
         if(dispercion<tol){
             return x1;
         }else{
@@ -427,9 +447,15 @@ public class Iterativos extends Activity {
         double[] x1 = new double[x0.length];
         imprimir(contador,x0,dispercion);
         iteracioneslist.add(String.valueOf(contador));
-        ErrorList.add(String.valueOf(dispercion));
+        ErrorList.add("----");
+        matrizXsolucion=new String[nitter][x0.length];
         while(dispercion > tol && contador < nitter){
             x1=calcularNuevoJacobi(x0,A,b);
+            for(int i=0;i<x1.length;i++){
+                if(String.valueOf(x1[i])!="null") {
+                    matrizXsolucion[contador][i] = String.valueOf(x1[i]);
+                }
+            }
             dispercion=norma(x0,x1);
             x0=x1;
             contador+=1;
@@ -492,7 +518,7 @@ public class Iterativos extends Activity {
         n = VectorB.getChildCount();
         double [] b = new double [n];
         for(int i=0;i<n;i++) {
-            EditText f = (EditText) VectorB.getChildAt(0);
+            EditText f = (EditText) VectorB.getChildAt(i);
             b[i] = Double.valueOf(f.getText().toString());
         }
         return b;
@@ -502,7 +528,7 @@ public class Iterativos extends Activity {
         n = VectorB.getChildCount();
         double [] Xo = new double [n];
         for(int i=0;i<n;i++) {
-            EditText f = (EditText) VectorB.getChildAt(0);
+            EditText f = (EditText) VectorB.getChildAt(i);
             Xo[i] = Double.valueOf(f.getText().toString());
         }
         return Xo;
