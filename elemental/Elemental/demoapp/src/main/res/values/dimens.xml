@@ -14,4 +14,14 @@
 
     <dimen name="sample_widget_height">72dp</dimen>
     <dimen name="sample_widget_width">294dp</dimen>
+    <dimen name="Button_Size">25dp</dimen>
+    <dimen name="Matrix_Size">90dp</dimen>
+    <dimen name="A_Size_width">142dp</dimen>
+    <dimen name="A_Size_height">140dp</dimen>
+    <dimen name="A_X">33dp</dimen>
+    <dimen name="A_Y">285dp</dimen>
+
+    <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html -->
+    <dimen name="navigation_drawer_width">240dp</dimen>
 </resources>

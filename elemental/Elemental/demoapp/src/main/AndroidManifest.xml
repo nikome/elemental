@@ -94,8 +94,38 @@
             android:name=".GraphActivity"
             android:label="@string/title_activity_graph" />
         <activity
+<<<<<<< HEAD
             android:name=".MetodosInterpolacionActivity"
             android:label="@string/title_activity_metodos_interpolacion"></activity>
+=======
+            android:name=".TablaIterativos"
+            android:label="@string/title_activity_graph" />
+        <activity
+            android:name=".matrix2"
+            android:label="@string/title_activity_matrix2" />
+        <activity android:name=".Iterativos" />
+        <activity
+            android:name=".resultado_matrices"
+            android:label="@string/title_activity_resultado_matrices" />
+        <activity
+            android:name=".resultado_matrices_LU"
+            android:label="@string/title_activity_resultado_matrices__lu" />
+        <activity
+            android:name=".NewtonDividido2Activity"
+            android:label="@string/title_activity_newton_dividido2" />
+        <activity
+            android:name=".BewtonDivididoTableActivity"
+            android:label="@string/title_activity_bewton_dividido_table" />
+        <activity
+            android:name=".LagrangeActivity"
+            android:label="@string/title_activity_lagrange" />
+        <activity
+            android:name=".LagrangeTableActivity"
+            android:label="@string/title_activity_lagrange_table" />
+        <activity
+            android:name=".InterpolacionMetodosActivity"
+            android:label="@string/title_activity_interpolacion_metodos"></activity>
+>>>>>>> 2165ea9f6d759329cede7443a8a3edf0d39e77dc
     </application>
 
 </manifest>

@@ -42,14 +42,25 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main);
 
 
-        // f(x) plot
-        Button fxPlotExampleButton = (Button) findViewById(R.id.fxPlotExample);
-        fxPlotExampleButton.setOnClickListener(new View.OnClickListener() {
+        Button grafica = (Button) findViewById(R.id.fxPlotExample);
+        grafica.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, GraphActivity.class));
+                Intent intent = new Intent(MainActivity.this, GraphActivity.class);
+                intent.putExtra("funcion","");
+                startActivity(intent);
             }
         });
+
+
+        Button Interpolacion = (Button) findViewById(R.id.Interpolacion);
+        Interpolacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, InterpolacionMetodosActivity.class));
+            }
+        });
+
 
         Button metodoP = (Button) findViewById(R.id.metodo1);
         metodoP.setOnClickListener(new View.OnClickListener() {
@@ -58,5 +69,13 @@ public class MainActivity extends Activity {
                 startActivity(new Intent(MainActivity.this, ecuacionesunavariableActivity.class));
             }
         });
+        Button metodoL = (Button) findViewById(R.id.button2);
+        metodoL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, matrix2.class));
+            }
+        });
+
     }
 }
