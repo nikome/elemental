@@ -92,7 +92,10 @@
             android:label="@string/title_activity_multiple_root_table2" />
         <activity
             android:name=".GraphActivity"
-            android:label="@string/title_activity_graph"></activity>
+            android:label="@string/title_activity_graph" />
+        <activity
+            android:name=".MetodosInterpolacionActivity"
+            android:label="@string/title_activity_metodos_interpolacion"></activity>
     </application>
 
 </manifest>
