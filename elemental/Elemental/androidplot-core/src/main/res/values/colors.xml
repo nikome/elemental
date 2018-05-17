@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="legacy_primary">#b9cedf</color>
+    <color name="legacy_primary_dark">#4588cb</color>
+    <color name="accent_material_light">#4e84bd</color>
+</resources>
