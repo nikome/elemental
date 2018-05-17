@@ -24,10 +24,11 @@
         android:name=".DemoApplication"
         android:icon="@drawable/ic_launcher"
         android:label="Androidplot API DemoApp"
-        android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">
+        android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:theme="@style/Secundario">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,10 +51,13 @@
                 android:resource="@xml/demo_app_widget_provider_info" />
         </receiver>
 
-        <activity android:name=".metodobiseccionActivity" />
+        <activity
+            android:name=".metodobiseccionActivity"
+            android:theme="@style/Secundario" />
         <activity
             android:name=".ecuacionesunavariableActivity"
-            android:label="@string/title_activity_ecuacionesunavariable" />
+            android:label="@string/title_activity_ecuacionesunavariable"
+            android:theme="@style/Secundario" />
         <activity
             android:name=".TablaBiseccionActivity"
             android:label="@string/title_activity_tabla_biseccion" />
@@ -65,10 +69,12 @@
             android:label="@string/title_activity_puntofijo" />
         <activity
             android:name=".BusquedasIncrementalesActivity"
-            android:label="@string/title_activity_busquedas_incrementales" />
+            android:label="@string/title_activity_busquedas_incrementales"
+            android:theme="@style/Theme.proyecto" />
         <activity
             android:name=".MetodoIncrementalTablaActivity"
-            android:label="@string/title_activity_metodo_incremental_tabla" />
+            android:label="@string/title_activity_metodo_incremental_tabla"
+            android:theme="@style/Theme.proyecto" />
         <activity
             android:name=".PuntoFijoTableActivity"
             android:label="@string/title_activity_punto_fijo_table" />
@@ -117,7 +123,19 @@
             android:label="@string/title_activity_lagrange_table" />
         <activity
             android:name=".InterpolacionMetodosActivity"
-            android:label="@string/title_activity_interpolacion_metodos"></activity>
+            android:label="@string/title_activity_interpolacion_metodos" />
+        <activity
+            android:name=".TrazadorSimpleActivity"
+            android:label="@string/title_activity_trazador_simple" />
+        <activity
+            android:name=".SplineTableActivity"
+            android:label="@string/title_activity_spline_table" />
+        <activity
+            android:name=".CuadraticoActivity"
+            android:label="@string/title_activity_cuadratico" />
+        <activity
+            android:name=".CubicoActivity"
+            android:label="@string/title_activity_cubico"></activity>
     </application>
 
 </manifest>

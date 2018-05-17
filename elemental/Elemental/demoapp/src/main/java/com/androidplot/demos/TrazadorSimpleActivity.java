@@ -12,24 +12,19 @@ import android.widget.TableRow;
 
 import java.util.ArrayList;
 
-public class LagrangeActivity extends Activity {
+public class TrazadorSimpleActivity extends Activity {
     private EditText points;
-    private EditText valor;
-    private double result;
-    private String val;
     private ArrayList<Double> puntosListx = new ArrayList();
     private ArrayList<Double> puntosListy = new ArrayList();
     private ArrayList<String> pResultados = new ArrayList();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lagrange);
+        setContentView(R.layout.activity_trazador_simple);
         points = (EditText) findViewById(R.id.points);
-        valor = (EditText) findViewById(R.id.ValueX);
     }
-
-    public void ingresoPointLagrange(View view) {
-        TableLayout table = (TableLayout) findViewById(R.id.TablelayoutLagrangePoints);
+    public void ingresoPointSimple(View view) {
+        TableLayout table = (TableLayout) findViewById(R.id.TablelayoutSimple);
         String n = points.getText().toString();
 
         if (table.getChildCount() > 0) {
@@ -49,8 +44,8 @@ public class LagrangeActivity extends Activity {
             }
         }
     }
-    public void CalculateLagrange(View view) {
-        TableLayout table = (TableLayout) findViewById(R.id.TablelayoutLagrangePoints);
+    public void CalculateSimple(View view) {
+        TableLayout table = (TableLayout) findViewById(R.id.TablelayoutSimple);
         for (int i = 0; i < table.getChildCount(); i++) {
             TableRow row1= (TableRow)table.getChildAt(i);
             EditText xpoint=(EditText ) row1.getChildAt(0);
@@ -66,39 +61,33 @@ public class LagrangeActivity extends Activity {
             x[i] = puntosListx.get(i);
             y[i] = puntosListy.get(i);
         }
-        val = valor.getText().toString();
-        interpolacionLagrange(x.length, Double.parseDouble(val), x, y);
+        trazadorSimple(x.length, x, y);
     }
 
-    public  void interpolacionLagrange(int nroPuntos, double valor, double[] x, double[] y){
+    public  void trazadorSimple(int nroPuntos, double[] xi, double[] fi){
         pResultados.clear();
-        result = 0;
-        String pol = "P(x): ";
-        for(int k = 0; k<nroPuntos;k++){
-            double productoria = 1;
-            String termino = "";
-            for(int i = 0; i < nroPuntos ; i++){
-                if(i!=k){
-                    productoria = productoria * (valor-x[i])/(x[k]-x[i]);
-                    termino = termino + ("[(x-"+x[i]+")/("+x[k]+"-"+x[i]+")]");
-                }
-            }
-            if(k==0) {
-                pol = "P(x): "+(y[k] > 0 ? "+" : "") + y[k] + "*" + termino ;
-                pResultados.add(pol);
-            }else{
-                pol = (y[k] > 0 ? "+" : "") + y[k] + "*" + termino;
-                pResultados.add(pol);
-            }
-            result += productoria * y[k];
+        int n = xi.length;
+        double [][] polinomio = new double [2][n];
+        int tramo = 1;
+        while ((tramo<n)){
+            double m = (fi[tramo]-fi[tramo-1])/(xi[tramo]-xi[tramo-1]);
+            double inicio = fi[tramo-1]-m*xi[tramo-1];
+            polinomio[0][tramo-1] = m;
+            polinomio[1][tramo-1] = inicio;
+            tramo++;
         }
+        for (int i = 1; i < n; ++i){
+            pResultados.add("x = [" + xi[i-1] + "," + xi[i] + "]");
+            pResultados.add(polinomio[0][i-1]+"*x" + "+(" + polinomio[1][i-1]+")");
+        }
+       // for (int i=0;)
+        //Log.d(pResultados[i],"efef");
         puntosListy.clear();
         puntosListx.clear();
-        val="";
-        Intent intent = new Intent(LagrangeActivity.this, LagrangeTableActivity.class);
+        Intent intent = new Intent(TrazadorSimpleActivity.this, SplineTableActivity.class);
         intent.putExtra("listap", pResultados);
-        intent.putExtra("resultado", String.valueOf(result));
         startActivity(intent);
     }
+
 
 }

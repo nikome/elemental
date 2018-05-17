@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ap_white"
     android:minHeight="250dp"
+    android:theme="@style/Theme.proyecto"
     tools:context="com.androidplot.demos.metodobiseccionActivity">
 
     <TextView
         android:id="@+id/textView"
-
         android:layout_width="203dp"
         android:layout_height="38dp"
         android:layout_marginBottom="8dp"

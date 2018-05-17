@@ -27,6 +27,24 @@ public class InterpolacionMetodosActivity extends Activity {
                 startActivity(new Intent(InterpolacionMetodosActivity.this, LagrangeActivity.class));
             }
         });
+
+        Button Simple = (Button) findViewById(R.id.Simple);
+        Simple.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(InterpolacionMetodosActivity.this, TrazadorSimpleActivity.class));
+
+            }
+        });
+
+        Button cubico = (Button) findViewById(R.id.Cubico);
+        cubico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(InterpolacionMetodosActivity.this, CubicoActivity.class));
+
+            }
+        });
     }
 
 

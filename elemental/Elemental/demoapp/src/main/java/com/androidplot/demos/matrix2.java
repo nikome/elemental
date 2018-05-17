@@ -396,7 +396,7 @@ public class matrix2 extends Activity {
         return b;
     }
 
-    private double [] sustitucionRegresiva(double [][] A, double [] b){
+    public double [] sustitucionRegresiva(double [][] A, double [] b){
         Ab = escalonar(A,b);
         double [] x = new double [n];
 

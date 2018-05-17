@@ -128,4 +128,9 @@
     <string name="title_activity_lagrange">LagrangeActivity</string>
     <string name="title_activity_lagrange_table">LagrangeTableActivity</string>
     <string name="title_activity_interpolacion_metodos">InterpolacionMetodosActivity</string>
+    <string name="title_activity_trazador_simple">TrazadorSimpleActivity</string>
+    <string name="title_activity_simple_table">SimpleTableActivity</string>
+    <string name="title_activity_spline_table">SplineTableActivity</string>
+    <string name="title_activity_cuadratico">CuadraticoActivity</string>
+    <string name="title_activity_cubico">CubicoActivity</string>
 </resources>
