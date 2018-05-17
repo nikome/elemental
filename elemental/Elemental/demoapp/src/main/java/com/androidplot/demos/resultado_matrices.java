@@ -26,7 +26,7 @@ public class resultado_matrices extends Activity {
             for(int j=0;j<Ab[0].length;j++) {
                 edit.setTextColor(Color.BLACK);
                 edit.setText(String.valueOf(Ab[i][j])+"|");
-                edit.setTextSize(50);
+                edit.setTextSize(15);
                 row.addView(edit);
                 edit= new TextView(this);
             }

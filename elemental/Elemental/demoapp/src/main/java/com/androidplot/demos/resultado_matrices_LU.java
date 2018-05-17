@@ -37,7 +37,7 @@ public class resultado_matrices_LU extends Activity {
             for(int j=0;j<L[0].length;j++) {
                 edit.setTextColor(Color.BLACK);
                 edit.setText(String.valueOf(L[i][j])+"|");
-                edit.setTextSize(50);
+                edit.setTextSize(15);
                 row.addView(edit);
                 edit= new TextView(this);
             }
@@ -56,7 +56,7 @@ public class resultado_matrices_LU extends Activity {
             for(int j=0;j<U[0].length;j++) {
                 edit.setTextColor(Color.BLACK);
                 edit.setText(String.valueOf(U[i][j])+"|");
-                edit.setTextSize(50);
+                edit.setTextSize(15);
                 row.addView(edit);
                 edit= new TextView(this);
             }
