@@ -3,12 +3,14 @@ package com.androidplot.demos;
 
         import android.app.Activity;
         import android.app.AlertDialog;
+        import android.app.Dialog;
         import android.content.DialogInterface;
         import android.content.Intent;
         import android.os.Bundle;
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
+        import android.widget.ImageView;
         import android.widget.Switch;
         import android.widget.TextView;
 
@@ -29,6 +31,7 @@ public class metodobiseccionActivity extends Activity {
     private ArrayList<String> xmList = new ArrayList();
     private ArrayList<String> ErrorList = new ArrayList();
     private ArrayList<String> fxmList = new ArrayList();
+    private Dialog myDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,7 @@ public class metodobiseccionActivity extends Activity {
         superior=(EditText)findViewById(R.id.superior);
         Resultado=(TextView)findViewById(R.id.Resultado);
         aitkenresu=(TextView) findViewById(R.id.AitkenResult);
-
+        myDialog = new Dialog(this);
         Button metodoP = (Button) findViewById(R.id.showTable);
         metodoP.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +66,20 @@ public class metodobiseccionActivity extends Activity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void ShowPopup(View v){
+        TextView txtClose;
+        myDialog.setContentView(R.layout.custompopup);
+        txtClose=(TextView) myDialog.findViewById(R.id.close);
+        ImageView image = (ImageView) myDialog.findViewById(R.id.funcion);
+        txtClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.show();
     }
     public void Calcular(View view) {
         iteraciones.clear();

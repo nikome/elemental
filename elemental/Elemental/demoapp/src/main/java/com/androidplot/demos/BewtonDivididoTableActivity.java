@@ -23,7 +23,16 @@ public class BewtonDivididoTableActivity extends Activity {
     }
 
     public void tabla(ArrayList<String> pCof,String result,ArrayList<String> matrizResult) {
-        TableLayout table = findViewById(R.id.TableLayoutNewtonDiv);
+        TableLayout table = findViewById(R.id.TableLayoutNewtonDiv2);
+        TableLayout table2 = findViewById(R.id.TableLayoutNewtonDiv);
+        TableRow rowresmatriz = new TableRow(this);
+        for(int i=0;i<matrizResult.size();i++){
+            TextView viewresmatriz = new TextView(this);
+            viewresmatriz.setText(matrizResult.get(i));
+            viewresmatriz.setTextColor(Color.BLACK);
+            rowresmatriz.addView(viewresmatriz);
+        }
+         table.addView(rowresmatriz);
         for (int i = 0; i < pCof.size() + 1; i++) {
             TableRow row = new TableRow(this);
             TextView view1 = new TextView(this);
@@ -32,13 +41,13 @@ public class BewtonDivididoTableActivity extends Activity {
                 view1.setText("    " + "Answer");
                 view1.setTextColor(Color.BLACK);
                 row.addView(view1);
-                table.addView(row, i);
+                table2.addView(row);
             } else {
 
                 view1.setText(pCof.get(i - 1));
                 view1.setTextColor(Color.BLACK);
                 row.addView(view1);
-                table.addView(row, i);
+                table2.addView(row);
             }
 
         }
@@ -47,19 +56,9 @@ public class BewtonDivididoTableActivity extends Activity {
         viewres.setText("p(x)="+result);
         viewres.setTextColor(Color.BLACK);
         rowres.addView(viewres);
-        table.addView(rowres);
+        table2.addView(rowres);
 
-        TableRow rowresmatriz = new TableRow(this);
-        for(int i=0;i<matrizResult.size();i++){
-            TextView viewresmatriz = new TextView(this);
-            viewresmatriz.setText(matrizResult.get(i));
-            viewresmatriz.setTextColor(Color.BLACK);
-              rowresmatriz.addView(viewresmatriz);
-            Log.d("sef","srg");
-        }
-        table.addView(rowresmatriz);
-
-    }
+ }
 
 
 }

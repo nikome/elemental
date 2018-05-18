@@ -121,29 +121,22 @@ public class NewtonDividido2Activity extends Activity {
 
             }
         }
-        float[][] tablaResult = new float[nroPuntos][nroPuntos];
-        for (int i = 0; i < tabla.length; i++) {
-            for (int j = 0; j < tabla.length; j++) {
-                tablaResult[i][j] = (float) tabla[i][j];
-
-            }
-        }
         String resultado;
         resultado = "Xi" + "\n";
         for (int j = 0; j < tabla.length; j++) {
-            resultado += tablaResult[j][0] + "\n";
+            resultado += tabla[j][0] + "\n";
         }
         tablaResultados.add(resultado);
         resultado = "";
         for (int i = 0; i < tabla.length; i++) {
-            resultado = "f" + (i) + "[]" + "   \n";
+            resultado = "f" + (i) + "[]" + " \n";
             for (int j = 0; j < tabla.length; j++) {
-                resultado += tablaResult[j][i] + "   \n";
+                resultado += tabla[j][i] + " \n";
             }
             tablaResultados.add(resultado);
             resultado = "";
         }
-
+        Log.d("sef",String.valueOf(tablaResultados.size()));
         String pol = "";
         String temp = "";
         result = tabla[0][0];
