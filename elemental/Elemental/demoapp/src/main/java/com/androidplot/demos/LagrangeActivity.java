@@ -1,5 +1,7 @@
 package com.androidplot.demos;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -29,6 +31,16 @@ public class LagrangeActivity extends Activity {
     }
 
     public void ingresoPointLagrange(View view) {
+        AlertDialog alertDialog = new AlertDialog.Builder(LagrangeActivity.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        try {
         TableLayout table = (TableLayout) findViewById(R.id.TablelayoutLagrangePoints);
         String n = points.getText().toString();
 
@@ -48,8 +60,21 @@ public class LagrangeActivity extends Activity {
                 table.addView(row);
             }
         }
+        } catch (Exception e) {
+            alertDialog.show();
+        }
     }
     public void CalculateLagrange(View view) {
+        AlertDialog alertDialog = new AlertDialog.Builder(LagrangeActivity.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        try {
         TableLayout table = (TableLayout) findViewById(R.id.TablelayoutLagrangePoints);
         for (int i = 0; i < table.getChildCount(); i++) {
             TableRow row1= (TableRow)table.getChildAt(i);
@@ -68,6 +93,9 @@ public class LagrangeActivity extends Activity {
         }
         val = valor.getText().toString();
         interpolacionLagrange(x.length, Double.parseDouble(val), x, y);
+    } catch (Exception e) {
+        alertDialog.show();
+    }
     }
 
     public  void interpolacionLagrange(int nroPuntos, double valor, double[] x, double[] y){

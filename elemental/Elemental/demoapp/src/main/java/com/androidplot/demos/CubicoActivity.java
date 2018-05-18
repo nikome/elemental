@@ -1,5 +1,7 @@
 package com.androidplot.demos;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -25,6 +27,16 @@ public class CubicoActivity extends Activity {
     }
 
     public void ingresoPointCubico(View view) {
+        AlertDialog alertDialog = new AlertDialog.Builder(CubicoActivity.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        try {
         TableLayout table = (TableLayout) findViewById(R.id.TablelayoutCubico);
         String n = points.getText().toString();
 
@@ -44,8 +56,21 @@ public class CubicoActivity extends Activity {
                 table.addView(row);
             }
         }
+        } catch (Exception e) {
+            alertDialog.show();
+        }
     }
     public void CalculateCubico(View view) {
+        AlertDialog alertDialog = new AlertDialog.Builder(CubicoActivity.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        try {
         TableLayout table = (TableLayout) findViewById(R.id.TablelayoutCubico);
         for (int i = 0; i < table.getChildCount(); i++) {
             TableRow row1= (TableRow)table.getChildAt(i);
@@ -63,6 +88,9 @@ public class CubicoActivity extends Activity {
             y[i] = puntosListy.get(i);
         }
         trazadorCubico(x, y);
+        } catch (Exception e) {
+            alertDialog.show();
+        }
     }
 
     public void trazadorCubico(double [] xi,double []  yi){

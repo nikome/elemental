@@ -1,5 +1,7 @@
 package com.androidplot.demos;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -34,6 +36,16 @@ public class NewtonDividido2Activity extends Activity {
 
 
     public void ingresoPoint(View view) {
+        AlertDialog alertDialog = new AlertDialog.Builder(NewtonDividido2Activity.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        try {
         TableLayout table = (TableLayout) findViewById(R.id.TablelayoutNewtonPoints);
         String n = points.getText().toString();
         if (table.getChildCount() > 0) {
@@ -53,10 +65,22 @@ public class NewtonDividido2Activity extends Activity {
                 table.addView(row);
             }
         }
-
+        } catch (Exception e) {
+            alertDialog.show();
+        }
     }
 
     public void CalculateNewton(View view) {
+        AlertDialog alertDialog = new AlertDialog.Builder(NewtonDividido2Activity.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        try {
         TableLayout table = (TableLayout) findViewById(R.id.TablelayoutNewtonPoints);
         String n = points.getText().toString();
         for (int i = 0; i < table.getChildCount(); i++) {
@@ -77,6 +101,9 @@ public class NewtonDividido2Activity extends Activity {
         val = valor.getText().toString();
 
         interpolacionNewtonDiferenciasDivididas(x.length, Double.parseDouble(val), x, y);
+        } catch (Exception e) {
+            alertDialog.show();
+        }
     }
 
     public void interpolacionNewtonDiferenciasDivididas(int nroPuntos, double valor,
@@ -114,11 +141,9 @@ public class NewtonDividido2Activity extends Activity {
                 resultado += tablaResult[j][i] + "   \n";
             }
             tablaResultados.add(resultado);
-            //aqui porngo el add a la lista de strings
             resultado = "";
         }
 
-        // String StringResult=imprimirMatriz(tablaResult, nroPuntos,x);
         String pol = "";
         String temp = "";
         result = tabla[0][0];
