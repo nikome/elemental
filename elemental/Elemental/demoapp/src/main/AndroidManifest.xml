@@ -27,7 +27,7 @@
         android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">
         <activity
             android:name=".MainActivity"
-            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,60 +50,76 @@
         </receiver>
 
         <activity
-            android:name=".metodobiseccionActivity" />
+            android:name=".metodobiseccionActivity"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
         <activity
-            android:name=".ecuacionesunavariableActivity" />
+            android:name=".ecuacionesunavariableActivity"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
         <activity
             android:name=".TablaBiseccionActivity" />
         <activity
-            android:name=".ReglaFalsaActivity" />
+            android:name=".ReglaFalsaActivity"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
         <activity
-            android:name=".PuntofijoActivity" />
+            android:name=".PuntofijoActivity"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
         <activity
-            android:name=".BusquedasIncrementalesActivity" />
+            android:name=".BusquedasIncrementalesActivity"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
         <activity
             android:name=".MetodoIncrementalTablaActivity" />
         <activity
             android:name=".PuntoFijoTableActivity" />
         <activity
-            android:name=".NewtonActivity" />
+            android:name=".NewtonActivity"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
         <activity
             android:name=".NewtonTableActivity" />
         <activity
-            android:name=".SecantMethodActivity" />
+            android:name=".SecantMethodActivity"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
         <activity
             android:name=".SecantTableActivity" />
         <activity
-            android:name=".MultipleRootActivity" />
+            android:name=".MultipleRootActivity"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
         <activity
             android:name=".MultipleRootTable2Activity" />
         <activity
             android:name=".GraphActivity" />
         <activity
-            android:name=".matrix2" />
-        <activity android:name=".Iterativos" />
+            android:name=".matrix2"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
+        <activity android:name=".Iterativos"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
         <activity
             android:name=".resultado_matrices" />
         <activity
             android:name=".resultado_matrices_LU" />
         <activity
-            android:name=".NewtonDividido2Activity" />
+            android:name=".NewtonDividido2Activity"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
         <activity
             android:name=".BewtonDivididoTableActivity" />
         <activity
-            android:name=".LagrangeActivity" />
+            android:name=".LagrangeActivity"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
         <activity
             android:name=".LagrangeTableActivity" />
         <activity
-            android:name=".InterpolacionMetodosActivity" />
+            android:name=".InterpolacionMetodosActivity"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
         <activity
-            android:name=".TrazadorSimpleActivity" />
+            android:name=".TrazadorSimpleActivity"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
         <activity
             android:name=".SplineTableActivity" />
         <activity
-            android:name=".CuadraticoActivity" />
+            android:name=".CuadraticoActivity"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
         <activity
-            android:name=".CubicoActivity"/>
+            android:name=".CubicoActivity"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
     </application>
 
 </manifest>
