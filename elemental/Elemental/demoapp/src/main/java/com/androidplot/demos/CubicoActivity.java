@@ -1,5 +1,6 @@
 package com.androidplot.demos;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
@@ -65,6 +66,7 @@ public class CubicoActivity extends Activity {
     }
 
     public void trazadorCubico(double [] xi,double []  yi){
+        pResultados.clear();
         int n = xi.length;
 
         double [] h = new double [n-1];
@@ -117,11 +119,19 @@ public class CubicoActivity extends Activity {
             resultado[2][j] = c[j] - b[j]*2*xi[j] + a[j]*3*Math.pow(xi[j],2);
             resultado[3][j] = d[j] - c[j]*xi[j] + b[j]*Math.pow(xi[j],2) - a[j]*Math.pow(xi[j],3);
         }
-        for(int l=0; l<resultado.length;++l){
+
+        for(int i=0; i<resultado.length-1;++i){
+            String res="";
             for(int j=0;j<resultado.length;++j){
-                Log.d(""+resultado[l][j],"mensaje");
+                res+=resultado[j][i]+"x^"+(3-j)+",  ";
             }
+            pResultados.add(res);
         }
+        puntosListy.clear();
+        puntosListx.clear();
+        Intent intent = new Intent(CubicoActivity.this, SplineTableActivity.class);
+        intent.putExtra("listap", pResultados);
+        startActivity(intent);
     }
 
 }

@@ -24,11 +24,10 @@
         android:name=".DemoApplication"
         android:icon="@drawable/ic_launcher"
         android:label="Androidplot API DemoApp"
-        android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Secundario">
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,90 +51,60 @@
         </receiver>
 
         <activity
-            android:name=".metodobiseccionActivity"
-            android:theme="@style/Secundario" />
+            android:name=".metodobiseccionActivity" />
         <activity
-            android:name=".ecuacionesunavariableActivity"
-            android:label="@string/title_activity_ecuacionesunavariable"
-            android:theme="@style/Secundario" />
+            android:name=".ecuacionesunavariableActivity" />
         <activity
-            android:name=".TablaBiseccionActivity"
-            android:label="@string/title_activity_tabla_biseccion" />
+            android:name=".TablaBiseccionActivity" />
         <activity
-            android:name=".ReglaFalsaActivity"
-            android:label="@string/title_activity_regla_falsa" />
+            android:name=".ReglaFalsaActivity" />
         <activity
-            android:name=".PuntofijoActivity"
-            android:label="@string/title_activity_puntofijo" />
+            android:name=".PuntofijoActivity" />
         <activity
-            android:name=".BusquedasIncrementalesActivity"
-            android:label="@string/title_activity_busquedas_incrementales"
-            android:theme="@style/Theme.proyecto" />
+            android:name=".BusquedasIncrementalesActivity" />
         <activity
-            android:name=".MetodoIncrementalTablaActivity"
-            android:label="@string/title_activity_metodo_incremental_tabla"
-            android:theme="@style/Theme.proyecto" />
+            android:name=".MetodoIncrementalTablaActivity" />
         <activity
-            android:name=".PuntoFijoTableActivity"
-            android:label="@string/title_activity_punto_fijo_table" />
+            android:name=".PuntoFijoTableActivity" />
         <activity
-            android:name=".NewtonActivity"
-            android:label="@string/title_activity_newton" />
+            android:name=".NewtonActivity" />
         <activity
-            android:name=".NewtonTableActivity"
-            android:label="@string/title_activity_newton_table" />
+            android:name=".NewtonTableActivity" />
         <activity
-            android:name=".SecantMethodActivity"
-            android:label="@string/title_activity_secant_method" />
+            android:name=".SecantMethodActivity" />
         <activity
-            android:name=".SecantTableActivity"
-            android:label="@string/title_activity_secant_table" />
+            android:name=".SecantTableActivity" />
         <activity
-            android:name=".MultipleRootActivity"
-            android:label="@string/title_activity_multiple_root" />
+            android:name=".MultipleRootActivity" />
         <activity
-            android:name=".MultipleRootTable2Activity"
-            android:label="@string/title_activity_multiple_root_table2" />
+            android:name=".MultipleRootTable2Activity" />
         <activity
-            android:name=".GraphActivity"
-            android:label="@string/title_activity_graph" />
+            android:name=".GraphActivity" />
         <activity
-            android:name=".matrix2"
-            android:label="@string/title_activity_matrix2" />
+            android:name=".matrix2" />
         <activity android:name=".Iterativos" />
         <activity
-            android:name=".resultado_matrices"
-            android:label="@string/title_activity_resultado_matrices" />
+            android:name=".resultado_matrices" />
         <activity
-            android:name=".resultado_matrices_LU"
-            android:label="@string/title_activity_resultado_matrices__lu" />
+            android:name=".resultado_matrices_LU" />
         <activity
-            android:name=".NewtonDividido2Activity"
-            android:label="@string/title_activity_newton_dividido2" />
+            android:name=".NewtonDividido2Activity" />
         <activity
-            android:name=".BewtonDivididoTableActivity"
-            android:label="@string/title_activity_bewton_dividido_table" />
+            android:name=".BewtonDivididoTableActivity" />
         <activity
-            android:name=".LagrangeActivity"
-            android:label="@string/title_activity_lagrange" />
+            android:name=".LagrangeActivity" />
         <activity
-            android:name=".LagrangeTableActivity"
-            android:label="@string/title_activity_lagrange_table" />
+            android:name=".LagrangeTableActivity" />
         <activity
-            android:name=".InterpolacionMetodosActivity"
-            android:label="@string/title_activity_interpolacion_metodos" />
+            android:name=".InterpolacionMetodosActivity" />
         <activity
-            android:name=".TrazadorSimpleActivity"
-            android:label="@string/title_activity_trazador_simple" />
+            android:name=".TrazadorSimpleActivity" />
         <activity
-            android:name=".SplineTableActivity"
-            android:label="@string/title_activity_spline_table" />
+            android:name=".SplineTableActivity" />
         <activity
-            android:name=".CuadraticoActivity"
-            android:label="@string/title_activity_cuadratico" />
+            android:name=".CuadraticoActivity" />
         <activity
-            android:name=".CubicoActivity"
-            android:label="@string/title_activity_cubico"></activity>
+            android:name=".CubicoActivity"/>
     </application>
 
 </manifest>

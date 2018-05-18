@@ -18,10 +18,11 @@ public class BewtonDivididoTableActivity extends Activity {
         setContentView(R.layout.activity_bewton_dividido_table);
         ArrayList<String> pCof= getIntent().getExtras().getStringArrayList("listap");
         String res= getIntent().getExtras().getString("resultado");
-        tabla(pCof,res);
+        ArrayList<String> matrizResult=getIntent().getExtras().getStringArrayList("matriz");
+        tabla(pCof,res,matrizResult);
     }
 
-    public void tabla(ArrayList<String> pCof,String result) {
+    public void tabla(ArrayList<String> pCof,String result,ArrayList<String> matrizResult) {
         TableLayout table = findViewById(R.id.TableLayoutNewtonDiv);
         for (int i = 0; i < pCof.size() + 1; i++) {
             TableRow row = new TableRow(this);
@@ -47,6 +48,16 @@ public class BewtonDivididoTableActivity extends Activity {
         viewres.setTextColor(Color.BLACK);
         rowres.addView(viewres);
         table.addView(rowres);
+
+        TableRow rowresmatriz = new TableRow(this);
+        for(int i=0;i<matrizResult.size();i++){
+            TextView viewresmatriz = new TextView(this);
+            viewresmatriz.setText(matrizResult.get(i));
+            viewresmatriz.setTextColor(Color.BLACK);
+              rowresmatriz.addView(viewresmatriz);
+            Log.d("sef","srg");
+        }
+        table.addView(rowresmatriz);
 
     }
 
