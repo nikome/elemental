@@ -22,8 +22,8 @@
 
     <application
         android:name=".DemoApplication"
-        android:icon="@drawable/ic_launcher"
-        android:label="Androidplot API DemoApp"
+        android:icon="@drawable/letiub"
+        android:label="Elemental"
         android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">
         <activity
             android:name=".MainActivity"
