@@ -2,12 +2,14 @@ package com.androidplot.demos;
 
         import android.app.Activity;
         import android.app.AlertDialog;
+        import android.app.Dialog;
         import android.content.DialogInterface;
         import android.content.Intent;
         import android.os.Bundle;
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
+        import android.widget.ImageView;
         import android.widget.TextView;
 
         import java.math.BigDecimal;
@@ -25,6 +27,7 @@ public class ReglaFalsaActivity extends Activity {
     private ArrayList<String> xmList = new ArrayList();
     private ArrayList<String> ErrorList = new ArrayList();
     private ArrayList<String> fxmList = new ArrayList();
+    private Dialog myDialog;
 
 
     @Override
@@ -37,6 +40,7 @@ public class ReglaFalsaActivity extends Activity {
         inferior=(EditText)findViewById(R.id.inferior);
         superior=(EditText)findViewById(R.id.superior);
         Resultado=(TextView)findViewById(R.id.Resultado);
+        myDialog = new Dialog(this);
 
         Button metodoP = (Button) findViewById(R.id.showTable);
         metodoP.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +68,19 @@ public class ReglaFalsaActivity extends Activity {
     }
 
 
-
+    public void ShowPopup(View v){
+        TextView txtClose;
+        myDialog.setContentView(R.layout.regla_falsa_ayuda);
+        txtClose=(TextView) myDialog.findViewById(R.id.close);
+        ImageView image = (ImageView) myDialog.findViewById(R.id.funcion);
+        txtClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.show();
+    }
     public static double recta(double a, double b, double fa, double fb) {
         return a - ((fa * (b - a)) / (fb - fa));
     }
