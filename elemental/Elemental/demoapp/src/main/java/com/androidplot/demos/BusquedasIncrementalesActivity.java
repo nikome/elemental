@@ -2,12 +2,14 @@ package com.androidplot.demos;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
@@ -22,6 +24,7 @@ public class BusquedasIncrementalesActivity extends Activity {
     ArrayList<String> iteracionesList = new ArrayList();
     ArrayList<String> xnList = new ArrayList();
     ArrayList<String> fxList = new ArrayList();
+    private Dialog myDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +35,7 @@ public class BusquedasIncrementalesActivity extends Activity {
         xinicial = (EditText) findViewById(R.id.xinicialinc);
         delta = (EditText) findViewById(R.id.deltainc);
         Resultado = (TextView) findViewById(R.id.Resultado);
-
+        myDialog = new Dialog(this);
         Button metodoP = (Button) findViewById(R.id.showTable);
         metodoP.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +61,19 @@ public class BusquedasIncrementalesActivity extends Activity {
             }
         });
     }
-
+    public void ShowPopupincremental(View v) {
+        TextView txtClose;
+        myDialog.setContentView(R.layout.incremental_ayuda);
+        txtClose = (TextView) myDialog.findViewById(R.id.close);
+        ImageView image = (ImageView) myDialog.findViewById(R.id.funcion);
+        txtClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.show();
+    }
     public void Calcular(View view) {
         String f = funcion.getText().toString();
         String xini = xinicial.getText().toString();
