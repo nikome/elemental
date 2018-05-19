@@ -1,5 +1,6 @@
 package com.androidplot.demos;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -32,6 +34,7 @@ public class SecantMethodActivity extends Activity {
     ArrayList<String> xnList = new ArrayList();
     ArrayList<String> fxList = new ArrayList();
     ArrayList<String> ErrorList = new ArrayList();
+    private Dialog myDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +48,7 @@ public class SecantMethodActivity extends Activity {
         ResultadoMuller=(TextView) findViewById(R.id.ResultMuller);
         Button metodoP = (Button) findViewById(R.id.showTable);
         relativeAbsolute=(Switch) findViewById(R.id.switchARS);
+        myDialog = new Dialog(this);
         metodoP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,6 +70,20 @@ public class SecantMethodActivity extends Activity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void ShowPopupSecante(View v){
+        TextView txtClose;
+        myDialog.setContentView(R.layout.secante_ayuda);
+        txtClose=(TextView) myDialog.findViewById(R.id.close);
+        ImageView image = (ImageView) myDialog.findViewById(R.id.funcion);
+        txtClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.show();
     }
     public void Calcular(View view) {
         iteracionesList.clear();

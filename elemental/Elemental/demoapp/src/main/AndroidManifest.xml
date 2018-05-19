@@ -24,7 +24,7 @@
         android:name=".DemoApplication"
         android:icon="@drawable/letiub"
         android:label="Elemental"
-        android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">
+        android:theme="@style/Secundario">
         <activity
             android:name=".MainActivity"
             >
@@ -86,6 +86,7 @@
         <activity
             android:name=".MultipleRootTable2Activity" />
         <activity
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
             android:name=".GraphActivity" />
         <activity
             android:name=".matrix2"

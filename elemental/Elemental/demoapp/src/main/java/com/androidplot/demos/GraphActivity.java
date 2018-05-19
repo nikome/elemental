@@ -1,5 +1,6 @@
 package com.androidplot.demos;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
@@ -13,6 +14,8 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import android.app.Activity;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -22,12 +25,14 @@ public class GraphActivity extends Activity {
     private EditText limitA;
     private EditText limitB;
     private EditText funcion;
+    private Dialog myDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
         limitA=(EditText) findViewById(R.id.LimitGA);
         limitB=(EditText) findViewById(R.id.LimitGB);
+        myDialog = new Dialog(this);
         funcion=(EditText)findViewById(R.id.funcion);
         funcion.setText(getIntent().getExtras().getString("funcion"));
         Button fxPlot = (Button) findViewById(R.id.Graficar);
@@ -87,4 +92,17 @@ public class GraphActivity extends Activity {
 
 
 }
+    public void ShowPopupgraficar(View v){
+        TextView txtClose;
+        myDialog.setContentView(R.layout.graficadora_ayuda);
+        txtClose=(TextView) myDialog.findViewById(R.id.close);
+        ImageView image = (ImageView) myDialog.findViewById(R.id.funcion);
+        txtClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.show();
+    }
 }

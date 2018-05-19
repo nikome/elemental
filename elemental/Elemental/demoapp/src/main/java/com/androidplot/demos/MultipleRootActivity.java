@@ -1,5 +1,6 @@
 package com.androidplot.demos;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import java.math.BigDecimal;
@@ -31,6 +33,7 @@ public class MultipleRootActivity extends Activity {
     ArrayList<String> fxpList = new ArrayList();
     ArrayList<String> fxppList = new ArrayList();
     ArrayList<String> ErrorList = new ArrayList();
+    private Dialog myDialog;
 
 
     @Override
@@ -46,6 +49,7 @@ public class MultipleRootActivity extends Activity {
         SDerivada = (EditText) findViewById(R.id.SegundaDer);
         Resultado = (TextView) findViewById(R.id.Resultado);
         Button metodoP = (Button) findViewById(R.id.showTable);
+        myDialog = new Dialog(this);
         metodoP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +73,19 @@ public class MultipleRootActivity extends Activity {
                 startActivity(intent);
             }
         });
+    }
+    public void ShowPopuproots(View v){
+        TextView txtClose;
+        myDialog.setContentView(R.layout.raices_multiples_ayuda);
+        txtClose=(TextView) myDialog.findViewById(R.id.close);
+        ImageView image = (ImageView) myDialog.findViewById(R.id.funcion);
+        txtClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.show();
     }
 
     public void Calcular(View view) {
