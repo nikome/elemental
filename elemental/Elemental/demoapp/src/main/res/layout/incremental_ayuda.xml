@@ -21,46 +21,140 @@
         android:textColor="@color/ap_black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="9dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
+        android:layout_width="324dp"
         android:layout_height="0dp"
-
         android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginStart="11dp"
         android:layout_marginTop="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/close"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        tools:ignore="ExtraText">
 
         <ImageView
-            android:layout_width="290dp"
-            android:layout_height="120dp"
+            android:layout_width="319dp"
+            android:layout_height="90dp"
             android:layout_gravity="center"
             android:src="@drawable/signo" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:text="Para usar este metodo debes tener encuenta varias recomendaciones, recuerda que la w no puede ser mayor a 1. Y la funcion debera se continua siempre en todo el intervalo. Miremos la grafica: "
-            android:textColor="@color/ap_black"
-            android:textStyle="bold" />
 
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/funcion"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/funcion" />
+        <ScrollView
+            android:id="@+id/Scroll"
+            android:layout_width="310dp"
+            android:layout_height="260dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:foregroundGravity="center"
+                    android:text="In order for you to have the best experience with Elementary, we give you to keep in mind the following recommendations so that errors don't occur:\n - The first thing we recommend is the way to put the equations, looking for you to understand better we present 2 examples in them we include powers, rootsand logarithms.\n In the first form we show you how it would be written normally and then how to write it in the application"
+                    android:textColor="@color/ap_black"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:foregroundGravity="center"
+                    android:src="@drawable/funcionapp" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:foregroundGravity="center"
+                    android:src="@drawable/function"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:foregroundGravity="center"
+                    android:text="The trigonometric functions are written in a normal way, for example: sin (x), cos (x), tan (x). \n -The second recommendation is for the entry of tolerance. We give you an example:"
+                    android:textColor="@color/ap_black"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:foregroundGravity="center"
+                    android:src="@drawable/tolnormal" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:foregroundGravity="center"
+                    android:src="@drawable/tolera"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:foregroundGravity="center"
+                    android:text="When the entry is not valid you should check the parentheses or brackets that you found in the entry, this is a very common error. \n Also remember that in the case of multiplying x * and you should explicitly place the sign '*', if you put x and x and it will not be valid.
+In some methods you have the possibility to choose between relative error and absolute error, we remind you of the formulas of each error and in which moment each one is activated."
+                    android:textColor="@color/ap_black"
+                    android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:foregroundGravity="center"
+                    android:src="@drawable/errores"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:foregroundGravity="center"
+                    android:text="Finally if you have doubts about theoretical concepts or need examples of the methods we invite you to go to our page: https://sites.google.com/site/numericalanalysisinpython/"
+                    android:textStyle="bold"
+                    android:textColor="@color/ap_black"/>
+
+
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
-
 
 </android.support.constraint.ConstraintLayout>
