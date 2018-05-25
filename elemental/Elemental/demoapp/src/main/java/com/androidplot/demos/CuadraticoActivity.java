@@ -1,6 +1,7 @@
 package com.androidplot.demos;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,8 +9,10 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -18,13 +21,26 @@ public class CuadraticoActivity extends Activity {
     private ArrayList<Double> puntosListx = new ArrayList();
     private ArrayList<Double> puntosListy = new ArrayList();
     private ArrayList<String> pResultados = new ArrayList();
+    private Dialog myDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cuadratico);
         points = (EditText) findViewById(R.id.points);
+        myDialog = new Dialog(this);
     }
-
+    public void ShowPopupCuadratico(View v) {
+        TextView txtClose;
+        myDialog.setContentView(R.layout.ayuda_interpolacion);
+        txtClose = (TextView) myDialog.findViewById(R.id.close);
+        txtClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.show();
+    }
     public void ingresoPointCuadratico(View view) {
         AlertDialog alertDialog = new AlertDialog.Builder(CuadraticoActivity.this).create();
         alertDialog.setTitle("Alert");

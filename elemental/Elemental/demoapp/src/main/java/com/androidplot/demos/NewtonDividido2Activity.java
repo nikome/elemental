@@ -1,6 +1,7 @@
 package com.androidplot.demos;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ public class NewtonDividido2Activity extends Activity {
     private ArrayList<Double> puntosListy = new ArrayList();
     private ArrayList<String> pResultados = new ArrayList();
     private ArrayList<String> tablaResultados = new ArrayList();
+    private Dialog myDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +35,20 @@ public class NewtonDividido2Activity extends Activity {
         setContentView(R.layout.activity_newton_dividido2);
         points = (EditText) findViewById(R.id.Points);
         valor = (EditText) findViewById(R.id.ValueX);
+        myDialog = new Dialog(this);
     }
-
+    public void ShowPopupNewton(View v) {
+        TextView txtClose;
+        myDialog.setContentView(R.layout.ayuda_interpolacion);
+        txtClose = (TextView) myDialog.findViewById(R.id.close);
+        txtClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.show();
+    }
 
     public void ingresoPoint(View view) {
         AlertDialog alertDialog = new AlertDialog.Builder(NewtonDividido2Activity.this).create();

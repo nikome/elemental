@@ -97,8 +97,6 @@
                     android:layout_height="match_parent" />
             </HorizontalScrollView>
         </ScrollView>
-
-
     </LinearLayout>
 
     <EditText
@@ -168,4 +166,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ayudaIterpolation"
+        android:layout_width="61dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="ShowPopupCuadratico"
+        android:text="Help"
+        app:layout_constraintBottom_toTopOf="@+id/ingresoPunto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="Help" />
+
 </android.support.constraint.ConstraintLayout>
