@@ -259,7 +259,7 @@
             android:id="@+id/Tablas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TABLAS"
+            android:text="TABLES"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.461"
