@@ -66,10 +66,10 @@ public class matrix2 extends Activity {
             }
         });
 
-        a();
+        calcularMatriz();
 
     }
-    public void a(){
+    public void calcularMatriz(){
 
         MatrixA =  findViewById(R.id.MatrixAC);
         TableRow row= new TableRow(this);

@@ -75,6 +75,8 @@ public class BusquedasIncrementalesActivity extends Activity {
         myDialog.show();
     }
     public void Calcular(View view) {
+        xnList.clear();
+        fxList.clear();
         String f = funcion.getText().toString();
         String xini = xinicial.getText().toString();
         String delt = delta.getText().toString();
@@ -131,7 +133,7 @@ public class BusquedasIncrementalesActivity extends Activity {
                     String resu = String.valueOf("there is a root between of " + x0Double + " and " + x1);
                     Resultado.setText(resu);
                 } else {
-                    String resu = String.valueOf("Fail");
+                    String resu = String.valueOf("The method failed");
                     Resultado.setText(resu);
                 }
             }

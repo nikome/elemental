@@ -37,6 +37,15 @@ public class InterpolacionMetodosActivity extends Activity {
             }
         });
 
+        Button cuadratico = (Button) findViewById(R.id.Cuadratico);
+        cuadratico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(InterpolacionMetodosActivity.this, CuadraticoActivity.class));
+
+            }
+        });
+
         Button cubico = (Button) findViewById(R.id.Cubico);
         cubico.setOnClickListener(new View.OnClickListener() {
             @Override

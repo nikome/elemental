@@ -20,12 +20,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.136" />
+        app:layout_constraintVertical_bias="0.27" />
 
     <Button
         android:id="@+id/Biseccion"
-        android:layout_width="140dp"
-        android:layout_height="44dp"
+        android:layout_width="113dp"
+        android:layout_height="39dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -33,15 +33,15 @@
         android:text="Bisection"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Busquedas"
-        app:layout_constraintVertical_bias="0.16" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/Puntofijo"
-        android:layout_width="135dp"
-        android:layout_height="45dp"
+        android:layout_width="118dp"
+        android:layout_height="42dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -49,10 +49,10 @@
         android:text="Fixed point"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.922"
+        app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Busquedas"
-        app:layout_constraintVertical_bias="0.16" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/Secante"
@@ -68,7 +68,7 @@
         app:layout_constraintHorizontal_bias="0.034"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Newton"
-        app:layout_constraintVertical_bias="0.551" />
+        app:layout_constraintVertical_bias="0.262" />
 
     <Button
         android:id="@+id/Newton"
@@ -84,7 +84,7 @@
         app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Biseccion"
-        app:layout_constraintVertical_bias="0.278" />
+        app:layout_constraintVertical_bias="0.224" />
 
     <Button
         android:id="@+id/RaicesMultiples"
@@ -97,15 +97,15 @@
         android:text="Multiple roots"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.961"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ReglaFalsa"
-        app:layout_constraintVertical_bias="0.597" />
+        app:layout_constraintVertical_bias="0.29" />
 
     <Button
         android:id="@+id/ReglaFalsa"
-        android:layout_width="144dp"
-        android:layout_height="41dp"
+        android:layout_width="111dp"
+        android:layout_height="43dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -113,9 +113,27 @@
         android:text="False Rule"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.964"
+        app:layout_constraintHorizontal_bias="0.891"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Puntofijo"
-        app:layout_constraintVertical_bias="0.275" />
+        app:layout_constraintVertical_bias="0.215" />
+
+    <TextView
+        android:textStyle="italic"
+        android:gravity="center"
+        android:id="@+id/textView8"
+        android:layout_width="301dp"
+        android:layout_height="79dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Single variable equations"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/Busquedas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.364" />
 
 </android.support.constraint.ConstraintLayout>
