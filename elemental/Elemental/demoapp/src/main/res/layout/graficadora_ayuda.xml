@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="350dp"
     android:layout_height="450dp"
     android:layout_gravity="center"
@@ -23,7 +24,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
-
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -51,7 +51,7 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/close"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
         tools:ignore="ExtraText">
@@ -62,11 +62,11 @@
             android:layout_gravity="center"
             android:src="@drawable/signo" />
 
-
         <ScrollView
             android:id="@+id/Scroll"
             android:layout_width="310dp"
             android:layout_height="260dp">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,50 +78,21 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:foregroundGravity="center"
-                    android:text="In order for you to have the best experience with Elementary, we give you to keep in mind the following recommendations so that errors don't occur:\n - The first thing we recommend is the way to put the equations, looking for you to understand better we present 2 examples in them we include powers, rootsand logarithms.\n In the first form we show you how it would be written normally and then how to write it in the application"
-                    android:textColor="@color/ap_black"
-                    android:textStyle="bold"/>
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:foregroundGravity="center"
-                    android:src="@drawable/funcionapp" />
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:foregroundGravity="center"
-                    android:src="@drawable/function"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:foregroundGravity="center"
-                    android:text="The trigonometric functions are written in a normal way, for example: sin (x), cos (x), tan (x). \n -The second recommendation is for the entry of tolerance. We give you an example:"
+                    android:text="The plotter is a very important part of Elemental, so if you have a problem with it, here we show some examples of how to enter the data so you can look and see if you are doing it in the best way.
+As you can see in the image, our plotter has 3 parameters that are the following:
+limitA: is the starting point on the x axis in which you want the function to begin to be plotted. \ n
+limitB: is the end point on the x axis in which you want to finish graphing the function. \ n
+function: is the function that you want to graph."
                     android:textColor="@color/ap_black"
                     android:textStyle="bold" />
 
                 <ImageView
                     android:layout_width="match_parent"
-
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:foregroundGravity="center"
-                    android:src="@drawable/tolnormal" />
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:foregroundGravity="center"
-                    android:src="@drawable/tolera"/>
+                    android:src="@drawable/graficadora" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -129,32 +100,44 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:foregroundGravity="center"
-                    android:text="When the entry is not valid you should check the parentheses or brackets that you found in the entry, this is a very common error. \n Also remember that in the case of multiplying x * and you should explicitly place the sign '*', if you put x and x and it will not be valid.
-In some methods you have the possibility to choose between relative error and absolute error, we remind you of the formulas of each error and in which moment each one is activated."
+                    android:text="We know that there are different ways to write functions so here we give you some tips so you know how to write them without error."
                     android:textColor="@color/ap_black"
                     android:textStyle="bold" />
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:foregroundGravity="center"
-                    android:src="@drawable/errores"/>
-
+                    android:src="@drawable/tips" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:foregroundGravity="center"
-                    android:text="Finally if you have doubts about theoretical concepts or need examples of the methods we invite you to go to our page: https://sites.google.com/site/numericalanalysisinpython/"
-                    android:textStyle="bold"
-                    android:textColor="@color/ap_black"/>
-
+                    android:text="Trigonometric and euler functions are handled in a normal way.
+We also show you a complete function:"
+                    android:textColor="@color/ap_black"
+                    android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:foregroundGravity="center"
+                    android:src="@drawable/ejemplogradicador" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:foregroundGravity="center"
+                    android:text="If you have doubts about theoretical concepts or need examples of the methods we invite you to go to our page: https://sites.google.com/site/numericalanalysisinpython/"
+                    android:textColor="@color/ap_black"
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </ScrollView>
-
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>
