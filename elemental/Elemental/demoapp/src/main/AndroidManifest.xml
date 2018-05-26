@@ -67,6 +67,9 @@
             android:name=".BusquedasIncrementalesActivity"
             />
         <activity
+            android:name=".TablaIterativos"
+            />
+        <activity
             android:name=".MetodoIncrementalTablaActivity" />
         <activity
             android:name=".PuntoFijoTableActivity" />

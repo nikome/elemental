@@ -18,14 +18,19 @@ public class TablaIterativos extends Activity{
     private String[][] matrizXsolucion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabla_biseccion);
         Bundle extras = getIntent().getExtras();
         matrizXsolucion = (String[][]) extras.getSerializable("MatrizX");
         iteracioneslist = getIntent().getExtras().getStringArrayList("iteraciones");
         ErrorList = getIntent().getExtras().getStringArrayList("Error");
-        int n = matrizXsolucion[0].length;
-        init(iteracioneslist,ErrorList,matrizXsolucion,n);
+        if(matrizXsolucion.length == 0){
+            Log.d("LLEGUE"," ACA");
+        }else {
+            int n = matrizXsolucion[0].length;
+            init(iteracioneslist, ErrorList, matrizXsolucion, n);
+        }
     }
     public void init(ArrayList<String> iteraciones, ArrayList<String> error, String [][] ValoresX,int n) {
         TableLayout table = (TableLayout) findViewById(R.id.TablelayoutBisection);

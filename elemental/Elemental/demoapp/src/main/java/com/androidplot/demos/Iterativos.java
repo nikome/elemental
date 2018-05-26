@@ -34,6 +34,7 @@ public class Iterativos extends Activity {
     public int n;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        matrizXsolucion= new String[n][n];
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iterativos);
         Button metodobiseccion = (Button) findViewById(R.id.Tablas);

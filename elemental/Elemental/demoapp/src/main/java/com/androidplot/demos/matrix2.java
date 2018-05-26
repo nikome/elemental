@@ -31,6 +31,9 @@ public class matrix2 extends Activity {
     public int n;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Ab=new double[n][n];
+        L = new  double[n][n];
+        U= new double[n][n];
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matrix2);
         Button metodobiseccion = (Button) findViewById(R.id.Iterativos);
@@ -40,17 +43,18 @@ public class matrix2 extends Activity {
                 startActivity(new Intent(matrix2.this, Iterativos.class));
             }
         });
-        Button resultadoAB = (Button) findViewById(R.id.MatrixAB);
-        resultadoAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent =new Intent(matrix2.this, resultado_matrices.class);
-                Bundle mBundle = new Bundle();
-                mBundle.putSerializable("ResultadoAB",Ab);
-                intent.putExtra("ResultadoAB",Ab);
-                startActivity(intent);
-            }
-        });
+            Button resultadoAB = (Button) findViewById(R.id.MatrixAB);
+            resultadoAB.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(matrix2.this, resultado_matrices.class);
+                    Bundle mBundle = new Bundle();
+                    mBundle.putSerializable("ResultadoAB", Ab);
+                    intent.putExtra("ResultadoAB", Ab);
+                    startActivity(intent);
+                }
+            });
+
 
         Button resultadoLU = (Button) findViewById(R.id.matrix_LU);
         resultadoLU.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +69,6 @@ public class matrix2 extends Activity {
                 startActivity(intent);
             }
         });
-
         calcularMatriz();
 
     }
