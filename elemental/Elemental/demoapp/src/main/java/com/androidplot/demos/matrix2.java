@@ -1,5 +1,7 @@
 package com.androidplot.demos;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -283,90 +285,135 @@ public class matrix2 extends Activity {
     }
 
     private double[] crout(double[][] A,double[]b){
-        L=matrizDiagonal(0);
-        U=matrizDiagonal(1);
-        for(int k=0;k<n;++k){
-            double suma=0;
-            for(int p=0;p<k;++p){
-                suma+=L[k][p]*U[p][k];
-            }
-            L[k][k]=A[k][k]-suma;
-            for(int i=k+1;i<n;++i){
-                double suma2=0;
-                for(int p=0;p<k;++p){
-                    suma2+=L[i][p]*U[p][k];
+        AlertDialog alertDialog = new AlertDialog.Builder(matrix2.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        double[] x= new double[n];
+        try {
+
+
+            L = matrizDiagonal(0);
+            U = matrizDiagonal(1);
+            for (int k = 0; k < n; ++k) {
+                double suma = 0;
+                for (int p = 0; p < k; ++p) {
+                    suma += L[k][p] * U[p][k];
                 }
-                L[i][k]=(A[i][k]-suma2)/U[k][k];
-            }
-            for(int j=k+1;j<n;++j){
-                double suma3=0;
-                for(int p=0;p<k;++p){
-                    suma3+=L[k][p]*U[p][j];
+                L[k][k] = A[k][k] - suma;
+                for (int i = k + 1; i < n; ++i) {
+                    double suma2 = 0;
+                    for (int p = 0; p < k; ++p) {
+                        suma2 += L[i][p] * U[p][k];
+                    }
+                    L[i][k] = (A[i][k] - suma2) / U[k][k];
                 }
-                U[k][j]=(A[k][j]-suma3)/L[k][k];
+                for (int j = k + 1; j < n; ++j) {
+                    double suma3 = 0;
+                    for (int p = 0; p < k; ++p) {
+                        suma3 += L[k][p] * U[p][j];
+                    }
+                    U[k][j] = (A[k][j] - suma3) / L[k][k];
+                }
             }
+            double[] z = sustitucionProgresiva(L, b);
+            x = sustitucionRegresiva(U, z);
+
+        }catch (Exception e){
+            alertDialog.show();
         }
-        double[] z= sustitucionProgresiva(L, b);
-        double[] x= sustitucionRegresiva(U, z);
         return x;
     }
 
     private double[] doolitle(double[][] A,double[] b){
-        L=matrizDiagonal(1);
-        U=matrizDiagonal(0);
-        for(int k=0;k<n;++k){
-            double suma=0;
-            for(int p=0;p<k;++p){
-                suma+=L[k][p]*U[p][k];
-            }
-            U[k][k]=A[k][k]-suma;
-            for(int i=k+1;i<n;++i){
-                double suma2=0;
-                for(int p=0;p<k;++p){
-                    suma2+=L[i][p]*U[p][k];
+        AlertDialog alertDialog = new AlertDialog.Builder(matrix2.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        double[] x=new double[n];
+        try {
+            L = matrizDiagonal(1);
+            U = matrizDiagonal(0);
+            for (int k = 0; k < n; ++k) {
+                double suma = 0;
+                for (int p = 0; p < k; ++p) {
+                    suma += L[k][p] * U[p][k];
                 }
-                L[i][k]=(A[i][k]-suma2)/U[k][k];
-            }
-            for(int j=k+1;j<n;++j){
-                double suma3=0;
-                for(int p=0;p<k;++p){
-                    suma3+=L[k][p]*U[p][j];
+                U[k][k] = A[k][k] - suma;
+                for (int i = k + 1; i < n; ++i) {
+                    double suma2 = 0;
+                    for (int p = 0; p < k; ++p) {
+                        suma2 += L[i][p] * U[p][k];
+                    }
+                    L[i][k] = (A[i][k] - suma2) / U[k][k];
                 }
-                U[k][j]=(A[k][j]-suma3)/L[k][k];
+                for (int j = k + 1; j < n; ++j) {
+                    double suma3 = 0;
+                    for (int p = 0; p < k; ++p) {
+                        suma3 += L[k][p] * U[p][j];
+                    }
+                    U[k][j] = (A[k][j] - suma3) / L[k][k];
+                }
             }
+            double[] z = sustitucionProgresiva(L, b);
+            x = sustitucionRegresiva(U, z);
+        }catch (Exception e){
+            alertDialog.show();
         }
-        double[] z= sustitucionProgresiva(L, b);
-        double[] x= sustitucionRegresiva(U, z);
         return x;
     }
 
     private double[] cholesky(double[][] A,double[]b){
-        L=matrizDiagonal(1);
-        U=matrizDiagonal(1);
-        for(int k=0;k<n;++k){
-            double suma=0;
-            for(int p=0;p<k;++p){
-                suma+=L[k][p]*U[p][k];
-            }
-            L[k][k]=Math.sqrt(A[k][k]-suma);
-            U[k][k]=L[k][k];
-            for(int i=k+1;i<n;++i){
-                double suma2=0;
-                for(int p=0;p<k;++p){
-                    suma2+=L[i][p]*U[p][k];
+        AlertDialog alertDialog = new AlertDialog.Builder(matrix2.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        double[] x = new double[n];
+        try {
+            L = matrizDiagonal(1);
+            U = matrizDiagonal(1);
+            for (int k = 0; k < n; ++k) {
+                double suma = 0;
+                for (int p = 0; p < k; ++p) {
+                    suma += L[k][p] * U[p][k];
                 }
-                L[i][k]=(A[i][k]-suma2)/U[k][k];
-            }
-            for(int j=k+1;j<n;++j){
-                double suma3=0;
-                for(int p=0;p<k;++p){
-                    suma3+=L[k][p]*U[p][j];
+                L[k][k] = Math.sqrt(A[k][k] - suma);
+                U[k][k] = L[k][k];
+                for (int i = k + 1; i < n; ++i) {
+                    double suma2 = 0;
+                    for (int p = 0; p < k; ++p) {
+                        suma2 += L[i][p] * U[p][k];
+                    }
+                    L[i][k] = (A[i][k] - suma2) / U[k][k];
                 }
-                U[k][j]=(A[k][j]-suma3)/L[k][k];
+                for (int j = k + 1; j < n; ++j) {
+                    double suma3 = 0;
+                    for (int p = 0; p < k; ++p) {
+                        suma3 += L[k][p] * U[p][j];
+                    }
+                    U[k][j] = (A[k][j] - suma3) / L[k][k];
+                }
             }
+            double[] z = sustitucionProgresiva(L, b);
+            x = sustitucionRegresiva(U, z);
+        }catch (Exception e){
+            alertDialog.show();
         }
-        double[] z= sustitucionProgresiva(L, b);
-        double[] x= sustitucionRegresiva(U, z);
         return x;
     }
 
@@ -398,37 +445,61 @@ public class matrix2 extends Activity {
     }
 
     public double [] sustitucionRegresiva(double [][] A, double [] b){
+        AlertDialog alertDialog = new AlertDialog.Builder(matrix2.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         Ab = escalonar(A,b);
         double [] x = new double [n];
-
-        for(int j = 0; j < n-1; ++j){
-            x[j] = 1;
-        }
-        x[n-1] = Ab[n-1][n] / Ab[n-1][n-1];
-        for(int i = n-1; i >= 0; --i){
-            double sumatoria = 0;
-            for(int p = i+1; p < n; ++p){
-                sumatoria += Ab[i][p] * x[p];
+        try {
+            for (int j = 0; j < n - 1; ++j) {
+                x[j] = 1;
             }
-            x[i] = (Ab[i][n] - sumatoria) / Ab[i][i];
+            x[n - 1] = Ab[n - 1][n] / Ab[n - 1][n - 1];
+            for (int i = n - 1; i >= 0; --i) {
+                double sumatoria = 0;
+                for (int p = i + 1; p < n; ++p) {
+                    sumatoria += Ab[i][p] * x[p];
+                }
+                x[i] = (Ab[i][n] - sumatoria) / Ab[i][i];
+            }
+        }catch (Exception e){
+            alertDialog.show();
         }
         return x;
     }
 
     private double [] sustitucionRegresiva3(double [][] A, double [] b){
+        AlertDialog alertDialog = new AlertDialog.Builder(matrix2.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         Ab = escalonar4(A,b);
         double [] x = new double [n];
-
-        for(int j = 0; j < n-1; ++j){
-            x[j] = 1;
-        }
-        x[n-1] = Ab[n-1][n] / Ab[n-1][n-1];
-        for(int i = n-1; i >= 0; --i){
-            double sumatoria = 0;
-            for(int p = i+1; p < n; ++p){
-                sumatoria += Ab[i][p] * x[p];
+        try {
+            for (int j = 0; j < n - 1; ++j) {
+                x[j] = 1;
             }
-            x[i] = (Ab[i][n] - sumatoria) / Ab[i][i];
+            x[n - 1] = Ab[n - 1][n] / Ab[n - 1][n - 1];
+            for (int i = n - 1; i >= 0; --i) {
+                double sumatoria = 0;
+                for (int p = i + 1; p < n; ++p) {
+                    sumatoria += Ab[i][p] * x[p];
+                }
+                x[i] = (Ab[i][n] - sumatoria) / Ab[i][i];
+            }
+        }catch (Exception e){
+            alertDialog.show();
         }
         return x;
     }
@@ -626,20 +697,33 @@ public class matrix2 extends Activity {
         return Ab;
     }
     private double [] sustitucionRegresiva2(double [][] A, double [] b){
-        Ab = escalonar2(A,b);
+        AlertDialog alertDialog = new AlertDialog.Builder(matrix2.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         double [] x = new double [n];
-
-        for(int j = 0; j < n-1; ++j){
-            x[j] = 1;
-        }
-        x[n-1] = Ab[n-1][n] / Ab[n-1][n-1];
-        for(int i = n-1; i >= 0; --i){
-            double sumatoria = 0;
-            for(int p = i+1; p < n; ++p){
-                sumatoria += Ab[i][p] * x[p];
+        try {
+            Ab = escalonar2(A,b);
+            for (int j = 0; j < n - 1; ++j) {
+                x[j] = 1;
             }
-            x[i] = (Ab[i][n] - sumatoria) / Ab[i][i];
+            x[n - 1] = Ab[n - 1][n] / Ab[n - 1][n - 1];
+            for (int i = n - 1; i >= 0; --i) {
+                double sumatoria = 0;
+                for (int p = i + 1; p < n; ++p) {
+                    sumatoria += Ab[i][p] * x[p];
+                }
+                x[i] = (Ab[i][n] - sumatoria) / Ab[i][i];
+            }
+        }catch (Exception e){
+            alertDialog.show();
         }
+
         return x;
     }
     private double [][] escalonar2(double [][] A, double [] b){
@@ -648,6 +732,15 @@ public class matrix2 extends Activity {
         double mayor=0;
         int filaMayor=0;
         Ab = aumentar(A,b);
+        AlertDialog alertDialog = new AlertDialog.Builder(matrix2.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         for(int i = 0; i < n-1; ++i){
             mayor=Math.abs(Ab[i][i]);
             filaMayor=i;
@@ -658,8 +751,7 @@ public class matrix2 extends Activity {
                 }
             }
             if(mayor==0){
-                System.out.println("Error");
-                System.exit(0);
+                alertDialog.show();
             }
             else if(filaMayor!=i){
                 Ab=cambio(Ab,filaMayor,i);

@@ -57,7 +57,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_column="2"
-                                android:background="#8DD2C6"></TableLayout>
+                                ></TableLayout>
                         </HorizontalScrollView>
 
                         <TextView
@@ -88,13 +88,13 @@
 
                 <TableLayout
                     android:id="@+id/VectorXo"
-                    android:layout_width="35dp"
-                    android:layout_height="91dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginEnd="100dp"
                     android:layout_marginStart="80dp"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="31dp"
-                    android:background="#8DD2C6"></TableLayout>
+                    ></TableLayout>
 
                 <TableLayout
                     android:id="@+id/VectorB"
@@ -104,7 +104,7 @@
                     android:layout_marginTop="31dp"
                     android:layout_marginEnd="50dp"
                     android:layout_marginStart="-50dp"
-                    android:background="#8DD2C6"></TableLayout>
+                    ></TableLayout>
 
                 <TextView
                     android:id="@+id/matrixAEqual"
