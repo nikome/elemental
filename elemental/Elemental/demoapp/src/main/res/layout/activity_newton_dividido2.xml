@@ -32,21 +32,20 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Value"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/CalculateN"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="310dp"
+        android:layout_width="350dp"
         android:layout_height="322dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -59,7 +58,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.226">
+        app:layout_constraintVertical_bias="0.239">
 
         <ScrollView
             android:id="@+id/layoutSecante"
@@ -98,7 +97,6 @@
         android:text="Calculate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.97"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="1.0" />

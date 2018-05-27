@@ -158,7 +158,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Simple Spline"
+        android:text="Quadratic Spline"
         android:textColor="@color/ap_black"
         android:textSize="25dp"
         android:textStyle="italic"
