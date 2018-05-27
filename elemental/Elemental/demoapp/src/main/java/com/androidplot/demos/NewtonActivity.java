@@ -140,7 +140,7 @@ public class NewtonActivity extends Activity {
                 if(relativeAbsolute.isChecked()) {
                     error = Math.abs(X1 - Double.parseDouble(Xo));
                 }else{
-                    error = Math.abs(X1 - Double.parseDouble(Xo)/X1);
+                    error = Math.abs((X1 - Double.parseDouble(Xo))/X1);
                 }
 
                 Xo = Double.toString(X1);
