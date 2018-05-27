@@ -1,6 +1,8 @@
 package com.androidplot.demos;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +34,7 @@ public class Iterativos extends Activity {
     public int n;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        matrizXsolucion= new String[n][n];
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iterativos);
         Button metodobiseccion = (Button) findViewById(R.id.Tablas);
@@ -202,6 +205,15 @@ public class Iterativos extends Activity {
     }
 
     public void JacobbiSor(View view){
+        AlertDialog alertDialog = new AlertDialog.Builder(Iterativos.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         tolerancia = findViewById(R.id.tolerancia);
         iteraciones = findViewById(R.id.iteraciones);
         valorw = findViewById(R.id.labelw);
@@ -212,9 +224,16 @@ public class Iterativos extends Activity {
         A = getMatrixA();
         b = getVectorB();
         X_o = getVectorXo();
-        double tol = Double.valueOf(tolerancia.getText().toString());
-        int niter = Integer.valueOf(iteraciones.getText().toString());
-        double w=Double.valueOf(valorw.getText().toString());
+        double tol = 0;
+        int niter =0;
+        double w=0;
+        try {
+            tol = Double.valueOf(tolerancia.getText().toString());
+            niter = Integer.valueOf(iteraciones.getText().toString());
+            w = Double.valueOf(valorw.getText().toString());
+        }catch (Exception e){
+            alertDialog.show();
+        }
         resx = jacobiRelajado(tol,niter,X_o,A,b,w);
         VectorX = findViewById(R.id.VectorX);
         n = VectorX.getChildCount();
@@ -226,6 +245,15 @@ public class Iterativos extends Activity {
     }
 
     public void GaussSeidelSor(View view){
+        AlertDialog alertDialog = new AlertDialog.Builder(Iterativos.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         tolerancia = findViewById(R.id.tolerancia);
         iteraciones = findViewById(R.id.iteraciones);
         valorw = findViewById(R.id.labelw);
@@ -236,9 +264,19 @@ public class Iterativos extends Activity {
         A = getMatrixA();
         b = getVectorB();
         X_o = getVectorXo();
-        double tol = Double.valueOf(tolerancia.getText().toString());
-        int niter = Integer.valueOf(iteraciones.getText().toString());
-        double w=Double.valueOf(valorw.getText().toString());
+        double tol = 0;
+        int niter =0;
+        double w=0;
+        Log.d("LLEGUE","LLEGUE");
+        try {
+            tol = Double.valueOf(tolerancia.getText().toString());
+            niter = Integer.valueOf(iteraciones.getText().toString());
+            w = Double.valueOf(valorw.getText().toString());
+            Log.d("LLEGUE2 ","LLEGUE");
+        }catch (Exception e){
+            alertDialog.show();
+        }
+        Log.d("LLEGUE3 ","LLEGUE");
         resx = gaussSeidelRelajado(tol,niter,X_o,A,b,w);
         VectorX = findViewById(R.id.VectorX);
         n = VectorX.getChildCount();
@@ -250,36 +288,64 @@ public class Iterativos extends Activity {
     }
 
     private double[] gaussSeidelRelajado(double tol,int nitter,double [] x0,double[][] A, double [] b,double w){
+        AlertDialog alertDialog = new AlertDialog.Builder(Iterativos.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         int contador = 0;
         double dispercion=tol+1;
         double[] nodio = new double[n];
         double[] x1 = new double[x0.length];
-        imprimir(contador,x0,dispercion);
         iteracioneslist.add(String.valueOf(contador));
         ErrorList.add("----");
         matrizXsolucion=new String[nitter][x0.length];
-        while(dispercion > tol && contador < nitter){
-            x1=calcularNuevoSeidel2(x0,A,b,w);
-            for(int i=0;i<x1.length;i++){
-                if(String.valueOf(x1[i])!="null") {
-                    matrizXsolucion[contador][i] = String.valueOf(x1[i]);
+        Log.d("LLEGUE G","LLEGUE");
+        try {
+            Log.d("LLEGUE G2","LLEGUE");
+            while (dispercion > tol && contador < nitter) {
+                x1 = calcularNuevoSeidel2(x0, A, b, w);
+                for (int i = 0; i < x1.length; i++) {
+                    if (String.valueOf(x1[i]) != "null") {
+                        matrizXsolucion[contador][i] = String.valueOf(x1[i]);
+                    }
                 }
+                dispercion = norma2(x0, x1);
+                x0 = x1;
+                contador += 1;
+                iteracioneslist.add(String.valueOf(contador));
+                ErrorList.add(String.valueOf(dispercion));
             }
-            dispercion=norma2(x0,x1);
-            x0 = x1;
-            contador+=1;
-            iteracioneslist.add(String.valueOf(contador));
-            ErrorList.add(String.valueOf(dispercion));
+        }catch (Exception e){
+            Log.d("EXCEPTION        ",e.toString());
+            alertDialog.setMessage("There is an error in the written variables, Try again please");
+            alertDialog.show();
         }
         if(dispercion<tol){
+            Log.d("LLEGUE G3","LLEGUE");
             return x1;
         }else{
+            alertDialog.setMessage("The method fail");
+            alertDialog.show();
             return nodio;
         }
 
     }
 
     private double[] calcularNuevoSeidel2(double[] x0,double[][] A,double[] b,double w){
+        AlertDialog alertDialog = new AlertDialog.Builder(Iterativos.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is a cero in the diagonal of the matrix, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         double[] x1 =new double[x0.length];
         for(int i=0;i<x0.length;++i){
             x1[i]=x0[i];
@@ -291,6 +357,9 @@ public class Iterativos extends Activity {
                     suma += A[i][j]*x1[j];
                 }
             }
+            if(A[i][i]==0){
+                alertDialog.show();
+            }
             x1[i]=(b[i]-suma)/A[i][i];
             x1[i] = w*(x1[i])+(1-w)*(x0[i]);
         }
@@ -298,31 +367,45 @@ public class Iterativos extends Activity {
     }
 
     private double[] jacobiRelajado(double tol,int nitter,double [] x0,double[][] A, double [] b,double w){
+        AlertDialog alertDialog = new AlertDialog.Builder(Iterativos.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         int contador = 0;
-        double[] nodio= {1,1,1,1,1,1,1,1,1,1};
+        double[] nodio= new double[n];
         double dispercion=tol+1;
         double[] x1 = new double[x0.length];
-        imprimir(contador,x0,dispercion);
         matrizXsolucion = new String[nitter][x0.length];
         iteracioneslist.add(String.valueOf(contador));
         ErrorList.add("-----");
-        while(dispercion > tol && contador < nitter){
-            x1=calcularNuevoJacobi2(x0,A,b,w);
-            for(int i=0;i<x1.length;i++){
-                if(String.valueOf(x1[i])!="null") {
-                    matrizXsolucion[contador][i] = String.valueOf(x1[i]);
+        try {
+            while (dispercion > tol && contador < nitter) {
+                x1 = calcularNuevoJacobi2(x0, A, b, w);
+                for (int i = 0; i < x1.length; i++) {
+                    if (String.valueOf(x1[i]) != "null") {
+                        matrizXsolucion[contador][i] = String.valueOf(x1[i]);
+                    }
                 }
+                dispercion = norma2(x0, x1);
+                x0 = x1;
+                contador += 1;
+                iteracioneslist.add(String.valueOf(contador));
+                ErrorList.add(String.valueOf(dispercion));
             }
-            dispercion=norma2(x0,x1);
-            x0=x1;
-            contador+=1;
-            iteracioneslist.add(String.valueOf(contador));
-            ErrorList.add(String.valueOf(dispercion));
+        }catch (Exception e){
+            alertDialog.setMessage("There is an error in the written variables, Try again please");
+            alertDialog.show();
         }
-        Log.d("DISPERSION ",String.valueOf(dispercion));
         if(dispercion<tol){
             return x0;
         }else{
+            alertDialog.setMessage("The method fail");
+            alertDialog.show();
             return nodio;
         }
 
@@ -335,6 +418,15 @@ public class Iterativos extends Activity {
         return Math.pow(suma,0.5);
     }
     private double[] calcularNuevoJacobi2(double[] x0,double[][] A,double[] b,double w){
+        AlertDialog alertDialog = new AlertDialog.Builder(Iterativos.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is a cero in the diagonal of the matrix, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         double[] x1 = new double[x0.length];
         for(int i=0; i < x0.length;++i){
             double suma=0;
@@ -343,6 +435,9 @@ public class Iterativos extends Activity {
                     suma += A[i][j]*x0[j];
                 }
             }
+            if(A[i][i]==0){
+                alertDialog.show();
+            }
             x1[i]=(b[i]-suma)/A[i][i];
             x1[i] = (w*(x1[i])+(1-w)*(x0[i]));
         }
@@ -350,6 +445,15 @@ public class Iterativos extends Activity {
     }
 
     public void Jacobbi(View view){
+        AlertDialog mensaje = new AlertDialog.Builder(Iterativos.this).create();
+        mensaje.setTitle("Alert");
+        mensaje.setMessage("There is an error in the written variables, Try again please");
+        mensaje.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         tolerancia = findViewById(R.id.tolerancia);
         iteraciones = findViewById(R.id.iteraciones);
         double A[][] = new double[n][n];
@@ -359,8 +463,14 @@ public class Iterativos extends Activity {
         A = getMatrixA();
         b = getVectorB();
         X_o = getVectorXo();
-        double tol = Double.valueOf(tolerancia.getText().toString());
-        int niter = Integer.valueOf(iteraciones.getText().toString());
+        double tol=0;
+        int niter=0;
+        try {
+            tol = Double.valueOf(tolerancia.getText().toString());
+            niter = Integer.valueOf(iteraciones.getText().toString());
+        }catch (Exception e){
+            mensaje.show();
+        }
         resx = jacobi(tol,niter,X_o,A,b);
         VectorX = findViewById(R.id.VectorX);
         n = VectorX.getChildCount();
@@ -372,6 +482,15 @@ public class Iterativos extends Activity {
     }
 
     public void GaussSeidel(View view){
+        AlertDialog mensaje2 = new AlertDialog.Builder(Iterativos.this).create();
+        mensaje2.setTitle("Alert");
+        mensaje2.setMessage("There is an error in the written variables, Try again please");
+        mensaje2.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         tolerancia = findViewById(R.id.tolerancia);
         iteraciones = findViewById(R.id.iteraciones);
         double A[][] = new double[n][n];
@@ -381,8 +500,14 @@ public class Iterativos extends Activity {
         A = getMatrixA();
         b = getVectorB();
         X_o = getVectorXo();
-        double tol = Double.valueOf(tolerancia.getText().toString());
-        int niter = Integer.valueOf(iteraciones.getText().toString());
+        double tol=0;
+        int niter=0;
+        try {
+            tol = Double.valueOf(tolerancia.getText().toString());
+            niter = Integer.valueOf(iteraciones.getText().toString());
+        }catch (Exception e){
+            mensaje2.show();
+        }
         resx = gaussSeidel(tol,niter,X_o,A,b);
         VectorX = findViewById(R.id.VectorX);
         n = VectorX.getChildCount();
@@ -394,6 +519,15 @@ public class Iterativos extends Activity {
     }
 
     private double[] gaussSeidel(double tol,int nitter,double [] x0,double[][] A, double [] b){
+        AlertDialog alertDialog = new AlertDialog.Builder(Iterativos.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         int contador = 0;
         double[] nodio = new double[n];
         double dispercion=tol+1;
@@ -402,21 +536,27 @@ public class Iterativos extends Activity {
         matrizXsolucion = new String[nitter][x0.length];
         iteracioneslist.add(String.valueOf(contador));
         ErrorList.add("-----");
-        while(dispercion > tol && contador < nitter){
-            x1=calcularNuevoSeidel(x0,A,b);
-            for(int i=0;i<x1.length;i++){
-                if(String.valueOf(x1[i])!="null") {
-                    matrizXsolucion[contador][i] = String.valueOf(x1[i]);
+        try {
+            while (dispercion > tol && contador < nitter) {
+                x1 = calcularNuevoSeidel(x0, A, b);
+                for (int i = 0; i < x1.length; i++) {
+                    if (String.valueOf(x1[i]) != "null") {
+                        matrizXsolucion[contador][i] = String.valueOf(x1[i]);
+                    }
                 }
+                dispercion = norma(x0, x1);
+                x0 = x1;
+                contador += 1;
+                iteracioneslist.add(String.valueOf(contador));
+                ErrorList.add(String.valueOf(dispercion));
             }
-            dispercion=norma(x0,x1);
-            x0=x1;
-            contador+=1;
-            iteracioneslist.add(String.valueOf(contador));
-            ErrorList.add(String.valueOf(dispercion));
+        }catch (Exception e){
+            alertDialog.setMessage("There is an error in the written variables, Try again please");
+            alertDialog.show();
         }
-
         if(dispercion<tol){
+            alertDialog.setMessage("The method fail");
+            alertDialog.show();
             return x1;
         }else{
             return nodio;
@@ -425,6 +565,15 @@ public class Iterativos extends Activity {
     }
 
     private double[] calcularNuevoSeidel(double[] x0,double[][] A,double[] b){
+        AlertDialog alertDialog = new AlertDialog.Builder(Iterativos.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is a cero in the diagonal of the matrix, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         double[] x1 =new double[x0.length];
         for(int i=0;i<x0.length;++i){
             x1[i]=x0[i];
@@ -436,35 +585,53 @@ public class Iterativos extends Activity {
                     suma += A[i][j]*x1[j];
                 }
             }
+            if(A[i][i]==0){
+                alertDialog.show();
+            }
             x1[i]=(b[i]-suma)/A[i][i];
         }
         return x1;
     }
     private double[] jacobi(double tol,int nitter,double [] x0,double[][] A, double [] b){
+        AlertDialog alertDialog = new AlertDialog.Builder(Iterativos.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is an error in the written variables, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         int contador = 0;
         double[] nodio = new double[n];
         double dispercion=tol+1;
         double[] x1 = new double[x0.length];
-        imprimir(contador,x0,dispercion);
         iteracioneslist.add(String.valueOf(contador));
         ErrorList.add("----");
         matrizXsolucion=new String[nitter][x0.length];
-        while(dispercion > tol && contador < nitter){
-            x1=calcularNuevoJacobi(x0,A,b);
-            for(int i=0;i<x1.length;i++){
-                if(String.valueOf(x1[i])!="null") {
-                    matrizXsolucion[contador][i] = String.valueOf(x1[i]);
+        try {
+            while (dispercion > tol && contador < nitter) {
+                x1 = calcularNuevoJacobi(x0, A, b);
+                for (int i = 0; i < x1.length; i++) {
+                    if (String.valueOf(x1[i]) != "null") {
+                        matrizXsolucion[contador][i] = String.valueOf(x1[i]);
+                    }
                 }
+                dispercion = norma(x0, x1);
+                x0 = x1;
+                contador += 1;
+                iteracioneslist.add(String.valueOf(contador));
+                ErrorList.add(String.valueOf(dispercion));
             }
-            dispercion=norma(x0,x1);
-            x0=x1;
-            contador+=1;
-            iteracioneslist.add(String.valueOf(contador));
-            ErrorList.add(String.valueOf(dispercion));
+        }catch (Exception e){
+            alertDialog.setMessage("There is an error in the written variables, Try again please");
+            alertDialog.show();
         }
         if(dispercion<tol){
             return x0;
         }else{
+            alertDialog.setMessage("The method fail");
+            alertDialog.show();
             return nodio;
         }
     }
@@ -486,6 +653,15 @@ public class Iterativos extends Activity {
         return mayor;
     }
     private double[] calcularNuevoJacobi(double[] x0,double[][] A,double[] b){
+        AlertDialog alertDialog = new AlertDialog.Builder(Iterativos.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("There is a cero in the diagonal of the matrix, Try again please");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         double[] x1 = new double[x0.length];
         for(int i=0; i < x0.length;++i){
             double suma=0;
@@ -493,6 +669,9 @@ public class Iterativos extends Activity {
                 if(j != i){
                     suma += A[i][j]*x0[j];
                 }
+            }
+            if(A[i][i]==0){
+                alertDialog.show();
             }
             x1[i]=(b[i]-suma)/A[i][i];
         }
