@@ -231,7 +231,13 @@ public class Iterativos extends Activity {
             tol = Double.valueOf(tolerancia.getText().toString());
             niter = Integer.valueOf(iteraciones.getText().toString());
             w = Double.valueOf(valorw.getText().toString());
+            Log.d("W ", String.valueOf(w));
+            if(w <0 || w>2){
+                alertDialog.setMessage("There is an error in the written variables W should be from 0 to 2, Try again please");
+                alertDialog.show();
+            }
         }catch (Exception e){
+            alertDialog.setMessage("There is an error in the written variables, Try again please");
             alertDialog.show();
         }
         resx = jacobiRelajado(tol,niter,X_o,A,b,w);
