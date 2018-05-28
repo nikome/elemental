@@ -75,6 +75,7 @@ public class CubicoActivity extends Activity {
         } catch (Exception e) {
             alertDialog.show();
         }
+
     }
     public void CalculateCubico(View view) {
         AlertDialog alertDialog = new AlertDialog.Builder(CubicoActivity.this).create();
@@ -132,8 +133,9 @@ public class CubicoActivity extends Activity {
         A[n-3][n-4] = h[n-3];
         A[n-3][n-3] = 2*(h[n-3]+h[n-2]);
         B[n-3]=6*((yi[n-1]-yi[n-2])/h[n-2] - (yi[n-2]-yi[n-3])/h[n-3]);
-        matrix2 gauss = new matrix2();
-        gauss.n = A.length;
+        GaussTotalApoyo gauss = new GaussTotalApoyo(A.length);
+        //matrix2 gauss = new matrix2();
+       // gauss.n = A.length;
         double [] r = gauss.sustitucionRegresiva(A,B);
         for (int j=1;j<n-1;j++){
             S[j]=r[j-1];
