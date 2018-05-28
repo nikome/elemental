@@ -109,7 +109,7 @@ public class matrix2 extends Activity {
         }
     }
     public void addRow(View view){
-        MatrixA = findViewById(R.id.VectorB);
+        /**MatrixA = findViewById(R.id.VectorB);
         ViewGroup.LayoutParams params = MatrixA.getLayoutParams();
         params.height=MatrixA.getHeight()+130;
         MatrixA.setX(MatrixA.getX()+10);
@@ -128,7 +128,8 @@ public class matrix2 extends Activity {
         params = MatrixA.getLayoutParams();
         params.width=MatrixA.getWidth()+105;
         params.height=MatrixA.getHeight()+130;
-        MatrixA.setLayoutParams(params);
+        MatrixA.setLayoutParams(params);*/
+        MatrixA = findViewById(R.id.MatrixAC);
         n = MatrixA.getChildCount();
         MatrixA =  findViewById(R.id.MatrixAC);
         TableRow row= new TableRow(this);
@@ -167,7 +168,7 @@ public class matrix2 extends Activity {
     }
 
     public void quitRow(View view){
-        MatrixA = findViewById(R.id.VectorB);
+        /**MatrixA = findViewById(R.id.VectorB);
         ViewGroup.LayoutParams params = MatrixA.getLayoutParams();
         params.height=MatrixA.getHeight()-130;
         MatrixA.setX(MatrixA.getX()-10);
@@ -185,7 +186,8 @@ public class matrix2 extends Activity {
         params = MatrixA.getLayoutParams();
         params.width=MatrixA.getWidth()-105;
         params.height=MatrixA.getHeight()-130;
-        MatrixA.setLayoutParams(params);
+        MatrixA.setLayoutParams(params);*/
+        MatrixA = findViewById(R.id.MatrixAC);
         n=MatrixA.getChildCount();
         for(int i=0;i<n;i++){
             TableRow row = (TableRow) MatrixA.getChildAt(i);

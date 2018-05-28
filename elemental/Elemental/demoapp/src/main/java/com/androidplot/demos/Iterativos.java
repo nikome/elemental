@@ -278,11 +278,14 @@ public class Iterativos extends Activity {
             tol = Double.valueOf(tolerancia.getText().toString());
             niter = Integer.valueOf(iteraciones.getText().toString());
             w = Double.valueOf(valorw.getText().toString());
-            Log.d("LLEGUE2 ","LLEGUE");
+            if(w <0 || w>2){
+                alertDialog.setMessage("There is an error in the written variables W should be from 0 to 2, Try again please");
+                alertDialog.show();
+            }
         }catch (Exception e){
+            alertDialog.setMessage("There is an error in the written variables, Try again please");
             alertDialog.show();
         }
-        Log.d("LLEGUE3 ","LLEGUE");
         resx = gaussSeidelRelajado(tol,niter,X_o,A,b,w);
         VectorX = findViewById(R.id.VectorX);
         n = VectorX.getChildCount();
