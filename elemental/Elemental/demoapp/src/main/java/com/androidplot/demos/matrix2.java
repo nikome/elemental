@@ -31,14 +31,17 @@ public class matrix2 extends Activity {
     private double[][] U;
     public int n;
     private Dialog myDialog;
+    private Dialog secondDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Ab=new double[n][n];
         L = new  double[n][n];
         U= new double[n][n];
         myDialog = new Dialog(this);
+        secondDialog = new Dialog(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matrix2);
+        ayuda();
         Button metodobiseccion = (Button) findViewById(R.id.Iterativos);
         metodobiseccion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,9 +81,7 @@ public class matrix2 extends Activity {
 
     public void ShowPopup(View v){
         TextView txtClose;
-        Log.d("LLEGUE", "LLEGUE");
         myDialog.setContentView(R.layout.ayudassegundocapitulo);
-        Log.d("LLEGUE2", "LLEGUE");
         txtClose=myDialog.findViewById(R.id.close);
         txtClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +90,19 @@ public class matrix2 extends Activity {
             }
         });
         myDialog.show();
+    }
+
+    public void ayuda(){
+        TextView txtClose;
+        secondDialog.setContentView(R.layout.swipeleft);
+        txtClose=secondDialog.findViewById(R.id.close);
+        txtClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                secondDialog.dismiss();
+            }
+        });
+        secondDialog.show();
     }
 
     public void calcularMatriz(){
