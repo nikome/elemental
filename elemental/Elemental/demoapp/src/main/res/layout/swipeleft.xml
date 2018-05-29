@@ -76,20 +76,9 @@
                     android:textColor="@color/ap_black"
                     android:textStyle="bold" />
                 <pl.droidsonroids.gif.GifImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="280dp"
+                    android:layout_height="200dp"
                     android:src="@drawable/gifswipe"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:autoLink="web"
-                    android:linksClickable="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:foregroundGravity="center"
-                    android:text="\nIf you have doubts about theoretical concepts or need examples of the methods we invite you to go to our page: https://sites.google.com/site/numericalanalysisinpython/"
-                    android:textColor="@color/ap_black"
-                    android:textStyle="bold" />
             </LinearLayout>
 
         </ScrollView>
