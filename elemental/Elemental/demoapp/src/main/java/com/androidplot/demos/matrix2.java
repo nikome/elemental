@@ -1,6 +1,7 @@
 package com.androidplot.demos;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -29,11 +30,13 @@ public class matrix2 extends Activity {
     private double[][] L;
     private double[][] U;
     public int n;
+    private Dialog myDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Ab=new double[n][n];
         L = new  double[n][n];
         U= new double[n][n];
+        myDialog = new Dialog(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matrix2);
         Button metodobiseccion = (Button) findViewById(R.id.Iterativos);
@@ -72,6 +75,22 @@ public class matrix2 extends Activity {
         calcularMatriz();
 
     }
+
+    public void ShowPopup(View v){
+        TextView txtClose;
+        Log.d("LLEGUE", "LLEGUE");
+        myDialog.setContentView(R.layout.ayudassegundocapitulo);
+        Log.d("LLEGUE2", "LLEGUE");
+        txtClose=myDialog.findViewById(R.id.close);
+        txtClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.show();
+    }
+
     public void calcularMatriz(){
 
         MatrixA =  findViewById(R.id.MatrixAC);

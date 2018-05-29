@@ -2,6 +2,7 @@ package com.androidplot.demos;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -32,9 +33,11 @@ public class Iterativos extends Activity {
     private ArrayList<String> ErrorList = new ArrayList();
     private String[][] matrizXsolucion;
     public int n;
+    private Dialog myDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         matrizXsolucion= new String[n][n];
+        myDialog = new Dialog(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iterativos);
         Button metodobiseccion = (Button) findViewById(R.id.Tablas);
@@ -53,6 +56,21 @@ public class Iterativos extends Activity {
             }
         });
         a();
+    }
+
+    public void ShowPopup(View v){
+        TextView txtClose;
+        Log.d("LLEGUE", "LLEGUE");
+        myDialog.setContentView(R.layout.ayudassegundocapitulo);
+        Log.d("LLEGUE2", "LLEGUE");
+        txtClose=myDialog.findViewById(R.id.close);
+        txtClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.show();
     }
 
         public void a(){
