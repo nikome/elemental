@@ -102,28 +102,27 @@ public class Iterativos extends Activity {
             }
         }
     public void addRow(View view){
-        MatrixA = findViewById(R.id.VectorB);
-        ViewGroup.LayoutParams params = MatrixA.getLayoutParams();
-        params.height=MatrixA.getHeight()+130;
-        MatrixA.setLayoutParams(params);
-        MatrixA =findViewById(R.id.VectorX);
-        params = MatrixA.getLayoutParams();
-        params.height=MatrixA.getHeight()+130;
-        MatrixA.setLayoutParams(params);
-        MatrixA =findViewById(R.id.VectorXo);
-        params = MatrixA.getLayoutParams();
-        params.height=MatrixA.getHeight()+130;
-        MatrixA.setLayoutParams(params);
-        MatrixA =  findViewById(R.id.Container);
-        params = MatrixA.getLayoutParams();
-        params.width=MatrixA.getWidth()+105;
-        params.height=MatrixA.getHeight()+130;
-        MatrixA.setLayoutParams(params);
-        MatrixA =  findViewById(R.id.MatrixAC);
-        params = MatrixA.getLayoutParams();
-        params.width=MatrixA.getWidth()+105;
-        params.height=MatrixA.getHeight()+130;
-        MatrixA.setLayoutParams(params);
+        /**MatrixA = findViewById(R.id.VectorB);
+         ViewGroup.LayoutParams params = MatrixA.getLayoutParams();
+         params.height=MatrixA.getHeight()+130;
+         MatrixA.setX(MatrixA.getX()+10);
+         MatrixA.setLayoutParams(params);
+         MatrixA =findViewById(R.id.VectorX);
+         params = MatrixA.getLayoutParams();
+         MatrixA.setX(MatrixA.getX()+10);
+         params.height=MatrixA.getHeight()+130;
+         MatrixA.setLayoutParams(params);
+         MatrixA =  findViewById(R.id.Container);
+         params = MatrixA.getLayoutParams();
+         params.width=MatrixA.getWidth()+105;
+         params.height=MatrixA.getHeight()+130;
+         MatrixA.setLayoutParams(params);
+         MatrixA =  findViewById(R.id.MatrixAC);
+         params = MatrixA.getLayoutParams();
+         params.width=MatrixA.getWidth()+105;
+         params.height=MatrixA.getHeight()+130;
+         MatrixA.setLayoutParams(params);*/
+        MatrixA = findViewById(R.id.MatrixAC);
         n = MatrixA.getChildCount();
         MatrixA =  findViewById(R.id.MatrixAC);
         TableRow row= new TableRow(this);
@@ -169,27 +168,26 @@ public class Iterativos extends Activity {
     }
 
     public void quitRow(View view){
-        MatrixA = findViewById(R.id.VectorB);
-        ViewGroup.LayoutParams params = MatrixA.getLayoutParams();
-        params.height=MatrixA.getHeight()-130;
-        MatrixA =findViewById(R.id.VectorX);
-        params = MatrixA.getLayoutParams();
-        params.height=MatrixA.getHeight()-130;
-        MatrixA.setLayoutParams(params);
-        MatrixA =findViewById(R.id.VectorXo);
-        params = MatrixA.getLayoutParams();
-        params.height=MatrixA.getHeight()-130;
-        MatrixA.setLayoutParams(params);
-        MatrixA =  findViewById(R.id.Container);
-        params = MatrixA.getLayoutParams();
-        params.width=MatrixA.getWidth()-105;
-        params.height=MatrixA.getHeight()-130;
-        MatrixA.setLayoutParams(params);
-        MatrixA =  findViewById(R.id.MatrixAC);
-        params = MatrixA.getLayoutParams();
-        params.width=MatrixA.getWidth()-105;
-        params.height=MatrixA.getHeight()-130;
-        MatrixA.setLayoutParams(params);
+        /**MatrixA = findViewById(R.id.VectorB);
+         ViewGroup.LayoutParams params = MatrixA.getLayoutParams();
+         params.height=MatrixA.getHeight()-130;
+         MatrixA.setX(MatrixA.getX()-10);
+         MatrixA =findViewById(R.id.VectorX);
+         params = MatrixA.getLayoutParams();
+         params.height=MatrixA.getHeight()-130;
+         MatrixA.setX(MatrixA.getX()-10);
+         MatrixA.setLayoutParams(params);
+         MatrixA =  findViewById(R.id.Container);
+         params = MatrixA.getLayoutParams();
+         params.width=MatrixA.getWidth()-105;
+         params.height=MatrixA.getHeight()-130;
+         MatrixA.setLayoutParams(params);
+         MatrixA =  findViewById(R.id.MatrixAC);
+         params = MatrixA.getLayoutParams();
+         params.width=MatrixA.getWidth()-105;
+         params.height=MatrixA.getHeight()-130;
+         MatrixA.setLayoutParams(params);*/
+        MatrixA = findViewById(R.id.MatrixAC);
         n=MatrixA.getChildCount();
         for(int i=0;i<n;i++){
             TableRow row = (TableRow) MatrixA.getChildAt(i);
@@ -221,33 +219,39 @@ public class Iterativos extends Activity {
         double b[] = new double[n];
         double X_o[] = new double[n];
         double [] resx = new double[n];
+        alertDialog.setMessage("The determinate is equal to cero be careful, try again");
         A = getMatrixA();
-        b = getVectorB();
-        X_o = getVectorXo();
-        double tol = 0;
-        int niter =0;
-        double w=0;
-        try {
-            tol = Double.valueOf(tolerancia.getText().toString());
-            niter = Integer.valueOf(iteraciones.getText().toString());
-            w = Double.valueOf(valorw.getText().toString());
-            Log.d("W ", String.valueOf(w));
-            if(w <0 || w>2){
-                alertDialog.setMessage("There is an error in the written variables W should be from 0 to 2, Try again please");
+        double det = determinante(A);
+        if(det == 0){
+            alertDialog.show();
+        }else {
+            b = getVectorB();
+            X_o = getVectorXo();
+            double tol = 0;
+            int niter = 0;
+            double w = 0;
+            try {
+                tol = Double.valueOf(tolerancia.getText().toString());
+                niter = Integer.valueOf(iteraciones.getText().toString());
+                w = Double.valueOf(valorw.getText().toString());
+                Log.d("W ", String.valueOf(w));
+                if (w < 0 || w > 2) {
+                    alertDialog.setMessage("There is an error in the written variables W should be from 0 to 2, Try again please");
+                    alertDialog.show();
+                }
+            } catch (Exception e) {
+                alertDialog.setMessage("There is an error in the written variables, Try again please");
                 alertDialog.show();
             }
-        }catch (Exception e){
-            alertDialog.setMessage("There is an error in the written variables, Try again please");
-            alertDialog.show();
+            resx = jacobiRelajado(tol, niter, X_o, A, b, w);
+            VectorX = findViewById(R.id.VectorX);
+            n = VectorX.getChildCount();
+            for (int i = 0; i < n; i++) {
+                TextView f = (TextView) VectorX.getChildAt(i);
+                f.setText(String.valueOf(resx[i]));
+            }
+            VectorX.setBackgroundColor(Color.rgb(44, 132, 30));
         }
-        resx = jacobiRelajado(tol,niter,X_o,A,b,w);
-        VectorX = findViewById(R.id.VectorX);
-        n = VectorX.getChildCount();
-        for(int i=0;i<n;i++) {
-            TextView f = (TextView) VectorX.getChildAt(i);
-            f.setText(String.valueOf(resx[i]));
-        }
-        VectorX.setBackgroundColor(Color.rgb(44,132,30));
     }
 
     public void GaussSeidelSor(View view){
@@ -267,33 +271,39 @@ public class Iterativos extends Activity {
         double b[] = new double[n];
         double X_o[] = new double[n];
         double [] resx = new double[n];
+        alertDialog.setMessage("The determinate is equal to cero be careful, try again");
         A = getMatrixA();
-        b = getVectorB();
-        X_o = getVectorXo();
-        double tol = 0;
-        int niter =0;
-        double w=0;
-        Log.d("LLEGUE","LLEGUE");
-        try {
-            tol = Double.valueOf(tolerancia.getText().toString());
-            niter = Integer.valueOf(iteraciones.getText().toString());
-            w = Double.valueOf(valorw.getText().toString());
-            if(w <0 || w>2){
-                alertDialog.setMessage("There is an error in the written variables W should be from 0 to 2, Try again please");
+        double det = determinante(A);
+        if(det == 0){
+            alertDialog.show();
+        }else {
+            b = getVectorB();
+            X_o = getVectorXo();
+            double tol = 0;
+            int niter = 0;
+            double w = 0;
+            Log.d("LLEGUE", "LLEGUE");
+            try {
+                tol = Double.valueOf(tolerancia.getText().toString());
+                niter = Integer.valueOf(iteraciones.getText().toString());
+                w = Double.valueOf(valorw.getText().toString());
+                if (w < 0 || w > 2) {
+                    alertDialog.setMessage("There is an error in the written variables W should be from 0 to 2, Try again please");
+                    alertDialog.show();
+                }
+            } catch (Exception e) {
+                alertDialog.setMessage("There is an error in the written variables, Try again please");
                 alertDialog.show();
             }
-        }catch (Exception e){
-            alertDialog.setMessage("There is an error in the written variables, Try again please");
-            alertDialog.show();
+            resx = gaussSeidelRelajado(tol, niter, X_o, A, b, w);
+            VectorX = findViewById(R.id.VectorX);
+            n = VectorX.getChildCount();
+            for (int i = 0; i < n; i++) {
+                TextView f = (TextView) VectorX.getChildAt(i);
+                f.setText(String.valueOf(resx[i]));
+            }
+            VectorX.setBackgroundColor(Color.rgb(44, 132, 30));
         }
-        resx = gaussSeidelRelajado(tol,niter,X_o,A,b,w);
-        VectorX = findViewById(R.id.VectorX);
-        n = VectorX.getChildCount();
-        for(int i=0;i<n;i++) {
-            TextView f = (TextView) VectorX.getChildAt(i);
-            f.setText(String.valueOf(resx[i]));
-        }
-        VectorX.setBackgroundColor(Color.rgb(44,132,30));
     }
 
     private double[] gaussSeidelRelajado(double tol,int nitter,double [] x0,double[][] A, double [] b,double w){
@@ -469,25 +479,31 @@ public class Iterativos extends Activity {
         double b[] = new double[n];
         double X_o[] = new double[n];
         double [] resx = new double[n];
+        mensaje.setMessage("The determinate is equal to cero be careful, try again");
         A = getMatrixA();
-        b = getVectorB();
-        X_o = getVectorXo();
-        double tol=0;
-        int niter=0;
-        try {
-            tol = Double.valueOf(tolerancia.getText().toString());
-            niter = Integer.valueOf(iteraciones.getText().toString());
-        }catch (Exception e){
+        double det = determinante(A);
+        if(det == 0){
             mensaje.show();
+        }else {
+            b = getVectorB();
+            X_o = getVectorXo();
+            double tol = 0;
+            int niter = 0;
+            try {
+                tol = Double.valueOf(tolerancia.getText().toString());
+                niter = Integer.valueOf(iteraciones.getText().toString());
+            } catch (Exception e) {
+                mensaje.show();
+            }
+            resx = jacobi(tol, niter, X_o, A, b);
+            VectorX = findViewById(R.id.VectorX);
+            n = VectorX.getChildCount();
+            for (int i = 0; i < n; i++) {
+                TextView f = (TextView) VectorX.getChildAt(i);
+                f.setText(String.valueOf(resx[i]));
+            }
+            VectorX.setBackgroundColor(Color.rgb(44, 132, 30));
         }
-        resx = jacobi(tol,niter,X_o,A,b);
-        VectorX = findViewById(R.id.VectorX);
-        n = VectorX.getChildCount();
-        for(int i=0;i<n;i++) {
-            TextView f = (TextView) VectorX.getChildAt(i);
-            f.setText(String.valueOf(resx[i]));
-        }
-        VectorX.setBackgroundColor(Color.rgb(44,132,30));
     }
 
     public void GaussSeidel(View view){
@@ -506,25 +522,31 @@ public class Iterativos extends Activity {
         double b[] = new double[n];
         double X_o[] = new double[n];
         double [] resx = new double[n];
+        mensaje2.setMessage("The determinate is equal to cero be careful, try again");
         A = getMatrixA();
-        b = getVectorB();
-        X_o = getVectorXo();
-        double tol=0;
-        int niter=0;
-        try {
-            tol = Double.valueOf(tolerancia.getText().toString());
-            niter = Integer.valueOf(iteraciones.getText().toString());
-        }catch (Exception e){
+        double det = determinante(A);
+        if(det == 0){
             mensaje2.show();
+        }else {
+            b = getVectorB();
+            X_o = getVectorXo();
+            double tol = 0;
+            int niter = 0;
+            try {
+                tol = Double.valueOf(tolerancia.getText().toString());
+                niter = Integer.valueOf(iteraciones.getText().toString());
+            } catch (Exception e) {
+                mensaje2.show();
+            }
+            resx = gaussSeidel(tol, niter, X_o, A, b);
+            VectorX = findViewById(R.id.VectorX);
+            n = VectorX.getChildCount();
+            for (int i = 0; i < n; i++) {
+                TextView f = (TextView) VectorX.getChildAt(i);
+                f.setText(String.valueOf(resx[i]));
+            }
+            VectorX.setBackgroundColor(Color.rgb(44, 132, 30));
         }
-        resx = gaussSeidel(tol,niter,X_o,A,b);
-        VectorX = findViewById(R.id.VectorX);
-        n = VectorX.getChildCount();
-        for(int i=0;i<n;i++) {
-            TextView f = (TextView) VectorX.getChildAt(i);
-            f.setText(String.valueOf(resx[i]));
-        }
-        VectorX.setBackgroundColor(Color.rgb(44,132,30));
     }
 
     private double[] gaussSeidel(double tol,int nitter,double [] x0,double[][] A, double [] b){
@@ -699,6 +721,47 @@ public class Iterativos extends Activity {
         }
 
         return A;
+    }
+
+    public static double determinante (double [][] matriz){
+        assert matriz != null;
+        assert matriz.length>0;
+        assert matriz.length == matriz[0].length;
+
+        double determinante = 0.0;
+
+        int filas = matriz.length;
+        int columnas = matriz[0].length;
+
+        // Si la matriz es 1x1, el determinante es el elemento de la matriz
+        if ((filas==1) && (columnas==1))
+            return matriz[0][0];
+
+
+        int signo=1;
+
+        for (int columna=0;columna<columnas;columna++)
+        {
+            // Obtiene el adjunto de fila=0, columna=columna, pero sin el signo.
+            double[][] submatriz = getSubmatriz(matriz, filas, columnas,
+                    columna);
+            determinante = determinante + signo*matriz[0][columna]*determinante(submatriz);
+            signo*=-1;
+        }
+
+        return determinante;
+    }
+    public static double[][] getSubmatriz(double[][] matriz,int filas,int columnas,int columna) {
+        double [][] submatriz = new double[filas-1][columnas-1];
+        int contador=0;
+        for (int j=0;j<columnas;j++)
+        {
+            if (j==columna) continue;
+            for (int i=1;i<filas;i++)
+                submatriz[i-1][contador]=matriz[i][j];
+            contador++;
+        }
+        return submatriz;
     }
 
     public double[] getVectorB(){

@@ -200,93 +200,177 @@ public class matrix2 extends Activity {
         MatrixA.removeViewAt(n-1);
     }
     public void GaussSimple(View view){
+        AlertDialog alertDialog = new AlertDialog.Builder(matrix2.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("The determinate is equal to cero be careful, try again");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         double A[][] = new double[n][n];
         double b[] = new double[n];
         double [] resx = new double[n];
         A = getMatrixA();
-        b=getVectorB();
-        resx = sustitucionRegresiva(A,b);
-        VectorX = findViewById(R.id.VectorX);
-        n = VectorX.getChildCount();
-        for(int i=0;i<n;i++) {
-            TextView f = (TextView) VectorX.getChildAt(i);
-            f.setText(String.valueOf(resx[i]));
+        double det = determinante(A);
+        if(det == 0){
+            alertDialog.show();
+        }else {
+            b = getVectorB();
+            resx = sustitucionRegresiva(A, b);
+            VectorX = findViewById(R.id.VectorX);
+            n = VectorX.getChildCount();
+            for (int i = 0; i < n; i++) {
+                TextView f = (TextView) VectorX.getChildAt(i);
+                f.setText(String.valueOf(resx[i]));
+            }
+            VectorX.setBackgroundColor(Color.rgb(44, 132, 30));
         }
-        VectorX.setBackgroundColor(Color.rgb(44,132,30));
     }
     public void PivoteoParcial(View view){
+        AlertDialog alertDialog = new AlertDialog.Builder(matrix2.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("The determinate is equal to cero be careful, try again");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         double A[][] = new double[n][n];
         double b[] = new double[n];
         double [] resx = new double[n];
         A = getMatrixA();
-        b=getVectorB();
-        resx = sustitucionRegresiva2(A,b);
-        VectorX = findViewById(R.id.VectorX);
-        for(int i=0;i<n;i++) {
-            TextView f = (TextView) VectorX.getChildAt(i);
-            f.setText(String.valueOf(resx[i]));
+        double det = determinante(A);
+        if(det == 0){
+            alertDialog.show();
+        }else {
+            b = getVectorB();
+            resx = sustitucionRegresiva2(A, b);
+            VectorX = findViewById(R.id.VectorX);
+            for (int i = 0; i < n; i++) {
+                TextView f = (TextView) VectorX.getChildAt(i);
+                f.setText(String.valueOf(resx[i]));
+            }
+            VectorX.setBackgroundColor(Color.rgb(44, 132, 30));
         }
-        VectorX.setBackgroundColor(Color.rgb(44,132,30));
     }
 
     public void Crout(View view){
+        AlertDialog alertDialog = new AlertDialog.Builder(matrix2.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("The determinate is equal to cero be careful, try again");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         double A[][] = new double[n][n];
         double b[] = new double[n];
         double [] resx = new double[n];
         A = getMatrixA();
-        b=getVectorB();
-        resx = crout(A,b);
-        VectorX = findViewById(R.id.VectorX);
-        for(int i=0;i<n;i++) {
-            TextView f = (TextView) VectorX.getChildAt(i);
-            f.setText(String.valueOf(resx[i]));
+        double det = determinante(A);
+        if(det == 0){
+                alertDialog.show();
+        }else {
+            b = getVectorB();
+            resx = crout(A, b);
+            VectorX = findViewById(R.id.VectorX);
+            for (int i = 0; i < n; i++) {
+                TextView f = (TextView) VectorX.getChildAt(i);
+                f.setText(String.valueOf(resx[i]));
+            }
+            VectorX.setBackgroundColor(Color.rgb(44, 132, 30));
         }
-        VectorX.setBackgroundColor(Color.rgb(44,132,30));
     }
 
     public void Cholesky(View view){
+        AlertDialog alertDialog = new AlertDialog.Builder(matrix2.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("The determinate is equal to cero be careful, try again");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         double A[][] = new double[n][n];
         double b[] = new double[n];
         double [] resx = new double[n];
         A = getMatrixA();
-        b=getVectorB();
-        resx = cholesky(A,b);
-        VectorX = findViewById(R.id.VectorX);
-        for(int i=0;i<n;i++) {
-            TextView f = (TextView) VectorX.getChildAt(i);
-            f.setText(String.valueOf(resx[i]));
+        double det = determinante(A);
+        if(det == 0){
+            alertDialog.show();
+        }else {
+            b = getVectorB();
+            resx = cholesky(A, b);
+            VectorX = findViewById(R.id.VectorX);
+            for (int i = 0; i < n; i++) {
+                TextView f = (TextView) VectorX.getChildAt(i);
+                f.setText(String.valueOf(resx[i]));
+            }
+            VectorX.setBackgroundColor(Color.rgb(44, 132, 30));
         }
-        VectorX.setBackgroundColor(Color.rgb(44,132,30));
     }
 
     public void Doolittle(View view){
+        AlertDialog alertDialog = new AlertDialog.Builder(matrix2.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("The determinate is equal to cero be careful, try again");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         double A[][] = new double[n][n];
         double b[] = new double[n];
         double [] resx = new double[n];
         A = getMatrixA();
-        b=getVectorB();
-        resx = doolitle(A,b);
-        VectorX = findViewById(R.id.VectorX);
-        for(int i=0;i<n;i++) {
-            TextView f = (TextView) VectorX.getChildAt(i);
-            f.setText(String.valueOf(resx[i]));
+        double det = determinante(A);
+        if(det == 0){
+            alertDialog.show();
+        }else {
+            b = getVectorB();
+            resx = doolitle(A, b);
+            VectorX = findViewById(R.id.VectorX);
+            for (int i = 0; i < n; i++) {
+                TextView f = (TextView) VectorX.getChildAt(i);
+                f.setText(String.valueOf(resx[i]));
+            }
+            VectorX.setBackgroundColor(Color.rgb(44, 132, 30));
         }
-        VectorX.setBackgroundColor(Color.rgb(44,132,30));
     }
 
     public void PivoteoTotal(View view){
+        AlertDialog alertDialog = new AlertDialog.Builder(matrix2.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("The determinate is equal to cero be careful, try again");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
         double A[][] = new double[n][n];
         double b[] = new double[n];
         double [] resx = new double[n];
         A = getMatrixA();
-        b=getVectorB();
-        resx = sustitucionRegresiva3(A,b);
-        VectorX = findViewById(R.id.VectorX);
-        for(int i=0;i<n;i++) {
-            TextView f = (TextView) VectorX.getChildAt(i);
-            f.setText(String.valueOf(resx[i]));
+        double det = determinante(A);
+        if(det == 0){
+            alertDialog.show();
+        }else {
+            b = getVectorB();
+            resx = sustitucionRegresiva3(A, b);
+            VectorX = findViewById(R.id.VectorX);
+            for (int i = 0; i < n; i++) {
+                TextView f = (TextView) VectorX.getChildAt(i);
+                f.setText(String.valueOf(resx[i]));
+            }
+            VectorX.setBackgroundColor(Color.rgb(44, 132, 30));
         }
-        VectorX.setBackgroundColor(Color.rgb(44,132,30));
     }
 
     private double[] crout(double[][] A,double[]b){
