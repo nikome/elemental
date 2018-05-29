@@ -30,8 +30,8 @@
 
     <EditText
         android:id="@+id/funcion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="236dp"
+        android:layout_height="42dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -64,8 +64,8 @@
 
     <Button
         android:id="@+id/Calculo"
-        android:layout_width="128dp"
-        android:layout_height="42dp"
+        android:layout_width="166dp"
+        android:layout_height="47dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -80,7 +80,7 @@
 
     <EditText
         android:id="@+id/Iteraciones"
-        android:layout_width="wrap_content"
+        android:layout_width="236dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -92,15 +92,15 @@
         android:textColor="@color/ap_black"
         app:layout_constraintBottom_toTopOf="@+id/inferior"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.34"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/funcion" />
 
     <EditText
         android:id="@+id/xini"
-        android:layout_width="wrap_content"
+        android:layout_width="226dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="249dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -110,10 +110,10 @@
         android:textColor="@color/ap_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.339"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Iteraciones"
-        app:layout_constraintVertical_bias="0.003" />
+        app:layout_constraintVertical_bias="0.118" />
 
     <Button
         android:id="@+id/showTable"
@@ -150,8 +150,8 @@
 
     <EditText
         android:id="@+id/derivada"
-        android:layout_width="234dp"
-        android:layout_height="wrap_content"
+        android:layout_width="238dp"
+        android:layout_height="41dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -162,9 +162,10 @@
         android:textColor="@color/ap_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.346"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/funcion"
-        app:layout_constraintVertical_bias="0.006" />
+        app:layout_constraintVertical_bias="0.002" />
 
     <Switch
         android:id="@+id/switchARN"

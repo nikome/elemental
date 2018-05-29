@@ -65,7 +65,7 @@
 
     <Button
         android:id="@+id/Calculo"
-        android:layout_width="128dp"
+        android:layout_width="228dp"
         android:layout_height="42dp"
         android:layout_marginBottom="248dp"
         android:layout_marginEnd="8dp"
@@ -86,6 +86,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Iterations"
         android:inputType="textPersonName"
@@ -102,7 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="172dp"
         android:ems="10"
         android:hint="X initial"
         android:inputType="textPersonName"
@@ -141,11 +142,11 @@
         app:layout_constraintBottom_toTopOf="@+id/xini"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/funcion"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.762" />
 
     <Button
         android:id="@+id/Stefensen"
-        android:layout_width="wrap_content"
+        android:layout_width="228dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -157,7 +158,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Calculo"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintVertical_bias="0.242" />
 
     <TextView
         android:id="@+id/StefensenResult"
@@ -176,8 +177,8 @@
 
     <Switch
         android:id="@+id/switchRA"
-        android:layout_width="167dp"
-        android:layout_height="28dp"
+        android:layout_width="165dp"
+        android:layout_height="33dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -187,15 +188,15 @@
         android:textOn="Absolute"
         app:layout_constraintBottom_toTopOf="@+id/xini"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.692"
         app:layout_constraintStart_toEndOf="@+id/Tolerancia"
         app:layout_constraintTop_toBottomOf="@+id/funcion"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.731" />
 
     <TextView
         android:id="@+id/view12"
         android:layout_width="86dp"
-        android:layout_height="22dp"
+        android:layout_height="23dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -203,32 +204,33 @@
         android:textColor="@color/ap_black"
         app:layout_constraintBottom_toTopOf="@+id/switchRA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.843"
+        app:layout_constraintHorizontal_bias="0.822"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/funcion"
-        app:layout_constraintVertical_bias="0.419" />
+        app:layout_constraintVertical_bias="0.917" />
 
     <EditText
         android:id="@+id/funcionfx"
-        android:layout_width="196dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:textColor="@color/ap_black"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="384dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="114dp"
         android:ems="10"
         android:hint="Write an optional f(x)"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/Tolerancia"
-        app:layout_constraintEnd_toStartOf="@+id/view12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/funcion" />
+        android:textColor="@color/ap_black"
+        app:layout_constraintBottom_toTopOf="@+id/showTable"
+        app:layout_constraintEnd_toStartOf="@+id/ayudaBiseccion"
+        app:layout_constraintStart_toStartOf="@+id/funcion"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
 
     <Button
         android:id="@+id/Graficador"
         android:layout_width="83dp"
-        android:layout_height="40dp"
+        android:layout_height="47dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"

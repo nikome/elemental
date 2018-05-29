@@ -65,8 +65,8 @@
 
     <Button
         android:id="@+id/Calculo"
-        android:layout_width="128dp"
-        android:layout_height="42dp"
+        android:layout_width="203dp"
+        android:layout_height="41dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -75,10 +75,9 @@
         android:text="Calculate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Tolerancia"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintVertical_bias="0.05" />
 
     <EditText
         android:id="@+id/Iteraciones"
@@ -121,7 +120,7 @@
     <Button
         android:id="@+id/showTable"
         android:layout_width="166dp"
-        android:layout_height="47dp"
+        android:layout_height="41dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -131,7 +130,7 @@
         app:layout_constraintHorizontal_bias="0.623"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/muller"
-        app:layout_constraintVertical_bias="0.774" />
+        app:layout_constraintVertical_bias="0.777" />
 
     <EditText
         android:id="@+id/Tolerancia"
