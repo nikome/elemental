@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ap_white"
     tools:context="com.androidplot.demos.MultipleRootActivity">
 
     <TextView
@@ -18,7 +17,6 @@
         android:layout_marginTop="16dp"
         android:text="Multiple Root Method"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/ap_black"
         android:textSize="25dp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,6 +28,7 @@
 
     <EditText
         android:id="@+id/funcion"
+        style="@android:style/Widget.Holo.Light.AutoCompleteTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -39,7 +38,11 @@
         android:ems="10"
         android:hint="Write a function"
         android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="true"
         android:textColor="@color/ap_black"
+        android:textColorHint="@color/ap_black"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -56,6 +59,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:textColor="@color/ap_black"
+        android:textColorHint="@color/ap_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +68,7 @@
 
     <Button
         android:id="@+id/Calculo"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="128dp"
         android:layout_height="42dp"
         android:layout_marginBottom="8dp"
@@ -90,6 +95,7 @@
         android:hint="Iterations"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
+        android:textColorHint="@color/ap_black"
         app:layout_constraintBottom_toTopOf="@+id/inferior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,6 +113,7 @@
         android:hint="X initial"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
+        android:textColorHint="@color/ap_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -116,6 +123,7 @@
 
     <Button
         android:id="@+id/showTable"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="166dp"
         android:layout_height="47dp"
         android:layout_marginBottom="8dp"
@@ -141,6 +149,7 @@
         android:hint="Tolerance"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
+        android:textColorHint="@color/ap_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.037"
@@ -160,6 +169,7 @@
         android:hint="The derivative of the f(x)"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
+        android:textColorHint="@color/ap_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -177,6 +187,7 @@
         android:ems="10"
         android:hint="The second derivative of f(x)"
         android:inputType="textPersonName"
+        android:textColorHint="@color/ap_black"
         android:textColor="@color/ap_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -205,6 +216,7 @@
 
     <Button
         android:id="@+id/Graficador"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="96dp"
         android:layout_height="49dp"
         android:layout_marginBottom="8dp"
@@ -221,6 +233,7 @@
 
     <Button
         android:id="@+id/ayudaIncremental"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="69dp"
         android:layout_height="46dp"
         android:layout_marginBottom="8dp"

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ap_white"
     tools:context=".TrazadorSimpleActivity">
 
     <TextView
@@ -26,6 +25,7 @@
         app:layout_constraintVertical_bias="0.901" />
 
     <Button
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:id="@+id/ingresoPunto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,6 +43,7 @@
         app:layout_constraintVertical_bias="0.663" />
 
     <Button
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:id="@+id/CalculateN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,7 +68,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="116dp"
-        android:background="@color/ap_white"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,6 +112,7 @@
         android:layout_marginTop="48dp"
         android:ems="10"
         android:hint="Write a number"
+        android:textColorHint="@color/ap_black"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -162,7 +163,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Simple Spline"
-        android:textColor="@color/ap_black"
         android:textSize="25dp"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
@@ -170,6 +170,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <Button
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:id="@+id/ayudaIterpolation"
         android:layout_width="61dp"
         android:layout_height="40dp"

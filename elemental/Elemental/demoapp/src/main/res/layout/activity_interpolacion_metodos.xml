@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ap_white"
     tools:context=".InterpolacionMetodosActivity">
 
     <Button
         android:id="@+id/NewtonDivision"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="159dp"
         android:layout_height="45dp"
         android:layout_marginBottom="30dp"
@@ -22,6 +22,7 @@
 
     <Button
         android:id="@+id/Lagrange"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="159dp"
         android:layout_height="45dp"
         android:layout_marginEnd="29dp"
@@ -32,6 +33,7 @@
 
     <Button
         android:id="@+id/Simple"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginBottom="32dp"
@@ -43,6 +45,7 @@
 
     <Button
         android:id="@+id/Cuadratico"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginBottom="27dp"
@@ -54,6 +57,7 @@
 
     <Button
         android:id="@+id/Cubico"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginBottom="75dp"
@@ -69,7 +73,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:text="Splines"
-        android:textColor="@color/ap_black"
         android:textSize="25dp"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/Simple"
@@ -84,7 +87,6 @@
         android:layout_marginBottom="130dp"
         android:layout_marginTop="16dp"
         android:text="Interpolation"
-        android:textColor="@color/ap_black"
         android:textSize="35dp"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/NewtonDivision"

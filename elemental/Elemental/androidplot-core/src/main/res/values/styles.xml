@@ -15,8 +15,15 @@
 
     <style name="Secundario" parent="android:Theme.Holo.Light.NoActionBar.Fullscreen" >
         <item name="android:colorPrimary">@android:color/background_dark</item>
-        <item name="android:colorBackground">@color/accent_material_light</item>
-        <item name="android:colorAccent">@color/accent_material_light</item>
-        <item name="android:textColorSecondaryInverse">@color/holo_blue_bright</item>
+        <item name="android:colorBackground">@android:color/holo_blue_light</item>
+        <item name="android:colorAccent">@color/ap_white</item>
+        <item name="android:textColorSecondaryInverse">@color/ap_white</item>
+        <item name="android:windowBackground">@color/holo_blue_light</item>
+        <item name="android:textColorSecondary">@android:color/background_light</item>
+        <item name="android:colorForeground">@color/ap_white</item>
+        <item name="android:navigationBarColor">@color/ap_white</item>
+        <item name="android:statusBarColor">@color/ap_white</item>
+        <item name="android:textColorPrimary">@android:color/background_light</item>
+        <item name="android:textColorPrimaryInverse">@color/ap_white</item>
     </style>
 </resources>

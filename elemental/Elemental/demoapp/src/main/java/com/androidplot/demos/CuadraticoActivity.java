@@ -66,6 +66,8 @@ public class CuadraticoActivity extends Activity {
                 view1.setTextColor(Color.BLACK);
                 view2.setHint("write a number");
                 view2.setTextColor(Color.BLACK);
+                view1.setHintTextColor(Color.BLACK);
+                view2.setHintTextColor(Color.BLACK);
                 row.addView(view1);
                 row.addView(view2);
                 table.addView(row);

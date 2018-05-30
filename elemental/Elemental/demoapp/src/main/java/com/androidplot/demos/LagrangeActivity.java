@@ -58,8 +58,10 @@ public class LagrangeActivity extends Activity {
                 EditText view2 = new EditText(this);
                 view1.setHint("write a number");
                 view1.setTextColor(Color.BLACK);
+                view1.setHintTextColor(Color.BLACK);
                 view2.setHint("write a number");
                 view2.setTextColor(Color.BLACK);
+                view2.setHintTextColor(Color.BLACK);
                 row.addView(view1);
                 row.addView(view2);
                 table.addView(row);

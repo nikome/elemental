@@ -17,7 +17,6 @@
         android:layout_marginTop="16dp"
         android:text="False Rule method"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/ap_black"
         android:textSize="25dp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,6 +36,7 @@
         android:layout_marginTop="88dp"
         android:ems="10"
         android:hint="Write a function"
+        android:textColorHint="@color/ap_black"
         android:inputType="textPersonName"
         android:textColor="@color/ap_black"
         app:layout_constraintBottom_toTopOf="@+id/Tolerancia"
@@ -63,6 +63,7 @@
         app:layout_constraintVertical_bias="0.106" />
 
     <Button
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:id="@+id/Calculo"
         android:layout_width="166dp"
         android:layout_height="47dp"
@@ -86,6 +87,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="156dp"
+        android:textColorHint="@color/ap_black"
         android:ems="10"
         android:hint="Iterations"
         android:inputType="textPersonName"
@@ -103,6 +105,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="220dp"
+        android:textColorHint="@color/ap_black"
         android:ems="10"
         android:hint="Lower bound"
         android:inputType="textPersonName"
@@ -120,6 +123,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="292dp"
+        android:textColorHint="@color/ap_black"
         android:ems="10"
         android:hint="Upper bound"
         android:inputType="textPersonName"
@@ -132,6 +136,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:id="@+id/showTable"
         android:layout_width="166dp"
         android:layout_height="47dp"
@@ -154,6 +159,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:textColorHint="@color/ap_black"
         android:ems="10"
         android:hint="Tolerance"
         android:inputType="textPersonName"
@@ -166,6 +172,7 @@
         app:layout_constraintVertical_bias="0.636" />
 
     <Button
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:id="@+id/Graficador"
         android:layout_width="74dp"
         android:layout_height="39dp"
@@ -180,6 +187,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Resultado" />
 
     <Button
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:id="@+id/ayudaBiseccion"
         android:layout_width="68dp"
         android:layout_height="40dp"

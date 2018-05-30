@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ap_white"
     tools:context="com.androidplot.demos.ecuacionesunavariableActivity">
 
     <Button
         android:id="@+id/Busquedas"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -24,6 +24,7 @@
 
     <Button
         android:id="@+id/Biseccion"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="161dp"
         android:layout_height="48dp"
         android:layout_marginBottom="8dp"
@@ -40,6 +41,7 @@
 
     <Button
         android:id="@+id/Puntofijo"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="161dp"
         android:layout_height="48dp"
         android:layout_marginBottom="8dp"
@@ -56,6 +58,7 @@
 
     <Button
         android:id="@+id/Secante"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="161dp"
         android:layout_height="48dp"
         android:layout_marginBottom="8dp"
@@ -72,6 +75,7 @@
 
     <Button
         android:id="@+id/Newton"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="161dp"
         android:layout_height="48dp"
         android:layout_marginBottom="8dp"
@@ -88,6 +92,7 @@
 
     <Button
         android:id="@+id/RaicesMultiples"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="161dp"
         android:layout_height="48dp"
         android:layout_marginBottom="8dp"
@@ -104,6 +109,7 @@
 
     <Button
         android:id="@+id/ReglaFalsa"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="161dp"
         android:layout_height="48dp"
         android:layout_marginBottom="8dp"

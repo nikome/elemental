@@ -38,7 +38,7 @@
         <!-- receiver for demo app widget -->
         <receiver
             android:name=".widget.DemoAppWidgetProvider"
-            android:icon="@drawable/ic_launcher"
+            android:icon="@drawable/letiub"
             android:label="Example Widget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
