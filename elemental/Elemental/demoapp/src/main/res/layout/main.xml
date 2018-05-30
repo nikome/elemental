@@ -19,63 +19,56 @@
         android:layout_marginTop="44dp"
         android:text="Single variable equations"
         android:textSize="19dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.074" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/fxPlotExample"
         style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="222dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="143dp"
+        android:layout_marginBottom="188dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:baselineAligned="false"
-        android:textSize="19dp"
         android:text="Graph a function"
+        android:textSize="19dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:id="@+id/Interpolacion"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="226dp"
         android:layout_height="51dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:textSize="19dp"
         android:text="Interpolation"
+        android:textSize="19dp"
         app:layout_constraintBottom_toTopOf="@+id/fxPlotExample"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.511" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:id="@+id/button2"
+        style="@android:style/Widget.DeviceDefault.Button.Toggle"
         android:layout_width="221dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
-        android:textSize="19dp"
         android:text="       Linear equation       "
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="19dp"
+        app:layout_constraintBottom_toTopOf="@+id/Interpolacion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/metodo1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
